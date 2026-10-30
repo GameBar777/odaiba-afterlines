@@ -1,0 +1,20 @@
+{
+  "scenes": 81,
+  "choices": 104,
+  "npcs": 18,
+  "npcRules": 22,
+  "knowledge": 48,
+  "knowledgeReferencedByScenes": 44,
+  "knowledgeNeedsReview": 33,
+  "sources": 26,
+  "info": 10,
+  "infoReferenced": 10,
+  "endings": 10,
+  "afterPieces": 12,
+  "locs": 15,
+  "locsFictional": 6,
+  "items": 22,
+  "injuries": 8,
+  "photos": 2,
+  "dialogueLines": 192
+}

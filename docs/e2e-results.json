@@ -1,0 +1,196 @@
+{
+  "at": "2026-10-30T22:06:11.155Z",
+  "base": "http://localhost:4190/",
+  "results": [
+    {
+      "name": "mobile: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile: reached ending in 43 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile: report has disclaimer",
+      "pass": true,
+      "info": "決めておいた場所"
+    },
+    {
+      "name": "mobile: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-student: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-student: reached ending in 40 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-student: report has disclaimer",
+      "pass": true,
+      "info": "あの日から始まった仕事"
+    },
+    {
+      "name": "mobile-student: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-student: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-student: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-parent: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-parent: reached ending in 35 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-parent: report has disclaimer",
+      "pass": true,
+      "info": "隣にいない夏"
+    },
+    {
+      "name": "mobile-parent: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-parent: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-parent: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "desktop: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "desktop: reached ending in 36 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "desktop: report has disclaimer",
+      "pass": true,
+      "info": "隣にいない夏"
+    },
+    {
+      "name": "desktop: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "desktop: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "desktop: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: reached ending in 30 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: report has disclaimer",
+      "pass": true,
+      "info": "声は、届いた"
+    },
+    {
+      "name": "mobile-d1: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: reached ending in 25 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: report has disclaimer",
+      "pass": true,
+      "info": "あの日の人"
+    },
+    {
+      "name": "mobile-death: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "found a death route",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "save: continue after reload restores clock",
+      "pass": true,
+      "info": "🕒 13:32"
+    }
+  ]
+}
