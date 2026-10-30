@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-30T22:06:11.155Z",
-  "base": "http://localhost:4190/",
+  "at": "2026-10-30T22:09:44.239Z",
+  "base": "https://gamebar777.github.io/odaiba-afterlines/",
   "results": [
     {
       "name": "mobile: disclaimer on title",
@@ -68,14 +68,14 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 35 steps",
+      "name": "mobile-parent: reached ending in 32 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-parent: report has disclaimer",
       "pass": true,
-      "info": "隣にいない夏"
+      "info": "帰れなかった日"
     },
     {
       "name": "mobile-parent: settings has disclaimer",
@@ -128,14 +128,14 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 30 steps",
+      "name": "mobile-d1: reached ending in 25 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-d1: report has disclaimer",
       "pass": true,
-      "info": "声は、届いた"
+      "info": "あの日の人"
     },
     {
       "name": "mobile-d1: settings has disclaimer",
