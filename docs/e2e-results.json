@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:05:26.504Z",
+  "at": "2026-10-31T00:08:38.266Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 52 steps",
+      "name": "mobile: reached ending in 53 steps",
       "pass": true,
       "info": ""
     },
@@ -128,14 +128,14 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 25 steps",
+      "name": "mobile-d1: reached ending in 30 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-d1: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "未送信のメッセージ"
     },
     {
       "name": "mobile-d1: settings has disclaimer",
@@ -158,14 +158,14 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 31 steps",
+      "name": "mobile-death: reached ending in 25 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-death: report has disclaimer",
       "pass": true,
-      "info": "声は、届いた"
+      "info": "あの日の人"
     },
     {
       "name": "mobile-death: settings has disclaimer",

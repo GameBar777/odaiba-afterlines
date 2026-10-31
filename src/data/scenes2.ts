@@ -59,7 +59,7 @@ export const ch3: Scene[] = [
     ['', '深夜。また揺れる。余震だ。誰かが小さく悲鳴を上げ、すぐに静かになった。'],
     ['', '隣で、若い女性がスマホを握りしめている。'],
     ['春野', '……母と、朝、喧嘩したんです。「もう帰ってこない」って言っちゃって。'],
-  ], { fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
+  ], { alt: [{ if: { preset: 'worker' }, goto: 'c3w_night' }, { if: { preset: 'student' }, goto: 'c3s_night' }, { if: { preset: 'parent' }, goto: 'c3p_night' }], fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
       C('171play', '171の使い方を教え、一緒に伝言を確認する', 'c3_171', { icon: '☎', effects: { helped: 'haruno', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
       C('listen', '黙って話を聞く', 'c3_171', { icon: '🤲', effects: { npc: { id: 'haruno', trust: 15 }, mental: 3 } }),
     ] }),
@@ -110,7 +110,7 @@ export const ch3: Scene[] = [
   S('c3_aid2', 3, 'aid', [
     ['', '夜明け前。早瀬が、はじめて座り込んだ。'],
     ['早瀬', '……息子と、まだ連絡が取れないの。看護師なのに、自分の子のところには行けない。'],
-  ], { choices: [
+  ], { alt: [{ if: { preset: 'worker' }, goto: 'c3w_aid2' }, { if: { preset: 'student' }, goto: 'c3s_aid2' }, { if: { preset: 'parent' }, goto: 'c3p_aid2' }], choices: [
       C('web171', '早瀬の代わりにweb171で息子の学校名を検索する', 'c4_dawn', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込みがあった（ゲーム内架空情報）。早瀬は顔を覆った。' }),
       C('sit', '隣に座り、水を渡す', 'c4_dawn', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 } } }),
     ] }),
@@ -199,13 +199,12 @@ export const ch5: Scene[] = [
       C('photo', '片付ける前に撮っておいた被害の写真を出す', 'c5_visit', { icon: '📷', if: { minBattery: 1 }, effects: { report: { cat: 'items', score: 1, note: '罹災証明のため被害の写真を残した' } } }),
       C('nophoto', 'もう片付けてしまった……', 'c5_visit', { icon: '🧹', effects: { mental: -5 } }),
     ] }),
-  S('c5_visit', 5, 'letter', [['', '…']], { alt: [{ if: { flag: 'helped_hiroto' }, goto: 'c5_hiroto' }, { if: {}, goto: 'c5_friend' }] }),
   S('c5_hiroto', 5, 'letter', [
     ['', 'ある日、玄関に父子が立っていた。'],
     ['黒田', 'あの日、息子の手を引いてくれた方ですよね。モールの職員さんに聞いて、探しました。'],
     ['大翔', '（手紙を差し出す）'],
   ], { onEnter: { item: 'letter' }, next: 'c5_friend' }),
-  S('c5_friend', 5, 'rebuild', [['', '…']], { alt: [{ if: { npcDead: 'friend' }, goto: 'c5_friend_lost' }, { if: {}, goto: 'c5_friend_ok' }] }),
+  S('c5_friend', 5, 'rebuild', [['', '…']], { alt: [{ if: { npcDead: 'friend' }, goto: 'c5_friend_lost' }, { if: { flag: 'takumi_blessed' }, goto: 'c5_friend_bless' }, { if: { preset: 'parent' }, goto: 'c5p_friend_ok' }, { if: {}, goto: 'c5_friend_ok' }] }),
   S('c5_friend_ok', 5, 'rebuild', [
     ['拓海', '大阪、行くことにした。……あの日の写真、送ってくれよ。'],
     ['拓海', '向こうで防災士の講座、受けてみる。あの日、何もできない自分がいやだったから。'],
