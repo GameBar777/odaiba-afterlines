@@ -1,5 +1,5 @@
 {
-  "scenes": 298,
+  "scenes": 299,
   "choices": 314,
   "npcs": 18,
   "npcRules": 22,
@@ -16,5 +16,5 @@
   "items": 23,
   "injuries": 8,
   "photos": 2,
-  "dialogueLines": 1075
+  "dialogueLines": 1108
 }

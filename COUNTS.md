@@ -43,3 +43,8 @@
 - 第1章到達時平均: worker 3,047 / student 2,982 / parent 3,045字
 - 追加: c1w_wait / c1s_wait / c1p_wait（ルート別の待機場面・各2択、危険なし）、c1_eew・c1_friend・c1_friend_pa・c1_selfcheck ほかに描写を追加
 - 生存者平均: 74.8 / 70.8 / 72.4分、10エンディングすべて到達
+
+## 段階8（第2・3章を約3,500字へ）
+- 第2章: 2,830〜2,860 → 3,521〜3,549字、第3章: 2,530〜2,730 → worker 3,471 / student 3,580 / parent 3,570字
+- 追加: c3_dusk（夕暮れの広場・共通）。c2_saeki / c2_info / c2_morimoto / c2_contact / c2_end、c3_announce / c3_hall / c3_walk1 / c3_aid / c3_rescue に描写を追加
+- 生存者平均: 78.6 / 74.4 / 75.9分、死亡率 24.2%、10エンディングすべて到達

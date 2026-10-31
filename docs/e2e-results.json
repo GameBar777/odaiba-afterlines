@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:48:13.210Z",
+  "at": "2026-10-31T00:50:27.054Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 140 steps",
+      "name": "mobile: reached ending in 141 steps",
       "pass": true,
       "info": ""
     },
@@ -38,14 +38,14 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 112 steps",
+      "name": "mobile-student: reached ending in 115 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-student: report has disclaimer",
       "pass": true,
-      "info": "港南口で"
+      "info": "隣にいない夏"
     },
     {
       "name": "mobile-student: settings has disclaimer",
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 36 steps",
+      "name": "mobile-parent: reached ending in 37 steps",
       "pass": true,
       "info": ""
     },
@@ -98,7 +98,7 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 96 steps",
+      "name": "desktop: reached ending in 97 steps",
       "pass": true,
       "info": ""
     },
@@ -128,14 +128,14 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 37 steps",
+      "name": "mobile-d1: reached ending in 51 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-d1: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-d1: settings has disclaimer",
@@ -158,14 +158,14 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 37 steps",
+      "name": "mobile-death: reached ending in 51 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-death: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-death: settings has disclaimer",
