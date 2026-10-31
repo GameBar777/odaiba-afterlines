@@ -64,7 +64,7 @@ export const ch3: Scene[] = [
     ['拓海', '俺、戻る。昔、救命講習受けたことあるし。'],
   ], { alt: [{ if: { npcDead: 'friend' }, goto: 'c3_announce' }], choices: [
       C('together', '「一人で行くな。一緒に行く」', 'c3_rescue', { icon: '🤝', effects: { npc: { id: 'friend', trust: 10 } } }),
-      C('firefighters', '「消防が来てる。煙の中は素人じゃ無理だ。場所を伝えよう」', 'c3_announce', { icon: '🚒', effects: { flag: 'warned_friend', npc: { id: 'friend', trust: 5, flag: 'reported' }, time: 15, know: 'k_119', report: { cat: 'aid', score: 3, note: '取り残された人の情報を消防に伝え、二次災害を避けた' } }, result: '拓海は唇をかんだが、消防隊員に場所を伝えた。数十分後、取り残されていた二人が運び出された。' }),
+      C('firefighters', '腕をつかむ。「行かせない。……消防に、場所を言おう」', 'c3_announce', { icon: '🚒', effects: { flag: 'warned_friend', npc: { id: 'friend', trust: 5, flag: 'reported' }, time: 15, know: 'k_119', report: { cat: 'aid', score: 3, note: '取り残された人の情報を消防に伝え、二次災害を避けた' } }, result: '拓海は唇をかんだが、消防隊員に場所を伝えた。数十分後、取り残されていた二人が運び出された。' }),
       C('let', '「……気をつけろよ」と送り出す', 'c3_announce', { icon: '👋', effects: { unflag: 'friend_with_me', flag: 'friend_left', npc: { id: 'friend', loc: 'mall' }, report: { cat: 'aid', score: -1, note: '友人が一人で煙の中へ戻るのを止めなかった' } } }),
     ] }),
   S('c3_rescue', 3, 'smoke', [
@@ -93,8 +93,8 @@ export const ch3: Scene[] = [
     ['', '入口の脇では、ボランティアらしい高校生が、名簿用の紙を配っていた。「お名前と、連絡先と……書ける方だけで、大丈夫です」。その声も、少し、震えていた。'],
     ['', '宮内の声は、かすれていた。もう、何時間も叫び続けている声だった。'],
   ], { info: ['i_fac_open', 'i_off_kitaku', 'i_sns_walk'], onEnter: { time: 60, know: ['k_stay', 'k_temp_facility'] }, choices: [
-      C('stay', '一時滞在施設にとどまる', 'c3_hall', { icon: '🏢', effects: { loc: 'aomi_hall', flag: 'stay_decided', time: 20, report: { cat: 'stay', score: 3, note: '一時滞在施設にとどまる判断をした' } } }),
-      C('walk', '今すぐ{home}へ歩いて帰る', 'c3_walk1', { icon: '🚶', effects: { flag: 'walking', time: 10, report: { cat: 'stay', score: -2, note: '発災当日の夕方、情報が少ない中で徒歩帰宅を始めた' } } }),
+      C('stay', '陽菜の顔が浮かぶ。それでも、今夜はここで朝を待つ', 'c3_hall', { icon: '🏢', effects: { loc: 'aomi_hall', flag: 'stay_decided', time: 20, report: { cat: 'stay', score: 3, note: '一時滞在施設にとどまる判断をした' } } }),
+      C('walk', 'じっとしていられない。{home}へ歩き出す', 'c3_walk1', { icon: '🚶', effects: { flag: 'walking', time: 10, report: { cat: 'stay', score: -2, note: '発災当日の夕方、情報が少ない中で徒歩帰宅を始めた' } } }),
       C('aid', '早瀬と救護所へ行き、手伝う', 'c3_aid', { icon: '⛑', if: { npcAlive: 'hayase' }, effects: { loc: 'aid', time: 20, flag: 'volunteer', report: { cat: 'care', score: 2, note: '救護所で手伝った' } } }),
     ] }),
   // --- stay route ---
@@ -116,7 +116,7 @@ export const ch3: Scene[] = [
     ['小野寺', '（赤ちゃんを抱いて）すみません……ミルクのお湯って、どこかに……'],
     ['石川', '（青い顔で）……薬、モールに置いてきてしまって。'],
   ], { choices: [
-      C('emily', 'エミリーとリンをつなぎ、多言語の公式情報を一緒に探す', 'c3_hall3', { icon: '🌏', effects: { helped: 'emily', time: 30, npc: [{ id: 'emily', trust: 30 }, { id: 'lin', trust: 20 }], know: 'k_foreign', report: { cat: 'care', score: 2, note: '外国人旅行者に情報支援をつないだ' } } }),
+      C('emily', '困った顔のエミリーを、リンのところへ連れていく', 'c3_hall3', { icon: '🌏', effects: { helped: 'emily', time: 30, npc: [{ id: 'emily', trust: 30 }, { id: 'lin', trust: 20 }], know: 'k_foreign', report: { cat: 'care', score: 2, note: '外国人旅行者に情報支援をつないだ' } } }),
       C('mana', '小野寺さんのために授乳・休憩スペースを職員に頼む', 'c3_hall3', { icon: '🍼', effects: { helped: 'onodera', flag: 'helped_onodera_any', time: 30, npc: { id: 'onodera', trust: 30 }, know: ['k_vulnerable', 'k_privacy'], report: { cat: 'care', score: 2, note: '乳児連れの母親のスペース確保を運営に頼んだ' } } }),
       C('ishikawa', '石川さんの持病を職員と救護所に伝える', 'c3_hall3', { icon: '💉', effects: { helped: 'ishikawa', flag: 'ishikawa_cared', time: 30, npc: { id: 'ishikawa', trust: 30 }, know: ['k_meds', 'k_vulnerable'], report: { cat: 'care', score: 3, note: '持病の薬を失った人を医療につないだ' } } }),
       C('rest', '自分も限界だ。横になる', 'c3_hall3', { icon: '😴', effects: { stamina: 20, time: 30 } }),
@@ -126,7 +126,7 @@ export const ch3: Scene[] = [
     ['', '隣で、若い女性がスマホを握りしめている。'],
     ['春野', '……母と、朝、喧嘩したんです。「もう帰ってこない」って言っちゃって。'],
   ], { alt: [{ if: { preset: 'worker' }, goto: 'c3w_night' }, { if: { preset: 'student' }, goto: 'c3s_night' }, { if: { preset: 'parent' }, goto: 'c3p_night' }], fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
-      C('171play', '171の使い方を教え、一緒に伝言を確認する', 'c3_171', { icon: '☎', effects: { helped: 'haruno', flag: 'helped_haruno_any', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
+      C('171play', '「さっき、私もやってみたんです」と自分の携帯を見せる', 'c3_171', { icon: '☎', effects: { helped: 'haruno', flag: 'helped_haruno_any', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
       C('listen', '黙って話を聞く', 'c3_171', { icon: '🤲', effects: { npc: { id: 'haruno', trust: 15 }, mental: 3 } }),
     ] }),
   S('c3_171', 3, 'phone_171', [
@@ -148,14 +148,14 @@ export const ch3: Scene[] = [
       C('help_muto', '若者（森本）を一緒に救護所まで運ぶ', 'c3_walk2b', { icon: '🤝', if: { flag: 'morimoto_went_shore' }, effects: { time: 40, stamina: -15, helped: 'morimoto', npc: { id: 'muto', trust: 30 }, report: { cat: 'aid', score: 2, note: '負傷者の搬送を手伝った' } } }),
       C('help_generic', '武藤と一緒に、倒れていた人を救護所へ運ぶ', 'c3_walk2b', { icon: '🤝', if: { notFlag: 'morimoto_went_shore' }, effects: { time: 40, stamina: -15, helped: 'muto', npc: { id: 'muto', trust: 30 }, report: { cat: 'aid', score: 2, note: '負傷者の搬送を手伝った' } } }),
       C('go', '「すみません」と頭を下げ、先を急ぐ', 'c3_walk2b', { icon: '🚶', effects: { mental: -6 } }),
-      C('turn', 'これは無理だ。一時滞在施設へ引き返す', 'c3_hall', { icon: '↩', effects: { unflag: 'walking', loc: 'aomi_hall', time: 50, flag: ['stay_decided', 'turned_back'], report: { cat: 'stay', score: 2, note: '徒歩帰宅の途中で状況を見て引き返した' } } }),
+      C('turn', '足が動かない。悔しいけど、来た道を戻る', 'c3_hall', { icon: '↩', effects: { unflag: 'walking', loc: 'aomi_hall', time: 50, flag: ['stay_decided', 'turned_back'], report: { cat: 'stay', score: 2, note: '徒歩帰宅の途中で状況を見て引き返した' } } }),
     ] }),
   S('c3_walk2', 3, 'walk_night', [
     ['', 'すっかり暗くなった。停電で信号も街灯も消えている。'],
     ['', 'コンビニの前に「災害時帰宅支援ステーション」のステッカー（ゲーム内の架空店舗）。水道水とトイレを貸している。'],
   ], { fx: 'dark', onEnter: { time: 120, know: 'k_walk_home' }, choices: [
-      C('rest', '水をもらい、トイレを借りて休む', 'c3_walk2c', { icon: '🚰', effects: { water: 30, stamina: 15, time: 40, report: { cat: 'evac', score: 1, note: '徒歩中に支援拠点で休息と水分補給をした' } } }),
-      C('push', '休まず歩き続ける', 'c3_walk2c', { icon: '🏃', effects: { time: 10, risk: { kind: 'exhaustion', level: 10, label: '暗い歩道の段差で足をひねった' }, report: { cat: 'evac', score: -1, note: '夜間に休まず歩き続けた' } } }),
+      C('rest', 'コンビニの前で、差し出された紙コップを受け取る', 'c3_walk2c', { icon: '🚰', effects: { water: 30, stamina: 15, time: 40, report: { cat: 'evac', score: 1, note: '徒歩中に支援拠点で休息と水分補給をした' } } }),
+      C('push', '座ったら、もう立てない気がする。歩き続ける', 'c3_walk2c', { icon: '🏃', effects: { time: 10, risk: { kind: 'exhaustion', level: 10, label: '暗い歩道の段差で足をひねった' }, report: { cat: 'evac', score: -1, note: '夜間に休まず歩き続けた' } } }),
     ] }),
   S('c3_walk3', 3, 'walk_night', [
     ['', '運河を渡る橋の手前。向こう岸の空が赤い。火災の煙が、風に乗ってこちらへ流れてくる。'],
@@ -163,8 +163,8 @@ export const ch3: Scene[] = [
     ['', '「この先、通れるらしい」と誰かが言う。根拠は分からない。別の誰かが「向こうは燃えてるって」と言う。それにも、根拠はない。'],
     ['', 'スマホの電池は、もう心もとない。明るい情報も暗い情報も、同じ小さな画面の中で、同じ大きさの文字で流れていく。いま、この橋の上で、正しいことを知っている人は、たぶん一人もいない。'],
   ], { fx: 'dark', onEnter: { time: 60, know: 'k_smoke' }, choices: [
-      C('detour', '風上へ大きく迂回する（2時間余計にかかる）', 'c3_wk_r', { icon: '↪', effects: { time: 120, stamina: -12, water: -10, report: { cat: 'evac', score: 2, note: '火災の煙を避けて迂回した' } } }),
-      C('through', '煙の中を突っ切る', 'c3_wk_r', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 26, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
+      C('detour', '煙の匂いが嫌だ。遠回りでも、川沿いを行く', 'c3_wk_r', { icon: '↪', effects: { time: 120, stamina: -12, water: -10, report: { cat: 'evac', score: 2, note: '火災の煙を避けて迂回した' } } }),
+      C('through', 'この先が家だ。口を覆って、まっすぐ進む', 'c3_wk_r', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 26, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
       C('wait', '橋のたもとの公園で夜明けを待つ', 'c3_wk_r', { icon: '🌙', effects: { time: 240, risk: { kind: 'water', level: 10, label: '夜の冷え込みで体が冷えた' }, report: { cat: 'stay', score: 2, note: '夜間の移動をやめ、明るくなるまで待った' } } }),
     ] }),
   // --- aid route ---
@@ -177,14 +177,14 @@ export const ch3: Scene[] = [
     ['', '運ばれてきた男性は、数時間、瓦礫に脚を挟まれていたという。顔色は悪くない。本人も「平気だ、歩ける」と言う。だからこそ怖いのだ、と早瀬の目が言っていた。'],
     ['大川', '（消防隊員・架空）挟まれていた時間が長い人は、救出後に急変することがある。医療につなぐまで目を離さないで。'],
   ], { alt: [{ if: { preset: 'parent' }, goto: 'c3p_aid' }], onEnter: { know: ['k_crush', 'k_119', 'k_aed'], flag: 'supplied', water: 20, time: 120 }, choices: [
-      C('record', '負傷者の名前と状態を記録し、家族の問い合わせに備える', 'c3_aid_mid', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '救護所で記録係を務めた' }, npc: { id: 'hayase', trust: 15 } } }),
-      C('aed', 'AEDを取りに走る', 'c3_aid_mid', { icon: '⚡', effects: { stamina: -8, report: { cat: 'aid', score: 2, note: 'AEDを運んだ' }, flag: 'aed_run' } }),
+      C('record', 'ペンを借りて、運ばれてきた人の名前を書き留める', 'c3_aid_mid', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '救護所で記録係を務めた' }, npc: { id: 'hayase', trust: 15 } } }),
+      C('aed', '「何か持ってくるものは！」と叫んで走り出す', 'c3_aid_mid', { icon: '⚡', effects: { stamina: -8, report: { cat: 'aid', score: 2, note: 'AEDを運んだ' }, flag: 'aed_run' } }),
     ] }),
   S('c3_aid2', 3, 'aid', [
     ['', '夜明け前。早瀬が、はじめて座り込んだ。'],
     ['早瀬', '……息子と、まだ連絡が取れないの。看護師なのに、自分の子のところには行けない。'],
   ], { alt: [{ if: { preset: 'worker' }, goto: 'c3w_aid2' }, { if: { preset: 'student' }, goto: 'c3s_aid2' }, { if: { preset: 'parent' }, goto: 'c3p_aid2' }], choices: [
-      C('web171', '早瀬の代わりにweb171で息子の学校名を検索する', 'c4_dawn', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込みがあった（ゲーム内架空情報）。早瀬は顔を覆った。' }),
+      C('web171', '「息子さんの学校、なんて名前ですか」と携帯を取り出す', 'c4_dawn', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込みがあった（ゲーム内架空情報）。早瀬は顔を覆った。' }),
       C('sit', '隣に座り、水を渡す', 'c4_dawn', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 } } }),
     ] }),
 ];
@@ -252,9 +252,9 @@ export const ch4: Scene[] = [
     ['田辺', 'トイレ掃除の当番、足りないのよ。それと、夜、女性用の更衣スペースに男の人が入ってきたって苦情が。'],
     ['', '体育館の隅で、高齢の男性が三日間ほとんど動かずに座っている。'],
   ], { alt: [{ if: { preset: 'worker', notFlag: 'w_office_done' }, goto: 'c4w_office' }, { if: { preset: 'student', notFlag: 's_after_done' }, goto: 'c4s_after' }], onEnter: { time: 4320, hp: 15, know: ['k_infection', 'k_privacy', 'k_dvt'] }, choices: [
-      C('duty', 'トイレ掃除の当番に入り、更衣スペースの見回りを提案する', 'c4_dr_r', { icon: '🧹', effects: { report: { cat: 'care', score: 2, note: '避難所の衛生と防犯の運営に参加した' }, npc: { id: 'tanabe', trust: 20 } } }),
-      C('old', '高齢の男性に声をかけ、一緒に足を動かす体操をする', 'c4_dr_r', { icon: '🦵', effects: { report: { cat: 'care', score: 2, note: '動かない高齢者にエコノミークラス症候群の予防を促した' } } }),
-      C('car', '体育館は落ち着かない。車中泊に切り替える', 'c4_dr_r', { icon: '🚗', effects: { risk: { kind: 'exhaustion', level: 5, label: '狭い車内で長時間動かず、脚がむくんだ' }, report: { cat: 'care', score: -1, note: '車中泊でエコノミークラス症候群の対策をしなかった' } } }),
+      C('duty', '誰もやりたがらないトイレ掃除に手を挙げる', 'c4_dr_r', { icon: '🧹', effects: { report: { cat: 'care', score: 2, note: '避難所の衛生と防犯の運営に参加した' }, npc: { id: 'tanabe', trust: 20 } } }),
+      C('old', '一人で座り込んでいるおじいさんの隣に座る', 'c4_dr_r', { icon: '🦵', effects: { report: { cat: 'care', score: 2, note: '動かない高齢者にエコノミークラス症候群の予防を促した' } } }),
+      C('car', '体育館では眠れない。車で、家族だけで休む', 'c4_dr_r', { icon: '🚗', effects: { risk: { kind: 'exhaustion', level: 5, label: '狭い車内で長時間動かず、脚がむくんだ' }, report: { cat: 'care', score: -1, note: '車中泊でエコノミークラス症候群の対策をしなかった' } } }),
     ] }),
   S('c4_shelter2', 4, 'shelter_life', [
     ['', '夜。体育館の天井を見上げる。'],

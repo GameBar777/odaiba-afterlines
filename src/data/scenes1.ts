@@ -12,7 +12,7 @@ export const ch0: Scene[] = [
     ['{fam1}', '{fam2}がね、昨日から「餃子の日」って言ってるの。'],
   ], { alt: [{ if: { preset: 'student' }, goto: 'c0_open_st' }, { if: { preset: 'parent' }, goto: 'c0_open_pa' }],
     choices: [
-      C('promise', '「七時までに帰る。約束する」', 'c0w_m1', { icon: '🤙', effects: { flag: 'promise', mental: 5 }, hint: '小さな約束' }),
+      C('promise', '「七時までに帰る。約束する」', 'c0w_m1', { icon: '🤙', effects: { flag: 'promise', mental: 5 } }),
       C('maybe', '「仕事次第かな」', 'c0w_m1', { icon: '🤷', effects: { mental: -2 } }),
     ] }),
   S('c0_open_st', 0, 'morning_home', [
@@ -34,8 +34,8 @@ export const ch0: Scene[] = [
     ['{fam1}', 'そういえば……もし大きい地震が来たら、どこで会うか決めてないよね。'],
     ['{fam1}', 'テレビでやってたの。電話はつながらないって。'],
   ], { choices: [
-      C('decide', '「{meet}にしよう。あと171に残す」と決める', 'c0_route', { icon: '📍', effects: { flag: 'meetpoint', know: ['k_meetpoint', 'k_171'], report: { cat: 'contact', score: 2, note: '事前に集合場所と171の利用を決めていた' } }, hint: '後で効く' }),
-      C('later', '「今度ちゃんと決めよう」', 'c0_route', { icon: '⏳', effects: { report: { cat: 'contact', score: -1, note: '集合場所を決めずに出かけた（多くの家庭と同じ）' } } }),
+      C('decide', '「じゃあ{meet}。はぐれたら、そこね」と指切りする', 'c0_route', { icon: '📍', effects: { flag: 'meetpoint', know: ['k_meetpoint', 'k_171'], report: { cat: 'contact', score: 2, note: '事前に集合場所と171の利用を決めていた' } } }),
+      C('later', '「大げさだよ。今度でいいって」と笑う', 'c0_route', { icon: '⏳', effects: { report: { cat: 'contact', score: -1, note: '集合場所を決めずに出かけた（多くの家庭と同じ）' } } }),
     ] }),
   S('c0_commute', 0, 'odaiba_morning', [
     ['', 'ゆりかもめの窓から、レインボーブリッジと海が見える。'],
@@ -60,12 +60,11 @@ export const ch0: Scene[] = [
   ], { onEnter: { flag: 'friend_secret', photo: 'promenade_two' }, next: 'c0_lunch' }),
   S('c0_lunch', 0, 'mall_food', [
     ['', 'シーサイドモール台場（架空の施設）。3階のフードコートは平日でもにぎわっている。'],
-    ['', '壁に小さな「避難経路図」が貼ってある。いつも素通りしている紙だ。'],
+    ['', 'エスカレーターの横に、フロアの案内図が立っている。拓海が「デザート、どこだっけ」と首を伸ばした。'],
     ['', 'トレーを持った人たちが、空席を探して行き来している。ラーメンの湯気。揚げ物の油の匂い。子どもの「いただきます」。BGMは、去年流行った歌のオルゴール版だった。'],
-    ['', '避難経路図の「現在地」の赤い丸は、何度も指で押されたのか、少しかすれていた。非常口のマークは、フードコートの奥と、エスカレーターの横。その二つだけを、なんとなく目で確かめた。'],
   ], { onEnter: { loc: 'mall', time: 30 }, choices: [
-      C('map', '避難経路図をスマホで撮っておく', 'c0_mall', { icon: '🗺', effects: { flag: 'knows_exit', item: 'map_paper', report: { cat: 'items', score: 1, note: '施設の避難経路を確認した' }, battery: -1 }, hint: '数秒でできる備え' }),
-      C('eat', 'ラーメンの列に並ぶ', 'c0_mall', { icon: '🍜' }),
+      C('map', '案内図の前で、ジェラート屋の場所を探す', 'c0_mall', { icon: '🗺', effects: { flag: 'knows_exit', item: 'map_paper', report: { cat: 'items', score: 1, note: '案内図を見たついでに、非常口の位置が頭に残っていた' } }, result: 'ジェラート屋は三階の奥。指でたどった先、非常口の緑のマークがすぐ隣にあった。なんとなく、それも覚えた。' }),
+      C('eat', '腹ぺこだ。ラーメンの列に並ぶ', 'c0_mall', { icon: '🍜', result: '湯気の向こうで、拓海が「大阪のラーメンは豚骨かな」と笑った。' }),
     ] }),
   S('c0_call', 0, 'family_call', [
     ['', 'ビデオ通話が鳴る。'],
@@ -95,7 +94,7 @@ export const ch0: Scene[] = [
     ['', 'モバイルバッテリーの値札に、店員の手書きのPOPが添えてあった。「もしもの時の、いつもの安心」。少しだけ、心が動いた。'],
   ], { choices: [
       C('battery', 'モバイルバッテリーを買う', 'c0_sh_r', { icon: '🔋', if: { noItem: 'battery_pack' }, effects: { item: 'battery_pack', report: { cat: 'items', score: 1, note: 'モバイルバッテリーを持っていた' } } }),
-      C('shoes', '歩きやすい靴に履き替える', 'c0_sh_r', { icon: '👟', if: { item: 'leather_shoes' }, effects: { item: 'sneakers', useItem: 'leather_shoes', report: { cat: 'items', score: 1, note: '歩きやすい靴に替えていた' } } }),
+      C('shoes', '靴擦れが痛い。セールのスニーカーに履き替える', 'c0_sh_r', { icon: '👟', if: { item: 'leather_shoes' }, effects: { item: 'sneakers', useItem: 'leather_shoes', report: { cat: 'items', score: 1, note: '歩きやすい靴に替えていた' } } }),
       C('none', '特に買わない', 'c0_sh_r', { icon: '🙅' }),
     ] }),
   S('c0_before', 0, 'mall_window', [
@@ -129,8 +128,8 @@ export const ch1: Scene[] = [
     ['拓海', 'うわっ——！'],
     ['', '立っていられない。どうする？'],
   ], { fx: 'quake', choices: [
-      C('cover', 'テーブルの下にもぐり、頭を守る', 'c1_end', { icon: '🛡', hint: '低く・守る・動かない', effects: { flag: 'head_protected', know: ['k_drop', 'k_eew'], report: { cat: 'safety', score: 3, note: '揺れの最中、テーブルの下で頭を守った' } } }),
-      C('shout', '「拓海、伏せろ！」と叫んでから自分も伏せる', 'c1_end', { icon: '📣', effects: { flag: ['head_protected', 'friend_safe'], npc: { id: 'friend', trust: 10 }, know: 'k_drop', report: { cat: 'safety', score: 3, note: '周囲に声をかけ、自分も身を守った' } } }),
+      C('cover', 'とっさに、目の前のテーブルの下へ転がり込む', 'c1_end', { icon: '🛡', effects: { flag: 'head_protected', know: ['k_drop', 'k_eew'], report: { cat: 'safety', score: 3, note: '揺れの最中、テーブルの下で頭を守った' } } }),
+      C('shout', '「拓海！」——名前を叫んで、肩を引き倒す', 'c1_end', { icon: '📣', effects: { flag: ['head_protected', 'friend_safe'], npc: { id: 'friend', trust: 10 }, know: 'k_drop', report: { cat: 'safety', score: 3, note: '周囲に声をかけ、自分も身を守った' } } }),
       C('run', '出口へ走る', 'c1_end', { icon: '🏃', effects: { risk: { kind: 'crowd', level: 18, label: '揺れの中で走り、人と衝突して転倒' }, know: ['k_drop', 'k_crowd'], report: { cat: 'safety', score: -3, note: '揺れの最中に走った（転倒・落下物の危険）' } } }),
       C('phone', '窓際で家族に電話をかける', 'c1_end', { icon: '📱', effects: { risk: { kind: 'glass', level: 24, label: '窓ガラスが割れて降りかかった' }, know: ['k_window', 'k_comm'], report: { cat: 'safety', score: -3, note: '揺れの最中に窓際で電話をかけようとした' } } }),
     ] }),
@@ -140,7 +139,7 @@ export const ch1: Scene[] = [
     ['', 'ガラスの向こうで、吹き抜けの吊り看板が大きく揺れている。男の子は、悲鳴も上げずに、あなたのズボンの裾をつかんだ。'],
     ['', 'かごの壁に貼られた「地震時管制運転」のステッカーが目に入った。意味は、知らなかった。'],
   ], { fx: 'quake', choices: [
-      C('buttons', '全ての階のボタンを押す', 'c1_elev2', { icon: '🔢', effects: { flag: 'elev_out', know: 'k_elevator', report: { cat: 'safety', score: 3, note: 'エレベーターで全階のボタンを押した' } } }),
+      C('buttons', 'ボタンを手当たり次第に押す', 'c1_elev2', { icon: '🔢', effects: { flag: 'elev_out', know: 'k_elevator', report: { cat: 'safety', score: 3, note: 'エレベーターで全階のボタンを押した' } } }),
       C('pry', 'ドアをこじ開けようとする', 'c1_elev2', { icon: '✋', effects: { flag: 'elev_stuck', risk: { kind: 'fall', level: 18, label: '揺れでかごが動き、手と頭を打った' }, know: 'k_elevator', report: { cat: 'safety', score: -2, note: 'エレベーターのドアを無理にこじ開けようとした' } } }),
     ] }),
   S('c1_elev2', 1, 'elevator', [
@@ -156,16 +155,16 @@ export const ch1: Scene[] = [
     ['', '海の向こうで、ビルの窓が一斉にきらめいた。'],
     ['', '犬が、狂ったように吠えている。老夫婦が、砂の上に、抱き合うようにしゃがみ込んだ。'],
   ], { fx: 'quake', alt: [{ if: { preset: 'parent' }, goto: 'c1_beach_pa' }], choices: [
-      C('open', '倒れてくる物のない砂浜の真ん中で、低い姿勢をとる', 'c1_end', { icon: '🧎', effects: { flag: 'head_protected', know: ['k_outdoor', 'k_drop'], report: { cat: 'safety', score: 3, note: '屋外で倒れてくる物から離れて身を低くした' } } }),
-      C('tree', '近くの街灯につかまる', 'c1_end', { icon: '🪝', effects: { risk: { kind: 'fall', level: 20, label: '揺れる街灯の部品が落ちてきた' }, know: 'k_outdoor', report: { cat: 'safety', score: -2, note: '揺れる街灯につかまった' } } }),
+      C('open', '足がすくむ。その場に膝をつく', 'c1_end', { icon: '🧎', effects: { flag: 'head_protected', know: ['k_outdoor', 'k_drop'], report: { cat: 'safety', score: 3, note: '屋外で倒れてくる物から離れて身を低くした' } }, result: '膝をついた砂浜には、倒れてくるものが何もなかった。少し離れた街灯が、大きくしなっている。' }),
+      C('tree', '何かにつかまりたい。すぐそばの街灯へ手を伸ばす', 'c1_end', { icon: '🪝', effects: { risk: { kind: 'fall', level: 20, label: '揺れる街灯の部品が落ちてきた' }, know: 'k_outdoor', report: { cat: 'safety', score: -2, note: '揺れる街灯につかまった' } } }),
     ] }),
   S('c1_beach_pa', 1, 'beach_quake', [
     ['', '{fam2}が砂の上で転び、悲鳴を上げる。'],
     ['', '繋いでいた手が、揺れに引きはがされた。小さな体が、二歩、三歩と、よろけていく。'],
     ['{fam2}', 'パパぁ！'],
   ], { fx: 'quake', choices: [
-      C('cover_child', '{fam2}に覆いかぶさり、自分の頭も腕で守る', 'c1_end', { icon: '🫂', effects: { flag: ['head_protected', 'child_safe'], know: ['k_outdoor', 'k_drop'], report: { cat: 'safety', score: 3, note: '子供に覆いかぶさり、周囲に倒れる物のない場所で身を低くした' } } }),
-      C('carry_run', '{fam2}を抱えてモールへ走る', 'c1_end', { icon: '🏃', effects: { risk: { kind: 'glass', level: 22, label: 'モールの外壁ガラスが落ちてきた' }, know: ['k_outdoor', 'k_window'], report: { cat: 'safety', score: -3, note: '揺れの最中にガラス張りの建物へ走った' } } }),
+      C('cover_child', '何も考えられない。{fam2}を抱きしめて、背中を丸める', 'c1_end', { icon: '🫂', effects: { flag: ['head_protected', 'child_safe'], know: ['k_outdoor', 'k_drop'], report: { cat: 'safety', score: 3, note: '子供に覆いかぶさり、周囲に倒れる物のない場所で身を低くした' } } }),
+      C('carry_run', 'ここは怖い。{fam2}を抱えて、建物のほうへ走る', 'c1_end', { icon: '🏃', effects: { risk: { kind: 'glass', level: 22, label: 'モールの外壁ガラスが落ちてきた' }, know: ['k_outdoor', 'k_window'], report: { cat: 'safety', score: -3, note: '揺れの最中にガラス張りの建物へ走った' } } }),
     ] }),
   S('c1_end', 1, 'mall_damage', [
     ['', '……揺れが、止まった。たぶん一分か、それ以上。時間の感覚がない。'],
@@ -246,7 +245,7 @@ export const ch1: Scene[] = [
     ['', 'まわりの誰もが、自分のスマホを見ていた。あなたも、さっきまで、そうだった。'],
     ['', '女性の膝の上で、小さな財布が開いたままになっている。中から、孫らしい子どもの写真がのぞいていた。'],
   ], { choices: [
-      C('voice', 'オレンジを拾って、「大丈夫ですか。けがはないですか」と声をかける', 'c1_look2', { icon: '🍊', effects: { flag: 'c1_helped_lady', mental: 3, report: { cat: 'care', score: 2, note: '発災直後、座り込んだ人に声をかけた' } }, result: '女性は、はっとしたように顔を上げた。「……ええ、ええ。ありがとう。ちょっと、腰が抜けちゃって」。手を貸すと、女性は、思ったより軽かった。「あなたも、気をつけてね」。（声かけの方法は一般的な配慮。応急対応の詳細は要監修）' }),
+      C('voice', '転がってきたオレンジを拾って、持ち主に返しに行く', 'c1_look2', { icon: '🍊', effects: { flag: 'c1_helped_lady', mental: 3, report: { cat: 'care', score: 2, note: '発災直後、座り込んだ人に声をかけた' } }, result: '女性は、はっとしたように顔を上げた。「……ええ、ええ。ありがとう。ちょっと、腰が抜けちゃって」。手を貸すと、女性は、思ったより軽かった。「あなたも、気をつけてね」。（声かけの方法は一般的な配慮。応急対応の詳細は要監修）' }),
       C('watch', '自分のことで精一杯。目だけで様子を確かめる', 'c1_look2', { icon: '👁', result: '女性のそばに、店員が駆け寄るのが見えた。よかった、と思った。思ってから、その「よかった」が、少しだけ、恥ずかしかった。' }),
     ] }),
   S('c1_look2', 1, 'mall_damage', [
@@ -261,7 +260,7 @@ export const ch1: Scene[] = [
     ['', 'もう一度、ゆっくり、頭のてっぺんから、足の先まで。自分の体を、他人の体みたいに、点検していく。'],
   ], {
     choices: [
-      C('treat', 'ハンカチで傷を強く押さえて止血する', 'c2_start', { icon: '🩹', if: { anyFlag: ['exposed_glass', 'exposed_crowd', 'exposed_fall'] }, effects: { heal: 'cut_leg', time: 5, know: 'k_bleeding', report: { cat: 'aid', score: 2, note: '自分の出血をすぐ圧迫止血した' } } }),
+      C('treat', '腕が濡れている。ハンカチをぎゅっと押し当てる', 'c2_start', { icon: '🩹', if: { anyFlag: ['exposed_glass', 'exposed_crowd', 'exposed_fall'] }, effects: { heal: 'cut_leg', time: 5, know: 'k_bleeding', report: { cat: 'aid', score: 2, note: '自分の出血をすぐ圧迫止血した' } } }),
       C('ok', '大きなけがはない。周りを見る', 'c2_start', { icon: '👀' }),
     ], chapterEnd: true, lesson: ['k_drop', 'k_window', 'k_eew', 'k_shindo_m'] }),
 ];
@@ -274,7 +273,7 @@ export const ch2: Scene[] = [
     ['', 'フードコートの奥から、黒い煙。'],
   ], { alt: [{ if: { flag: 'at_beach' }, goto: 'c2_start_out' }], choices: [
       C('ext', '近くの消火器を取り、火元へ向かう', 'c2_fire', { icon: '🧯', effects: { item: 'extinguisher' } }),
-      C('away', '煙から離れ、低い姿勢で反対側へ移動', 'c2_saeki', { icon: '↘', effects: { time: 5, know: 'k_smoke', flag: 'fire_spread', report: { cat: 'evac', score: 1, note: '煙から低い姿勢で離れた' } } }),
+      C('away', '煙が喉に刺さる。口を押さえて、反対側へ逃げる', 'c2_saeki', { icon: '↘', effects: { time: 5, know: 'k_smoke', flag: 'fire_spread', report: { cat: 'evac', score: 1, note: '煙から低い姿勢で離れた' } } }),
       C('shout_fire', '「火事だ！」と大声で知らせ、非常ベルを押す', 'c2_saeki', { icon: '🔔', effects: { time: 5, flag: ['fire_alarm', 'fire_spread'], report: { cat: 'aid', score: 2, note: '火災を周囲に知らせた' }, know: 'k_smoke' } }),
     ] }),
   S('c2_start_out', 2, 'beach_after', [
@@ -287,8 +286,8 @@ export const ch2: Scene[] = [
   S('c2_fire', 2, 'smoke', [
     ['', '厨房の油が燃えている。炎はまだ腰の高さ。'],
   ], { choices: [
-      C('spray', '安全ピンを抜き、火元にホースを向けて噴射', 'c2_fire_res', { icon: '🧯', effects: { useItem: 'extinguisher', flag: 'fire_out', time: 3, know: 'k_fire_initial', report: { cat: 'aid', score: 2, note: '小さな火のうちに初期消火を試みた' } } }),
-      C('retreat', '炎が大きくなりそうだ。消火をあきらめ避難', 'c2_saeki', { icon: '↩', effects: { flag: 'fire_spread', time: 3, know: 'k_fire_initial', report: { cat: 'evac', score: 1, note: '初期消火の限界を判断して離れた' } } }),
+      C('spray', '震える手で、消火器のピンを引き抜く', 'c2_fire_res', { icon: '🧯', effects: { useItem: 'extinguisher', flag: 'fire_out', time: 3, know: 'k_fire_initial', report: { cat: 'aid', score: 2, note: '小さな火のうちに初期消火を試みた' } } }),
+      C('retreat', '無理だ。消火器を置いて、背を向ける', 'c2_saeki', { icon: '↩', effects: { flag: 'fire_spread', time: 3, know: 'k_fire_initial', report: { cat: 'evac', score: 1, note: '初期消火の限界を判断して離れた' } } }),
     ] }),
   S('c2_fire_res', 2, 'smoke', [
     ['', '白い粉が舞う。炎は小さくなり——消えた。'],
@@ -303,7 +302,7 @@ export const ch2: Scene[] = [
     ['', '男性は、ズボンの裾を自分の手で押さえていた。指の間から、赤いものが、じわじわとにじみ出てくる。押さえ方が、弱い。力が入らないのだ。'],
     ['', '周りの人たちは、ちらりと見て、通り過ぎていく。誰もが、自分の行き先で、手一杯だった。'],
   ], { choices: [
-      C('press', 'ハンカチで傷口を直接強く押さえる', 'c2_saeki_ok', { icon: '🩹', effects: { useItem: 'handkerchief', time: 15, helped: 'saeki', flag: 'stayed_saeki', npc: { id: 'saeki', trust: 30 }, know: 'k_bleeding', report: { cat: 'aid', score: 3, note: '負傷した高齢者を直接圧迫で止血した' } }, hint: '自分の避難は遅れる' }),
+      C('press', '考えるより先に、ハンカチを傷に押し当てる', 'c2_saeki_ok', { icon: '🩹', effects: { useItem: 'handkerchief', time: 15, helped: 'saeki', flag: 'stayed_saeki', npc: { id: 'saeki', trust: 30 }, know: 'k_bleeding', report: { cat: 'aid', score: 3, note: '負傷した高齢者を直接圧迫で止血した' } } }),
       C('call', '大声で医療関係者を探す', 'c2_saeki_ok', { icon: '📣', effects: { time: 10, flag: 'stayed_saeki', npc: { id: 'saeki', trust: 10 }, report: { cat: 'aid', score: 2, note: '周囲に応援を求めた' } } }),
       C('pass', '「すぐ人を呼びます」と言って先を急ぐ', 'c2_boy', { icon: '🚶', effects: { time: 2, mental: -5, report: { cat: 'aid', score: -1, note: '負傷者のそばを離れた（呼びに行った人はいなかった）' } } }),
     ] }),
@@ -337,8 +336,8 @@ export const ch2: Scene[] = [
     ['', '（作中のSNS投稿はすべて架空です。実際の災害時も、発信元と日時を確かめてください）'],
     ['森本', 'おい見ろよ！有明のでかい会場が燃えてるって！橋も落ちたって！海沿いから回れば早い、行くぞ！'],
   ], { info: ['i_sns_bridge', 'i_sns_fire', 'i_off_tsunami', 'i_fac_stay', 'i_sns_water'], onEnter: { time: 10, battery: -3 }, choices: [
-      C('verify', '投稿の発信元と時刻を確かめ、公式の発表と見比べる', 'c2_morimoto', { icon: '🔎', effects: { flag: 'verified_info', know: ['k_official', 'k_rumor', 'k_tsunami'], report: { cat: 'info', score: 3, note: 'SNS投稿の発信元・時刻を確認し、公式情報と照合した' } } }),
-      C('share', '「拡散希望」をそのまま転送する', 'c2_morimoto', { icon: '🔁', effects: { flag: 'spread_rumor', know: 'k_rumor', report: { cat: 'info', score: -3, note: '未確認の情報を拡散した' } } }),
+      C('verify', '「これ、本当かな」……投稿した人のページを開いてみる', 'c2_morimoto', { icon: '🔎', effects: { flag: 'verified_info', know: ['k_official', 'k_rumor', 'k_tsunami'], report: { cat: 'info', score: 3, note: 'SNS投稿の発信元・時刻を確認し、公式情報と照合した' } }, result: 'アカウントは昨日できたばかりだった。区の公式アカウントには、まったく別のことが書いてある。' }),
+      C('share', '知り合いが巻き込まれるかもしれない。急いで転送する', 'c2_morimoto', { icon: '🔁', effects: { flag: 'spread_rumor', know: 'k_rumor', report: { cat: 'info', score: -3, note: '未確認の情報を拡散した' } } }),
       C('radio', '電池を節約するため画面を消す', 'c2_morimoto', { icon: '🔅', effects: { flag: 'phone_saving', know: 'k_battery', report: { cat: 'items', score: 1, note: 'スマホの電池を節約した' } } }),
     ] }),
   S('c2_morimoto', 2, 'phone_sns', [
@@ -347,7 +346,7 @@ export const ch2: Scene[] = [
     ['森本', '既読つかねえんだよ……あいつ、いつも秒で返すのに。'],
     ['', '海沿いの遊歩道は、さっき段差と泥水が見えた場所だ。それに「津波注意報（ゲーム内の架空情報）」が出ている。'],
   ], { choices: [
-      C('stop', '「その情報、発信元が分からない。海沿いは注意報が出てる」と止める', 'c2_wait1', { icon: '✋', if: { flag: 'verified_info' }, effects: { flag: 'stopped_morimoto', helped: 'morimoto', npc: { id: 'morimoto', trust: 20 }, report: { cat: 'info', score: 2, note: '誤情報で危険な場所へ向かう人を止めた' } } }),
+      C('stop', '「それ、誰が言ってたの？」と聞き返す', 'c2_wait1', { icon: '✋', if: { flag: 'verified_info' }, effects: { flag: 'stopped_morimoto', helped: 'morimoto', npc: { id: 'morimoto', trust: 20 }, report: { cat: 'info', score: 2, note: '誤情報で危険な場所へ向かう人を止めた' } } }),
       C('stop2', '「行くな」と腕をつかむ', 'c2_wait1', { icon: '🫷', if: { notFlag: 'verified_info' }, effects: { npc: { id: 'morimoto', trust: -10 }, mental: -3 }, result: '森本は腕を振りほどいて走っていった。根拠を示せなかった。' }),
       C('follow', '自分も一緒に海沿いへ向かう', 'c2_shore', { icon: '🌊', effects: { report: { cat: 'evac', score: -3, note: '未確認情報を信じて海沿いへ向かった' } } }),
       C('let', '黙って見送る', 'c2_wait1', { icon: '…' }),
@@ -366,9 +365,9 @@ export const ch2: Scene[] = [
     ['', '周りでも、何十人もの人が、同じ録音を聞いているのだろう。この広場じゅうに、同じ「大変混み合っており」が、見えない雨のように降っている。'],
     ['', 'もう一度。同じ音声。'],
   ], { onEnter: { time: 5, battery: -2, know: 'k_comm' }, choices: [
-      C('171_stay', '171に「無事。お台場の施設にいる。むやみに動かない」と録音する', 'c2_fam_cut', { icon: '☎', effects: { msg: { to: 'fam1', channel: '171', text: '{me}です。無事。お台場にいます。安全な場所にとどまって、落ち着いたら連絡する。{fam2}をお願い。' }, flag: 'stay_decided', know: 'k_171', report: { cat: 'contact', score: 3, note: '171に居場所と方針を録音した' } } }),
-      C('web171', 'web171に「無事・台場・動かない」と登録する', 'c2_fam_cut', { icon: '🌐', if: { minBattery: 5 }, effects: { msg: { to: 'fam1', channel: 'web171', text: '無事です。台場にいます。今は動きません。{meet}のこと、覚えてる。' }, flag: 'stay_decided', know: 'k_web171', report: { cat: 'contact', score: 3, note: 'web171に伝言を登録した' }, battery: -2 } }),
-      C('sms', '「今から帰る！」とメッセージを送る', 'c2_fam_cut', { icon: '💬', effects: { msg: { to: 'fam1', channel: 'sms', text: '今から歩いて帰る！待ってて' }, flag: 'said_coming', report: { cat: 'contact', score: 0, note: 'メッセージで「今から帰る」と送った（届かない可能性・移動のリスク）' } } }),
+      C('171_stay', '声だけでも届けたい。171にかけて、録音する', 'c2_fam_cut', { icon: '☎', effects: { msg: { to: 'fam1', channel: '171', text: '{me}です。無事。お台場にいます。安全な場所にとどまって、落ち着いたら連絡する。{fam2}をお願い。' }, flag: 'stay_decided', know: 'k_171', report: { cat: 'contact', score: 3, note: '171に居場所と方針を録音した' } } }),
+      C('web171', '文字なら何度でも読み返せる。伝言板に書き込む', 'c2_fam_cut', { icon: '🌐', if: { minBattery: 5 }, effects: { msg: { to: 'fam1', channel: 'web171', text: '無事です。台場にいます。今は動きません。{meet}のこと、覚えてる。' }, flag: 'stay_decided', know: 'k_web171', report: { cat: 'contact', score: 3, note: 'web171に伝言を登録した' }, battery: -2 } }),
+      C('sms', '「今から帰る！」と送って、安心させたい', 'c2_fam_cut', { icon: '💬', effects: { msg: { to: 'fam1', channel: 'sms', text: '今から歩いて帰る！待ってて' }, flag: 'said_coming', report: { cat: 'contact', score: 0, note: 'メッセージで「今から帰る」と送った（届かない可能性・移動のリスク）' } } }),
       C('redial', 'つながるまでかけ続ける', 'c2_fam_cut', { icon: '🔁', effects: { battery: -12, time: 20, mental: -6, report: { cat: 'contact', score: -2, note: 'つながらない電話をかけ続け、電池と時間を消耗した' } } }),
     ] }),
   S('c2_fam_cut', 2, 'family_away', [

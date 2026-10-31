@@ -26,9 +26,9 @@ export const ch3z: Scene[] = [
     ['リン', 'すみません、これ、英語とベトナム語と……あと、やさしい日本語にしたいんです。誰か、字がきれいな人、いませんか。'],
     ['', 'マジックペンを握った留学生が、困ったように笑っていた。名札に「グエン・リン　ボランティア」とある。'],
   ], { onEnter: { time: 40, know: 'k_infection' }, choices: [
-      C('write', '「やさしい日本語なら書けます」と一緒に張り紙を作る', 'c3_eve', { icon: '✍', effects: { flag: 'helped_lin', npc: { id: 'lin', trust: 25 }, know: 'k_foreign', report: { cat: 'care', score: 2, note: '多言語・やさしい日本語の掲示づくりを手伝った' } }, result: '「流さないでください」を「ながさない　で　ください」に。「凝固剤」を「かためる　くすり」に。言葉を短くするほど、伝えたいことがはっきりしていく。リンは書き上がった紙を見て、「これ、わたしのおかあさんでも読めます」と言った。' }),
-      C('wash', '列に並び、ウェットティッシュで手を拭いてから食事にする', 'c3_eve', { icon: '🧻', effects: { report: { cat: 'stay', score: 1, note: '避難所で手指の衛生に気を配った' } } }),
-      C('skip', '水を飲むのを控えて、トイレに行かずに済ませる', 'c3_eve', { icon: '🚱', effects: { water: -10, risk: { kind: 'exhaustion', level: 4, label: 'トイレを我慢して水分を控え、体調を崩しかけた' }, know: 'k_dvt', report: { cat: 'stay', score: -1, note: 'トイレを避けるために水分を控えた' } }, result: '喉が渇く。けれど、あの列にもう一度並ぶのかと思うと、ペットボトルに手が伸びなかった。——それが一番危ないのだと、あとで早瀬に叱られることになる。' }),
+      C('write', '張り紙の前で困っている人に、「読みましょうか」と声をかける', 'c3_eve', { icon: '✍', effects: { flag: 'helped_lin', npc: { id: 'lin', trust: 25 }, know: 'k_foreign', report: { cat: 'care', score: 2, note: '多言語・やさしい日本語の掲示づくりを手伝った' } }, result: '「流さないでください」を「ながさない　で　ください」に。「凝固剤」を「かためる　くすり」に。言葉を短くするほど、伝えたいことがはっきりしていく。リンは書き上がった紙を見て、「これ、わたしのおかあさんでも読めます」と言った。' }),
+      C('wash', 'お腹がすいた。手を拭いて、配給の列に並ぶ', 'c3_eve', { icon: '🧻', effects: { report: { cat: 'stay', score: 1, note: '避難所で手指の衛生に気を配った' } } }),
+      C('skip', 'あのトイレには行きたくない。喉の渇きをこらえる', 'c3_eve', { icon: '🚱', effects: { water: -10, risk: { kind: 'exhaustion', level: 4, label: 'トイレを我慢して水分を控え、体調を崩しかけた' }, know: 'k_dvt', report: { cat: 'stay', score: -1, note: 'トイレを避けるために水分を控えた' } }, result: '喉が渇く。けれど、あの列にもう一度並ぶのかと思うと、ペットボトルに手が伸びなかった。——それが一番危ないのだと、あとで早瀬に叱られることになる。' }),
     ] }),
 
   // ---- 深夜の群像（c3_eve_end / c3_takumi → c3_mid → c3_night）----
@@ -66,7 +66,7 @@ export const ch3z: Scene[] = [
     ['', 'エミリーは笑ってみせたが、目は笑っていなかった。窓の外、湾の向こうの空が、ぼんやり赤い。'],
     ['エミリー', 'Today, many people helped me. They did not speak English, but… they pointed, they showed me, they gave me water. I will remember this. Not only the shaking. This, too.'],
   ], { choices: [
-      C('embassy', '大使館や公式の多言語情報の探し方を、一緒に確かめる', 'c3_mid', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -3, helped: 'emily', npc: { id: 'emily', trust: 20, flag: 'info_ok' }, know: 'k_foreign', report: { cat: 'care', score: 1, note: '外国人旅行者と公式の多言語情報を確認した' } }, result: '観光客向けの公式の情報ページを開くと、エミリーは小さく息を吐いた。「OK. I can read this. Thank you.」' }),
+      C('embassy', '「一緒に探そう」とエミリーの画面をのぞき込む', 'c3_mid', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -3, helped: 'emily', npc: { id: 'emily', trust: 20, flag: 'info_ok' }, know: 'k_foreign', report: { cat: 'care', score: 1, note: '外国人旅行者と公式の多言語情報を確認した' } }, result: '観光客向けの公式の情報ページを開くと、エミリーは小さく息を吐いた。「OK. I can read this. Thank you.」' }),
       C('listen', '"I\'ll remember, too." とだけ返す', 'c3_mid', { icon: '🤝', effects: { npc: { id: 'emily', trust: 10 }, mental: 3 } }),
     ] }),
 
@@ -128,6 +128,6 @@ export const ch3z: Scene[] = [
     ['早瀬', '狭いところでじっとしてると、脚に血の塊ができることがあるの。避難所で、あとから亡くなる人がいる。地震で助かったのに、よ。だから、ここでは「休んで」と「動いて」を、両方言うの。'],
   ], { onEnter: { time: 60, know: 'k_dvt' }, choices: [
       C('walk', '老人に肩を貸し、救護所の周りをゆっくり一周する', 'c3_aid2', { icon: '🚶', effects: { npc: { id: 'hayase', trust: 10 }, report: { cat: 'care', score: 1, note: '長時間同じ姿勢の高齢者の運動を手伝った' } }, result: '一周するのに十五分かかった。老人は「若いころは、この埋立地を一日に何往復もしたもんだ」と笑った。' }),
-      C('note', '記録に「長時間同姿勢・要観察」と書き添える', 'c3_aid2', { icon: '📝', effects: { report: { cat: 'aid', score: 1, note: '要観察者を記録に残した' } } }),
+      C('note', 'ずっと同じ姿勢の老人のことが気になって、メモしておく', 'c3_aid2', { icon: '📝', effects: { report: { cat: 'aid', score: 1, note: '要観察者を記録に残した' } } }),
     ] }),
 ];

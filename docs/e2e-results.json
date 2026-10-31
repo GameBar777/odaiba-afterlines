@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-31T02:38:45.612Z",
-  "base": "http://localhost:4190/",
+  "at": "2026-10-31T08:41:17.957Z",
+  "base": "http://localhost:4291/",
   "results": [
     {
       "name": "mobile: disclaimer on title",
@@ -38,14 +38,14 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 65 steps",
+      "name": "mobile-student: reached ending in 171 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-student: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "隣にいない季節"
     },
     {
       "name": "mobile-student: settings has disclaimer",
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 61 steps",
+      "name": "mobile-parent: reached ending in 53 steps",
       "pass": true,
       "info": ""
     },
@@ -128,7 +128,7 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 66 steps",
+      "name": "mobile-d1: reached ending in 72 steps",
       "pass": true,
       "info": ""
     },
