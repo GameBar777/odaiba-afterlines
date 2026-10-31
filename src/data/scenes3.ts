@@ -381,16 +381,16 @@ export const ch5x: Scene[] = [
     ['{fam1}', '最後のは、いらないでしょ。'],
     ['', '紙は冷蔵庫に貼られた。マグネットは、陽菜が選んだうさぎの形だった。'],
   ], { onEnter: { flag: 'meetpoint_after', know: ['k_meetpoint', 'k_furniture'] }, next: 'c5w_card' }),
-  S('c5w_card', 5, 'letter', [['', '…']], { alt: [{ if: { flag: 'hina_card' }, goto: 'c5w_card_open' }, { if: {}, goto: 'c5_final' }] }),
+  S('c5w_card', 5, 'letter', [['', '…']], { alt: [{ if: { flag: 'hina_card' }, goto: 'c5w_card_open' }, { if: {}, goto: 'c5_pre_close' }] }),
   S('c5w_card_open', 5, 'letter', [
     ['', '一週間遅れの誕生日。封筒の中には、クレヨンの絵。地震の前に描かれた、三人と、うさぎ。'],
     ['', '裏には、震える鉛筆の字で書き足しがあった。「パパ　あるいて　かえってきて　えらい」。'],
-  ], { alt: [{ if: { flag: 'bando_car_left' }, goto: 'c5w_card_bando' }], onEnter: { mental: 12 }, next: 'c5_final' }),
+  ], { alt: [{ if: { flag: 'bando_car_left' }, goto: 'c5w_card_bando' }], onEnter: { mental: 12 }, next: 'c5_pre_close' }),
   S('c5w_card_bando', 5, 'letter', [
     ['', '一週間遅れの誕生日。封筒の中には、クレヨンの絵。三人と、うさぎ。それから、余白に描き足された、知らない男の人が一人。'],
     ['{fam2}', 'これ、パパがあるいてくるとき、いっしょにあるいてくれたひと。パパがはなしてくれたから、かいた。'],
     ['', '描かれた男は、怒ったような顔で、でも、パパと手をつないでいた。'],
-  ], { onEnter: { mental: 12 }, next: 'c5_final' }),
+  ], { onEnter: { mental: 12 }, next: 'c5_pre_close' }),
 
   S('c5s', 5, 'rebuild', [['', '…']], { alt: [{ if: { npcDead: 'fam2' }, goto: 'c5s_loss' }, { if: {}, goto: 'c5s_fix' }] }),
   S('c5s_fix', 5, 'rebuild', [
@@ -399,7 +399,7 @@ export const ch5x: Scene[] = [
     ['{fam2}', 'で、あんたたち。次は会えなかったら、どうするの。'],
     ['{fam1}', '……171に残して、近くの施設に入る。迎えに行くのは、明るくなってから。'],
     ['', '祖母は満足そうにうなずき、新しい羊羹を三つに切った。'],
-  ], { onEnter: { know: ['k_furniture', 'k_meetpoint'], flag: 'st_fixed' }, next: 'c5_final' }),
+  ], { onEnter: { know: ['k_furniture', 'k_meetpoint'], flag: 'st_fixed' }, next: 'c5_pre_close' }),
   S('c5s_loss', 5, 'memorial', [
       ['', '四十九日。祖母の家の台所、いちばん上の棚に、羊羹が一本、残っていた。週末に三人で食べるはずだった、あの羊羹だった。'],
       ['', '蓮が黙って、それを仏壇の前に置いた。線香の煙が、まっすぐに上がった。'],
@@ -407,11 +407,11 @@ export const ch5x: Scene[] = [
       C('cut', '羊羹を切って、三つに分ける。祖母の分と、蓮の分と、自分の分', 'c5s_saeki', { icon: '🍵', effects: { mental: 10, flag: 'st_yokan' } }),
       C('keep', '切れない。そのまま、仏壇に供えておく', 'c5s_saeki', { icon: '🕯', effects: { mental: -2, know: 'k_mental' }, result: '切れなくていい、と蓮は言った。悲しみには、決まった速さがない。' }),
     ] }),
-  S('c5s_saeki', 5, 'memorial', [['', '…']], { alt: [{ if: { flag: 'helped_saeki', npcAlive: 'saeki' }, goto: 'c5s_saeki_yes' }, { if: {}, goto: 'c5_final' }] }),
+  S('c5s_saeki', 5, 'memorial', [['', '…']], { alt: [{ if: { flag: 'helped_saeki', npcAlive: 'saeki' }, goto: 'c5s_saeki_yes' }, { if: {}, goto: 'c5_pre_close' }] }),
   S('c5s_saeki_yes', 5, 'letter', [
     ['', '数日後、一通のはがきが届いた。差出人は、あの日、海辺で助けた佐伯正造。'],
     ['佐伯', '（はがき）妻の命日に、いつもの店で、いつものものを食べました。あの日、あなたがわしを置いていかなかったから、今年も行けた。あなたにも、手を合わせる人がいると聞きました。その人の分も、どうか、ちゃんと食べてください。'],
-  ], { onEnter: { mental: 10 }, next: 'c5_final' }),
+  ], { onEnter: { mental: 10 }, next: 'c5_pre_close' }),
 
   S('c5p', 5, 'rebuild', [
       ['', '保育園が再開した日。先生から、律の描いた絵を渡された。題は「じしんのひ」。'],
@@ -428,5 +428,5 @@ export const ch5x: Scene[] = [
     ['', '夜勤明けの美咲が、玄関で靴を脱ぎながら言った。'],
     ['{fam1}', 'ねえ、次の休み、三人でお台場行こうか。……海、まだ怖い？'],
     ['律', 'こわくない。こんどは、いちばん大きいかいがら、ママにあげる。'],
-  ], { next: 'c5_final' }),
+  ], { next: 'c5_pre_close' }),
 ];

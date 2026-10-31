@@ -204,8 +204,8 @@ export const ch5: Scene[] = [
     ['', '自宅は「一部損壊」。壁のひび、傾いた扉、割れた食器。区役所の窓口には長い列。'],
     ['職員', '罹災証明書の申請ですね。被害の写真はありますか？'],
   ], { setT: 30240, onEnter: { know: ['k_support', 'k_mental'], flag: 'home_damaged' }, choices: [
-      C('photo', '片付ける前に撮っておいた被害の写真を出す', 'c5_visit', { icon: '📷', if: { flag: 'damage_photo' }, effects: { report: { cat: 'items', score: 1, note: '罹災証明のため被害の写真を残した' } } }),
-      C('nophoto', 'もう片付けてしまった……', 'c5_visit', { icon: '🧹', if: { notFlag: 'damage_photo' }, effects: { mental: -5 } }),
+      C('photo', '片付ける前に撮っておいた被害の写真を出す', 'c5_weeks2', { icon: '📷', if: { flag: 'damage_photo' }, effects: { report: { cat: 'items', score: 1, note: '罹災証明のため被害の写真を残した' } } }),
+      C('nophoto', 'もう片付けてしまった……', 'c5_weeks2', { icon: '🧹', if: { notFlag: 'damage_photo' }, effects: { mental: -5 } }),
     ] }),
   S('c5_hiroto', 5, 'letter', [
     ['', 'ある日、玄関に父子が立っていた。'],
