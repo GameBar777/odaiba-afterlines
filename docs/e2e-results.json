@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T02:18:13.701Z",
+  "at": "2026-10-31T02:24:58.947Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -68,14 +68,14 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 151 steps",
+      "name": "mobile-parent: reached ending in 53 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-parent: report has disclaimer",
       "pass": true,
-      "info": "隣にいない季節"
+      "info": "帰れなかった日"
     },
     {
       "name": "mobile-parent: settings has disclaimer",
@@ -128,7 +128,7 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 66 steps",
+      "name": "mobile-d1: reached ending in 65 steps",
       "pass": true,
       "info": ""
     },
@@ -158,7 +158,7 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 57 steps",
+      "name": "mobile-death: reached ending in 66 steps",
       "pass": true,
       "info": ""
     },
