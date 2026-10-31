@@ -94,9 +94,9 @@ export const ch0: Scene[] = [
     ['', '店先には、海の柄のタオル。貝がらのフォトフレーム。「お台場限定」のシールが貼られたキーホルダー。'],
     ['', 'モバイルバッテリーの値札に、店員の手書きのPOPが添えてあった。「もしもの時の、いつもの安心」。少しだけ、心が動いた。'],
   ], { choices: [
-      C('battery', 'モバイルバッテリーを買う', 'c0_before', { icon: '🔋', if: { noItem: 'battery_pack' }, effects: { item: 'battery_pack', report: { cat: 'items', score: 1, note: 'モバイルバッテリーを持っていた' } } }),
-      C('shoes', '歩きやすい靴に履き替える', 'c0_before', { icon: '👟', if: { item: 'leather_shoes' }, effects: { item: 'sneakers', useItem: 'leather_shoes', report: { cat: 'items', score: 1, note: '歩きやすい靴に替えていた' } } }),
-      C('none', '特に買わない', 'c0_before', { icon: '🙅' }),
+      C('battery', 'モバイルバッテリーを買う', 'c0_sh_r', { icon: '🔋', if: { noItem: 'battery_pack' }, effects: { item: 'battery_pack', report: { cat: 'items', score: 1, note: 'モバイルバッテリーを持っていた' } } }),
+      C('shoes', '歩きやすい靴に履き替える', 'c0_sh_r', { icon: '👟', if: { item: 'leather_shoes' }, effects: { item: 'sneakers', useItem: 'leather_shoes', report: { cat: 'items', score: 1, note: '歩きやすい靴に替えていた' } } }),
+      C('none', '特に買わない', 'c0_sh_r', { icon: '🙅' }),
     ] }),
   S('c0_before', 0, 'mall_window', [
     ['', '午後。日差しが傾きはじめる。'],
@@ -253,7 +253,7 @@ export const ch1: Scene[] = [
     ['', 'オレンジの、甘い匂いがした。こんな時に、と思うくらい、場違いに、いい匂いだった。'],
     ['', 'あとになって、この日のことを思い出すたび、最初に浮かぶのは、揺れでも煙でもなく、この匂いだった。'],
     ['', '遠くで、サイレンが鳴り始めた。一台。二台。それから、数えるのをやめた。'],
-  ], { next: 'c1_selfcheck' }),
+  ], { next: 'c1_lk_r' }),
   S('c1_selfcheck', 1, 'mall_damage', [
     ['', '自分の体を確かめる。'],
     ['', '指。動く。腕。動く。膝が、じんじんと痛む。どこかに打ちつけたらしいが、いつ打ったのか、覚えていない。'],
