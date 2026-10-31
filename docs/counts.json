@@ -1,10 +1,10 @@
 {
-  "scenes": 185,
-  "choices": 195,
+  "scenes": 198,
+  "choices": 223,
   "npcs": 18,
   "npcRules": 22,
   "knowledge": 51,
-  "knowledgeReferencedByScenes": 48,
+  "knowledgeReferencedByScenes": 49,
   "knowledgeNeedsReview": 33,
   "sources": 31,
   "info": 10,
@@ -16,5 +16,5 @@
   "items": 22,
   "injuries": 8,
   "photos": 2,
-  "dialogueLines": 493
+  "dialogueLines": 546
 }

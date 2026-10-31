@@ -50,10 +50,10 @@ export const ch3: Scene[] = [
     ['小野寺', '（赤ちゃんを抱いて）すみません……ミルクのお湯って、どこかに……'],
     ['石川', '（青い顔で）……薬、モールに置いてきてしまって。'],
   ], { choices: [
-      C('emily', 'エミリーとリンをつなぎ、多言語の公式情報を一緒に探す', 'c3_eve', { icon: '🌏', effects: { helped: 'emily', time: 30, npc: [{ id: 'emily', trust: 30 }, { id: 'lin', trust: 20 }], know: 'k_foreign', report: { cat: 'care', score: 2, note: '外国人旅行者に情報支援をつないだ' } } }),
-      C('mana', '小野寺さんのために授乳・休憩スペースを職員に頼む', 'c3_eve', { icon: '🍼', effects: { helped: 'onodera', time: 30, npc: { id: 'onodera', trust: 30 }, know: ['k_vulnerable', 'k_privacy'], report: { cat: 'care', score: 2, note: '乳児連れの母親のスペース確保を運営に頼んだ' } } }),
-      C('ishikawa', '石川さんの持病を職員と救護所に伝える', 'c3_eve', { icon: '💉', effects: { helped: 'ishikawa', time: 30, npc: { id: 'ishikawa', trust: 30 }, know: ['k_meds', 'k_vulnerable'], report: { cat: 'care', score: 3, note: '持病の薬を失った人を医療につないだ' } } }),
-      C('rest', '自分も限界だ。横になる', 'c3_eve', { icon: '😴', effects: { stamina: 20, time: 30 } }),
+      C('emily', 'エミリーとリンをつなぎ、多言語の公式情報を一緒に探す', 'c3_hall3', { icon: '🌏', effects: { helped: 'emily', time: 30, npc: [{ id: 'emily', trust: 30 }, { id: 'lin', trust: 20 }], know: 'k_foreign', report: { cat: 'care', score: 2, note: '外国人旅行者に情報支援をつないだ' } } }),
+      C('mana', '小野寺さんのために授乳・休憩スペースを職員に頼む', 'c3_hall3', { icon: '🍼', effects: { helped: 'onodera', flag: 'helped_onodera_any', time: 30, npc: { id: 'onodera', trust: 30 }, know: ['k_vulnerable', 'k_privacy'], report: { cat: 'care', score: 2, note: '乳児連れの母親のスペース確保を運営に頼んだ' } } }),
+      C('ishikawa', '石川さんの持病を職員と救護所に伝える', 'c3_hall3', { icon: '💉', effects: { helped: 'ishikawa', flag: 'ishikawa_cared', time: 30, npc: { id: 'ishikawa', trust: 30 }, know: ['k_meds', 'k_vulnerable'], report: { cat: 'care', score: 3, note: '持病の薬を失った人を医療につないだ' } } }),
+      C('rest', '自分も限界だ。横になる', 'c3_hall3', { icon: '😴', effects: { stamina: 20, time: 30 } }),
     ] }),
   S('c3_night', 3, 'night_shelter', [
     ['', '深夜。また揺れる。余震だ。誰かが小さく悲鳴を上げ、すぐに静かになった。'],
@@ -83,15 +83,17 @@ export const ch3: Scene[] = [
       C('turn', 'これは無理だ。一時滞在施設へ引き返す', 'c3_hall', { icon: '↩', effects: { unflag: 'walking', loc: 'aomi_hall', time: 50, flag: ['stay_decided', 'turned_back'], report: { cat: 'stay', score: 2, note: '徒歩帰宅の途中で状況を見て引き返した' } } }),
     ] }),
   S('c3_walk2', 3, 'walk_night', [
-    ['', '日が落ちた。停電で信号も街灯も消えている。'],
+    ['', 'すっかり暗くなった。停電で信号も街灯も消えている。'],
     ['', 'コンビニの前に「災害時帰宅支援ステーション」のステッカー（ゲーム内の架空店舗）。水道水とトイレを貸している。'],
   ], { fx: 'dark', onEnter: { time: 120, know: 'k_walk_home' }, choices: [
-      C('rest', '水をもらい、トイレを借りて休む', 'c3_walk3', { icon: '🚰', effects: { water: 30, stamina: 15, time: 40, report: { cat: 'evac', score: 1, note: '徒歩中に支援拠点で休息と水分補給をした' } } }),
-      C('push', '休まず歩き続ける', 'c3_walk3', { icon: '🏃', effects: { time: 10, risk: { kind: 'exhaustion', level: 14, label: '暗い歩道の段差で足をひねった' }, report: { cat: 'evac', score: -1, note: '夜間に休まず歩き続けた' } } }),
+      C('rest', '水をもらい、トイレを借りて休む', 'c3_walk2c', { icon: '🚰', effects: { water: 30, stamina: 15, time: 40, report: { cat: 'evac', score: 1, note: '徒歩中に支援拠点で休息と水分補給をした' } } }),
+      C('push', '休まず歩き続ける', 'c3_walk2c', { icon: '🏃', effects: { time: 10, risk: { kind: 'exhaustion', level: 14, label: '暗い歩道の段差で足をひねった' }, report: { cat: 'evac', score: -1, note: '夜間に休まず歩き続けた' } } }),
     ] }),
   S('c3_walk3', 3, 'walk_night', [
     ['', '運河を渡る橋の手前。向こう岸の空が赤い。火災の煙が、風に乗ってこちらへ流れてくる。'],
-    ['', '「この先、通れるらしい」と誰かが言う。根拠は分からない。'],
+    ['', '橋の上には、人が詰まっていた。立ち止まった人と、引き返してくる人と、それでも進もうとする人。三つの流れが、欄干のあいだでぶつかり合っている。'],
+    ['', '「この先、通れるらしい」と誰かが言う。根拠は分からない。別の誰かが「向こうは燃えてるって」と言う。それにも、根拠はない。'],
+    ['', 'スマホの電池は、もう心もとない。明るい情報も暗い情報も、同じ小さな画面の中で、同じ大きさの文字で流れていく。いま、この橋の上で、正しいことを知っている人は、たぶん一人もいない。'],
   ], { fx: 'dark', onEnter: { time: 60, know: 'k_smoke' }, choices: [
       C('detour', '風上へ大きく迂回する（2時間余計にかかる）', 'c4_dawn_walk', { icon: '↪', effects: { time: 120, stamina: -12, water: -10, report: { cat: 'evac', score: 2, note: '火災の煙を避けて迂回した' } } }),
       C('through', '煙の中を突っ切る', 'c4_dawn_walk', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 30, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
@@ -101,11 +103,12 @@ export const ch3: Scene[] = [
   S('c3_aid', 3, 'aid', [
     ['', '臨時の救護所。ブルーシートの上に負傷者が並ぶ。'],
     ['早瀬', 'ここでは、重い人から順に診ます。あなたは記録と水をお願い。'],
-    ['', '運ばれてきた男性は、数時間、瓦礫に脚を挟まれていたという。'],
+    ['', '投光器が一台、発電機の低い唸りとともに点いた。白い光の輪の中だけが、世界のすべてみたいに見える。輪の外の暗がりから、次の担架が、また次の担架が、現れては光の中に置かれていく。'],
+    ['', '運ばれてきた男性は、数時間、瓦礫に脚を挟まれていたという。顔色は悪くない。本人も「平気だ、歩ける」と言う。だからこそ怖いのだ、と早瀬の目が言っていた。'],
     ['大川', '（消防隊員・架空）挟まれていた時間が長い人は、救出後に急変することがある。医療につなぐまで目を離さないで。'],
   ], { alt: [{ if: { preset: 'parent' }, goto: 'c3p_aid' }], onEnter: { know: ['k_crush', 'k_119', 'k_aed'], flag: 'supplied', water: 20, time: 120 }, choices: [
-      C('record', '負傷者の名前と状態を記録し、家族の問い合わせに備える', 'c3_aid2', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '救護所で記録係を務めた' }, npc: { id: 'hayase', trust: 15 } } }),
-      C('aed', 'AEDを取りに走る', 'c3_aid2', { icon: '⚡', effects: { stamina: -8, report: { cat: 'aid', score: 2, note: 'AEDを運んだ' }, flag: 'aed_run' } }),
+      C('record', '負傷者の名前と状態を記録し、家族の問い合わせに備える', 'c3_aid_mid', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '救護所で記録係を務めた' }, npc: { id: 'hayase', trust: 15 } } }),
+      C('aed', 'AEDを取りに走る', 'c3_aid_mid', { icon: '⚡', effects: { stamina: -8, report: { cat: 'aid', score: 2, note: 'AEDを運んだ' }, flag: 'aed_run' } }),
     ] }),
   S('c3_aid2', 3, 'aid', [
     ['', '夜明け前。早瀬が、はじめて座り込んだ。'],

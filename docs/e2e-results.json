@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:20:02.368Z",
+  "at": "2026-10-31T00:24:49.075Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 53 steps",
+      "name": "mobile: reached ending in 85 steps",
       "pass": true,
       "info": ""
     },
@@ -38,7 +38,7 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 41 steps",
+      "name": "mobile-student: reached ending in 57 steps",
       "pass": true,
       "info": ""
     },
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 34 steps",
+      "name": "mobile-parent: reached ending in 36 steps",
       "pass": true,
       "info": ""
     },
@@ -98,14 +98,14 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 38 steps",
+      "name": "desktop: reached ending in 47 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "desktop: report has disclaimer",
       "pass": true,
-      "info": "隣にいない夏"
+      "info": "声は、届いた"
     },
     {
       "name": "desktop: settings has disclaimer",
@@ -123,66 +123,6 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: disclaimer on title",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-d1: reached ending in 31 steps",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-d1: report has disclaimer",
-      "pass": true,
-      "info": "声は、届いた"
-    },
-    {
-      "name": "mobile-d1: settings has disclaimer",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-d1: no horizontal overflow",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-d1: no console errors",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-death: disclaimer on title",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-death: reached ending in 31 steps",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-death: report has disclaimer",
-      "pass": true,
-      "info": "声は、届いた"
-    },
-    {
-      "name": "mobile-death: settings has disclaimer",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-death: no horizontal overflow",
-      "pass": true,
-      "info": ""
-    },
-    {
-      "name": "mobile-death: no console errors",
-      "pass": true,
-      "info": ""
-    },
-    {
       "name": "found a death route",
       "pass": true,
       "info": ""
@@ -190,7 +130,7 @@
     {
       "name": "save: continue after reload restores clock",
       "pass": true,
-      "info": "🕒 13:32"
+      "info": "🕒 13:07"
     }
   ]
 }

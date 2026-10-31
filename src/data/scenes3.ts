@@ -97,15 +97,15 @@ export const ch3x: Scene[] = [
   // --- 友人・拓海の夜（生存して一緒にいる場合） ---
   R('c3_eve_end', 3, [
     { if: { npcAlive: 'friend', notFlag: ['friend_left', 'takumi_talk'] }, goto: 'c3_takumi' },
-    { if: {}, goto: 'c3_night' },
+    { if: {}, goto: 'c3_mid' },
   ]),
   S('c3_takumi', 3, 'night_shelter', [
     ['', '自販機の明かりだけが点いている廊下。拓海が、売り切れの赤いランプを見上げていた。'],
     ['拓海', 'なあ。……俺、来月から大阪なんだ。言うタイミング、ずっと探してて。今日の夜、海見ながら言うつもりだった。'],
     ['拓海', 'で、今日これだろ。昼に煙の中に戻ろうとしたの、たぶん、何かしてから行きたかったんだよな。何もしないで東京を出るのが、いやで。'],
   ], { choices: [
-      C('go', '「行けよ。で、向こうで、今日のことを誰かに話せ」', 'c3_night', { icon: '✈', effects: { flag: ['takumi_talk', 'takumi_blessed'], npc: { id: 'friend', trust: 20 }, mental: 6 }, result: '拓海は鼻をすすって、「お前、たまにいいこと言うよな」と笑った。' }),
-      C('quiet', '何も言わず、自販機の前に並んで座る', 'c3_night', { icon: '🌌', effects: { flag: 'takumi_talk', npc: { id: 'friend', trust: 10 }, mental: 4 }, result: '余震が来て、二人同時に壁に手をついた。それがなぜか可笑しくて、少しだけ笑った。' }),
+      C('go', '「行けよ。で、向こうで、今日のことを誰かに話せ」', 'c3_mid', { icon: '✈', effects: { flag: ['takumi_talk', 'takumi_blessed'], npc: { id: 'friend', trust: 20 }, mental: 6 }, result: '拓海は鼻をすすって、「お前、たまにいいこと言うよな」と笑った。' }),
+      C('quiet', '何も言わず、自販機の前に並んで座る', 'c3_mid', { icon: '🌌', effects: { flag: 'takumi_talk', npc: { id: 'friend', trust: 10 }, mental: 4 }, result: '余震が来て、二人同時に壁に手をついた。それがなぜか可笑しくて、少しだけ笑った。' }),
     ] }),
 
   // --- 徒歩：プリセット別の入口 ---
@@ -129,7 +129,7 @@ export const ch3x: Scene[] = [
   R('c3_walk2b', 3, [
     { if: { preset: 'worker', notFlag: 'calmed_bando' }, goto: 'c3w_bando' },
     { if: { preset: 'worker' }, goto: 'c3w_station' },
-    { if: {}, goto: 'c3_walk3' },
+    { if: {}, goto: 'c3_walk2' },
   ]),
   S('c3w_bando', 3, 'walk_night', [
     ['', '東雲のあたり。動かない車の列が、赤いテールランプの川になっている。'],
@@ -144,7 +144,7 @@ export const ch3x: Scene[] = [
     ['', '辰巳を抜けると、道は運河にぶつかる。橋のたもとに、人が小さな群れになって座り込んでいた。'],
     ['', '誰かがラジオを持っている。音量を絞った声が、知らない区の火災を読み上げる（ゲーム内の架空の放送）。'],
     ['', '南砂まで、あと数キロ。地図を見なくても分かる距離に来て、足が初めて止まった。ここまで、千夏と陽菜のことしか考えていなかった。この先にある自分の街が、どうなっているのかを、考えるのが怖かった。'],
-  ], { fx: 'dark', onEnter: { time: 20 }, next: 'c3_walk3' }),
+  ], { fx: 'dark', onEnter: { time: 20 }, next: 'c3_walk2' }),
 
   // --- 救護所：父親は律を連れている ---
   S('c3p_aid', 3, 'aid', [
@@ -152,8 +152,8 @@ export const ch3x: Scene[] = [
     ['早瀬', '子連れで手伝うの？　……じゃあ、ここから動かずにできることを。記録と、水の配布。お子さんから目を離さない範囲で。'],
     ['大川', '（消防隊員・架空）挟まれていた時間が長い人は、救出後に急変することがある。医療につなぐまで目を離さないで。'],
   ], { onEnter: { know: ['k_crush', 'k_119', 'k_aed'], flag: 'supplied', water: 20, time: 120 }, choices: [
-      C('record', '律の隣で、負傷者の名前と状態を記録する', 'c3_aid2', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '子どもから目を離さずにできる救護の手伝いをした' }, npc: { id: 'hayase', trust: 15 } } }),
-      C('rest', '律が起きたときにそばにいるため、横で休む', 'c3_aid2', { icon: '😴', effects: { stamina: 15, npc: { id: 'fam2', trust: 10 } } }),
+      C('record', '律の隣で、負傷者の名前と状態を記録する', 'c3_aid_mid', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '子どもから目を離さずにできる救護の手伝いをした' }, npc: { id: 'hayase', trust: 15 } } }),
+      C('rest', '律が起きたときにそばにいるため、横で休む', 'c3_aid_mid', { icon: '😴', effects: { stamina: 15, npc: { id: 'fam2', trust: 10 } } }),
     ] }),
 ];
 
