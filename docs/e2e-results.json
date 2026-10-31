@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:52:02.690Z",
+  "at": "2026-10-31T00:53:57.107Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -128,7 +128,7 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 46 steps",
+      "name": "mobile-d1: reached ending in 49 steps",
       "pass": true,
       "info": ""
     },
@@ -158,7 +158,7 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 49 steps",
+      "name": "mobile-death: reached ending in 46 steps",
       "pass": true,
       "info": ""
     },
