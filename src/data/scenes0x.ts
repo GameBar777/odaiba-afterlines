@@ -109,7 +109,7 @@ export const ch0x: Scene[] = [
       C('emily', '案内板の前で困っている外国人旅行者に声をかける', 'c0_m_emily', { icon: '🗺', if: { notFlag: 'met_emily' }, effects: { time: 10 } }),
       C('arcade', 'ゲームコーナーの方から、大人の怒鳴り声が聞こえる', 'c0_m_kuroda', { icon: '🎮', if: { notFlag: 'saw_kuroda' }, effects: { time: 10 } }),
       C('aed', '通路の壁の、赤いAEDの箱の前で足を止める', 'c0_m_aed', { icon: '❤', if: { notFlag: 'saw_aed' }, effects: { time: 5 } }),
-      C('go', '（寄り道はここまで）家族からの着信に気づく', 'c0_call', { icon: '📱' }),
+      C('go', '（寄り道はここまで）フードコートで一息つく', 'c0_ml_r', { icon: '📱' }),
     ] }),
   S('c0_m_saeki', 0, 'mall_food', [
     ['', '年季の入ったハンチング帽。背筋はまっすぐなのに、杖を握る指の節が白い。老人は品書きの「穴子天」の文字を、指でなぞるようにして見ていた。'],
