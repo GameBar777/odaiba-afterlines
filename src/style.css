@@ -47,3 +47,6 @@ body.calm .scene{animation:none!important}body.calm .scene::after{display:none}
 .say.wp .pt{grid-row:span 2;width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:2px solid var(--mut);background:#f5ecd9}
 .say.wp b{display:block}
 .ai-note{font-size:.7rem;color:var(--mut);text-align:right;margin:.2rem 0 0}
+
+.art{position:relative}.art .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.art .credit{z-index:2}
+.art .cap{position:absolute;left:8px;top:8px;z-index:2;background:#000a;color:#fff;font-size:12px;padding:2px 8px;border-radius:8px}

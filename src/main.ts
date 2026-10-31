@@ -1,10 +1,11 @@
 import './style.css';
 import { DB } from './data';
-import { newGame, start, choose, proceed, scene, visibleChoices, fill, clockLabel, resolveEnding, afterPieces, reportSummary, type Feedback } from './engine/engine';
+import { newGame, start, choose, proceed, scene, visibleChoices, fill, clockLabel, quakeClock, resolveEnding, afterPieces, reportSummary, type Feedback } from './engine/engine';
 import type { State, PresetId } from './engine/types';
 import { save, load, clearSave, exportText, importText, prefs, setPrefs, addPlay, plays, type Prefs } from './platform/save';
 import { cue, setSound } from './platform/sound';
-import { sceneArt } from './ui/art';
+import { sceneArt, artCaption } from './ui/art';
+import { bgSrc, todOf } from './ui/bg';
 import { portraitSrc } from './ui/portraits';
 
 export const DISCLAIMER = '本作は防災教育を目的としたシミュレーションゲームです。ゲーム内の地震、被害、施設状況、避難経路、人物の行動は架空のシナリオを含みます。現実の災害時は、気象庁、自治体、消防、警察などの最新の公式情報と現地の状況に従ってください。本作のプレイ結果だけで実際の安全を保証するものではありません。';
@@ -27,7 +28,7 @@ const ad = (where: string) => P.ads ? `<div class="ad" data-ad="${where}">広告
 function title() {
   const sv = load();
   h(`<main class="title">
-    <div class="art">${sceneArt('odaiba_morning')}</div>
+    <div class="art">${sceneArt('odaiba_morning')}${bgImg('odaiba_morning', 'day')}</div>
     <h1>${TITLE}<small>ODAIBA AFTERLINES</small></h1>
     <p class="lead">平日の午後、お台場。架空の「首都直下地震」が起きたら——あなたは、誰と、どう生きのびるか。</p>
     <section class="disc" id="disc"><h2>はじめに（必ずお読みください）</h2><p>${DISCLAIMER}</p></section>
@@ -89,7 +90,7 @@ function play() {
     <header class="hud"><div class="row"><b>第${sc.chapter > 5 ? '—' : sc.chapter}章</b><span class="clock">🕒 ${esc(clockLabel(s))}</span><span class="loc">📍 ${esc(DB.locs.find(l => l.id === s.loc)?.name ?? s.loc)}</span><button id="menu" aria-label="メニュー">☰</button></div>
       <div class="bars">${bar('体力', s.hp, 'hp')}${bar('スタミナ', s.stamina)}${bar('水分', s.water)}${bar('こころ', s.mental)}${bar('電池', s.battery, 'bat')}</div>
       ${s.injuries.length ? `<div class="inj">🩹 ${s.injuries.map(i => esc(DB.injuries[i]?.name ?? i)).join('・')}</div>` : ''}</header>
-    <div class="art scene">${sceneArt(sc.bg)}<span class="credit">イラスト：自作SVG</span></div>
+    <div class="art scene">${sceneArt(sc.bg)}${bgImg(sc.bg, todOf(quakeClock(s) + s.t))}<span class="cap">${esc(artCaption(sc.bg))}（イメージ）</span><span class="credit">背景：AI生成イラスト（架空の場所のイメージ）／自作SVG</span></div>
     ${fbHtml}${deathHtml}
     <section class="lines">${sc.lines.map(([who, t]) => who ? say(who, t, sc.chapter) : `<p class="nar">${F(t)}</p>`).join('')}${P.portraits && sc.lines.some(([w]) => w && portraitSrc(S ? fill(w, S) : w, 0)) ? '<p class="ai-note">立ち絵：AI生成イラスト（架空の人物）</p>' : ''}</section>
     ${photo}${afterHtml}
@@ -179,7 +180,7 @@ function settings(back: () => void) {
     <h3>セーブデータ</h3><div class="btns"><button id="exp">書き出し（コピー）</button><button id="imp">読み込み</button><button id="del">セーブ削除</button></div>
     <textarea id="txt" rows="4" placeholder="ここにセーブデータを貼り付けて「読み込み」"></textarea><p id="msg" class="note"></p>
     <h3>免責事項</h3><p class="disc">${DISCLAIMER}</p>
-    <p class="note">背景イラストは本作のために作成したSVG（自作）です。登場人物の立ち絵はAI生成イラスト（架空の人物・実在人物とは無関係）です。実在の災害映像・写真は使用していません。</p>
+    <p class="note">背景イラストはAI生成イラスト（架空の場所のイメージ・実在施設の写真ではありません）で、読み込めない場合は自作SVGを表示します。登場人物の立ち絵はAI生成イラスト（架空の人物・実在人物とは無関係）です。実在の災害映像・写真は使用していません。</p>
     <div class="btns"><button class="primary" id="b">戻る</button></div></main>`);
   const g = (id: string) => app.querySelector('#' + id) as HTMLInputElement;
   const upd = () => { P = { ...P, muted: g('mute').checked, volume: Number(g('vol').value), ads: g('ads').checked, portraits: g('pt').checked }; setPrefs(P); setSound(P.volume, P.muted); document.body.classList.toggle('calm', g('calm').checked); localStorage.setItem('odaiba-afterlines.calm', g('calm').checked ? '1' : ''); };
@@ -191,3 +192,8 @@ function settings(back: () => void) {
 }
 document.body.classList.toggle('calm', localStorage.getItem('odaiba-afterlines.calm') === '1');
 title();
+
+function bgImg(bg: string, tod: Parameters<typeof bgSrc>[1]): string {
+  const src = bgSrc(bg, tod); if (!src) return '';
+  return `<img class="bgimg" src="${src}" alt="" aria-hidden="true" onerror="this.remove()">`;
+}

@@ -44,3 +44,4 @@ export function sceneArt(bg: string): string {
   return `<svg viewBox="0 0 400 220" role="img" aria-label="${p.caption}（イラスト）" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g_${bg}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.sky[0]}"/><stop offset="1" stop-color="${p.sky[1]}"/></linearGradient></defs><rect width="400" height="220" fill="url(#g_${bg})"/>${stars}${smoke}${city}${sea}${crack}<text x="200" y="128" font-size="64" text-anchor="middle">${p.motif}</text></svg>`;
 }
 export const artKeys = Object.keys(A);
+export function artCaption(bg: string): string { return A[bg]?.caption ?? bg; }
