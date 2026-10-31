@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:08:38.266Z",
+  "at": "2026-10-31T00:20:02.368Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -68,14 +68,14 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 39 steps",
+      "name": "mobile-parent: reached ending in 34 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-parent: report has disclaimer",
       "pass": true,
-      "info": "隣にいない夏"
+      "info": "帰れなかった日"
     },
     {
       "name": "mobile-parent: settings has disclaimer",
@@ -128,14 +128,14 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 30 steps",
+      "name": "mobile-d1: reached ending in 31 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-d1: report has disclaimer",
       "pass": true,
-      "info": "未送信のメッセージ"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-d1: settings has disclaimer",
@@ -158,14 +158,14 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 25 steps",
+      "name": "mobile-death: reached ending in 31 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-death: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-death: settings has disclaimer",

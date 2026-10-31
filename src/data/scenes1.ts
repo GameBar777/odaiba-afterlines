@@ -12,30 +12,30 @@ export const ch0: Scene[] = [
     ['{fam1}', '{fam2}がね、昨日から「餃子の日」って言ってるの。'],
   ], { alt: [{ if: { preset: 'student' }, goto: 'c0_open_st' }, { if: { preset: 'parent' }, goto: 'c0_open_pa' }],
     choices: [
-      C('promise', '「七時までに帰る。約束する」', 'c0_meet_talk', { icon: '🤙', effects: { flag: 'promise', mental: 5 }, hint: '小さな約束' }),
-      C('maybe', '「仕事次第かな」', 'c0_meet_talk', { icon: '🤷', effects: { mental: -2 } }),
+      C('promise', '「七時までに帰る。約束する」', 'c0w_m1', { icon: '🤙', effects: { flag: 'promise', mental: 5 }, hint: '小さな約束' }),
+      C('maybe', '「仕事次第かな」', 'c0w_m1', { icon: '🤷', effects: { mental: -2 } }),
     ] }),
   S('c0_open_st', 0, 'morning_home', [
     ['', '{me}、二十歳。今日は授業が休講で、昼から友人の拓海とお台場へ行く。'],
     ['{fam1}', '（メッセージ）夜7時、{meet}ね。遅刻したら罰ゲーム'],
     ['{fam2}', '葵ちゃん、帰りにまたお茶飲みにおいで。羊羹あるから。'],
   ], { choices: [
-      C('promise', '「7時ちょうどに行く。絶対」と返す', 'c0_meet_talk', { icon: '🤙', effects: { flag: 'promise', mental: 5 } }),
-      C('grandma', 'おばあちゃんに「週末寄るね」と約束する', 'c0_meet_talk', { icon: '🍵', effects: { flag: ['promise', 'promise_grandma'], mental: 5 } }),
+      C('promise', '「7時ちょうどに行く。絶対」と返す', 'c0s_m1', { icon: '🤙', effects: { flag: 'promise', mental: 5 } }),
+      C('grandma', 'おばあちゃんに「週末寄るね」と約束する', 'c0s_m1', { icon: '🍵', effects: { flag: ['promise', 'promise_grandma'], mental: 5 } }),
     ] }),
   S('c0_open_pa', 0, 'morning_home', [
     ['', '休日。{me}は息子の{fam2}と二人でお台場へ行く約束をしていた。'],
     ['{fam2}', 'パパ、きょう、うみ みる？'],
     ['{fam1}', '私は夜勤明けからそのまま日勤。迎えに行けなくてごめんね。'],
   ], { choices: [
-      C('promise', '「夕飯までには二人で帰るよ」', 'c0_meet_talk', { icon: '🤙', effects: { flag: 'promise', mental: 5 } }),
+      C('promise', '「夕飯までには二人で帰るよ」', 'c0p_m1', { icon: '🤙', effects: { flag: 'promise', mental: 5 } }),
     ] }),
   S('c0_meet_talk', 0, 'morning_home', [
     ['{fam1}', 'そういえば……もし大きい地震が来たら、どこで会うか決めてないよね。'],
     ['{fam1}', 'テレビでやってたの。電話はつながらないって。'],
   ], { choices: [
-      C('decide', '「{meet}にしよう。あと171に残す」と決める', 'c0_commute', { icon: '📍', effects: { flag: 'meetpoint', know: ['k_meetpoint', 'k_171'], report: { cat: 'contact', score: 2, note: '事前に集合場所と171の利用を決めていた' } }, hint: '後で効く' }),
-      C('later', '「今度ちゃんと決めよう」', 'c0_commute', { icon: '⏳', effects: { report: { cat: 'contact', score: -1, note: '集合場所を決めずに出かけた（多くの家庭と同じ）' } } }),
+      C('decide', '「{meet}にしよう。あと171に残す」と決める', 'c0_route', { icon: '📍', effects: { flag: 'meetpoint', know: ['k_meetpoint', 'k_171'], report: { cat: 'contact', score: 2, note: '事前に集合場所と171の利用を決めていた' } }, hint: '後で効く' }),
+      C('later', '「今度ちゃんと決めよう」', 'c0_route', { icon: '⏳', effects: { report: { cat: 'contact', score: -1, note: '集合場所を決めずに出かけた（多くの家庭と同じ）' } } }),
     ] }),
   S('c0_commute', 0, 'odaiba_morning', [
     ['', 'ゆりかもめの窓から、レインボーブリッジと海が見える。'],
@@ -60,8 +60,8 @@ export const ch0: Scene[] = [
     ['', 'シーサイドモール台場（架空の施設）。3階のフードコートは平日でもにぎわっている。'],
     ['', '壁に小さな「避難経路図」が貼ってある。いつも素通りしている紙だ。'],
   ], { onEnter: { loc: 'mall', time: 30 }, choices: [
-      C('map', '避難経路図をスマホで撮っておく', 'c0_call', { icon: '🗺', effects: { flag: 'knows_exit', item: 'map_paper', report: { cat: 'items', score: 1, note: '施設の避難経路を確認した' }, battery: -1 }, hint: '数秒でできる備え' }),
-      C('eat', 'ラーメンの列に並ぶ', 'c0_call', { icon: '🍜' }),
+      C('map', '避難経路図をスマホで撮っておく', 'c0_mall', { icon: '🗺', effects: { flag: 'knows_exit', item: 'map_paper', report: { cat: 'items', score: 1, note: '施設の避難経路を確認した' }, battery: -1 }, hint: '数秒でできる備え' }),
+      C('eat', 'ラーメンの列に並ぶ', 'c0_mall', { icon: '🍜' }),
     ] }),
   S('c0_call', 0, 'family_call', [
     ['', 'ビデオ通話が鳴る。'],
@@ -95,10 +95,10 @@ export const ch0: Scene[] = [
   S('c0_before', 0, 'mall_window', [
     ['', '午後。日差しが傾きはじめる。'],
     ['拓海', '最後にどこ寄る？'],
-  ], { onEnter: { time: 30 }, choices: [
-      C('cafe', '3階の窓際カフェで休む', 'c1_eew', { icon: '☕', effects: { flag: 'at_window', loc: 'mall' } }),
-      C('elev', '展望デッキへ、エレベーターで上がる', 'c1_eew', { icon: '🛗', effects: { flag: 'at_elevator', loc: 'mall' } }),
-      C('beach', 'もう一度、海浜公園へ', 'c1_eew', { icon: '🏖', effects: { flag: 'at_beach', loc: 'park' } }),
+  ], { alt: [{ if: { preset: 'parent' }, goto: 'c0p_before' }], onEnter: { time: 30 }, choices: [
+      C('cafe', '3階の窓際カフェで休む', 'c1_pre', { icon: '☕', effects: { flag: 'at_window', loc: 'mall' } }),
+      C('elev', '展望デッキへ、エレベーターで上がる', 'c1_pre', { icon: '🛗', effects: { flag: 'at_elevator', loc: 'mall' } }),
+      C('beach', 'もう一度、海浜公園へ', 'c1_pre', { icon: '🏖', effects: { flag: 'at_beach', loc: 'park' } }),
     ] }),
 ];
 
@@ -161,12 +161,12 @@ export const ch1: Scene[] = [
   ], { onEnter: { time: 3, mental: -15, know: 'k_liquefaction' }, choices: [C('friend', 'そばにいる人の様子を確かめる', 'c1_friend', { icon: '🧍' })] }),
   S('c1_friend', 1, 'mall_damage', [
     ['拓海', '……いってぇ。大丈夫、かすり傷。お前は？'],
-  ], { alt: [{ if: { preset: 'parent' }, goto: 'c1_friend_pa' }], onEnter: { flag: 'friend_with_me' }, next: 'c1_selfcheck' }),
+  ], { alt: [{ if: { preset: 'parent' }, goto: 'c1_friend_pa' }], onEnter: { flag: 'friend_with_me' }, next: 'c1_after' }),
   S('c1_friend_pa', 1, 'beach_after', [
     ['{fam2}', '……パパ、こわかった。'],
     ['', 'そこへ、学生時代の友人・拓海が駆けてきた。偶然、近くのイベントの仕事で来ていたという。'],
     ['拓海', '健司！律くんも無事か！'],
-  ], { onEnter: { flag: 'friend_with_me' }, next: 'c1_selfcheck' }),
+  ], { onEnter: { flag: 'friend_with_me' }, next: 'c1_after' }),
   S('c1_selfcheck', 1, 'mall_damage', [
     ['', '自分の体を確かめる。'],
   ], {
@@ -226,15 +226,15 @@ export const ch2: Scene[] = [
     ['', '吹き抜けの下で、小学生くらいの男の子が一人、柱にしがみついて泣いている。'],
     ['大翔', '……おとうさん、いない……'],
   ], { alt: [{ if: { flag: 'met_hiroto' }, goto: 'c2_boy_known' }], choices: [
-      C('staff', '手をつないで、迷子対応の施設職員のところへ連れて行く', 'c2_info', { icon: '🧒', effects: { time: 15, helped: 'hiroto', npc: { id: 'hiroto', trust: 30, loc: 'staff' }, report: { cat: 'care', score: 3, note: 'はぐれた子供を施設職員に引き継いだ' } } }),
-      C('take', '一緒に父親を探しながら行動する', 'c2_info', { icon: '🔍', effects: { time: 30, stamina: -5, helped: 'hiroto', flag: 'hiroto_with_me', report: { cat: 'care', score: 1, note: '子供と一緒に保護者を探した（混乱の中で連れ歩くリスクもある）' } } }),
-      C('leave', '自分のことで精一杯だ。通り過ぎる', 'c2_info', { icon: '😔', effects: { mental: -8 } }),
+      C('staff', '手をつないで、迷子対応の施設職員のところへ連れて行く', 'c2_stairs', { icon: '🧒', effects: { time: 15, helped: 'hiroto', npc: { id: 'hiroto', trust: 30, loc: 'staff' }, report: { cat: 'care', score: 3, note: 'はぐれた子供を施設職員に引き継いだ' } } }),
+      C('take', '一緒に父親を探しながら行動する', 'c2_stairs', { icon: '🔍', effects: { time: 30, stamina: -5, helped: 'hiroto', flag: 'hiroto_with_me', report: { cat: 'care', score: 1, note: '子供と一緒に保護者を探した（混乱の中で連れ歩くリスクもある）' } } }),
+      C('leave', '自分のことで精一杯だ。通り過ぎる', 'c2_stairs', { icon: '😔', effects: { mental: -8 } }),
     ] }),
   S('c2_boy_known', 2, 'child', [
     ['大翔', '（エレベーターで一緒だった男の子が、あなたの袖をつかんで離さない）'],
     ['大翔', 'ぼく、くろだ ひろと。おとうさん、いない。'],
   ], { choices: [
-      C('staff', '施設職員のところへ一緒に行く', 'c2_info', { icon: '🧒', effects: { time: 15, helped: 'hiroto', report: { cat: 'care', score: 3, note: 'はぐれた子供を施設職員に引き継いだ' } } }),
+      C('staff', '施設職員のところへ一緒に行く', 'c2_stairs', { icon: '🧒', effects: { time: 15, helped: 'hiroto', report: { cat: 'care', score: 3, note: 'はぐれた子供を施設職員に引き継いだ' } } }),
     ] }),
   S('c2_info', 2, 'phone_sns', [
     ['', 'スマホを見る。電波は1本。タイムラインが異様な速さで流れていく。'],
@@ -248,10 +248,10 @@ export const ch2: Scene[] = [
     ['森本', '兄貴が有明にいるんだよ！待ってらんねえ！'],
     ['', '海沿いの遊歩道は、さっき段差と泥水が見えた場所だ。それに「津波注意報（ゲーム内の架空情報）」が出ている。'],
   ], { choices: [
-      C('stop', '「その情報、発信元が分からない。海沿いは注意報が出てる」と止める', 'c2_contact', { icon: '✋', if: { flag: 'verified_info' }, effects: { flag: 'stopped_morimoto', helped: 'morimoto', npc: { id: 'morimoto', trust: 20 }, report: { cat: 'info', score: 2, note: '誤情報で危険な場所へ向かう人を止めた' } } }),
-      C('stop2', '「行くな」と腕をつかむ', 'c2_contact', { icon: '🫷', if: { notFlag: 'verified_info' }, effects: { npc: { id: 'morimoto', trust: -10 }, mental: -3 }, result: '森本は腕を振りほどいて走っていった。根拠を示せなかった。' }),
+      C('stop', '「その情報、発信元が分からない。海沿いは注意報が出てる」と止める', 'c2_wait1', { icon: '✋', if: { flag: 'verified_info' }, effects: { flag: 'stopped_morimoto', helped: 'morimoto', npc: { id: 'morimoto', trust: 20 }, report: { cat: 'info', score: 2, note: '誤情報で危険な場所へ向かう人を止めた' } } }),
+      C('stop2', '「行くな」と腕をつかむ', 'c2_wait1', { icon: '🫷', if: { notFlag: 'verified_info' }, effects: { npc: { id: 'morimoto', trust: -10 }, mental: -3 }, result: '森本は腕を振りほどいて走っていった。根拠を示せなかった。' }),
       C('follow', '自分も一緒に海沿いへ向かう', 'c2_shore', { icon: '🌊', effects: { report: { cat: 'evac', score: -3, note: '未確認情報を信じて海沿いへ向かった' } } }),
-      C('let', '黙って見送る', 'c2_contact', { icon: '…' }),
+      C('let', '黙って見送る', 'c2_wait1', { icon: '…' }),
     ] }),
   S('c2_shore', 2, 'beach_after', [
     ['', '遊歩道は波打ち、マンホールが突き出し、泥水が足首まで来た。'],
@@ -274,22 +274,22 @@ export const ch2: Scene[] = [
     ['', '——その頃。'],
   ], { alt: [{ if: { preset: 'student' }, goto: 'c2_fam_cut_st' }, { if: { preset: 'parent' }, goto: 'c2_fam_cut_pa' }],
     lines: [['', '——その頃、{homeArea}。{fam1}は職場の机の下から這い出し、真っ先に{fam2}の小学校へ向かっていた。'], ['{fam1}', '（学校は子供を守ってくれる。慌てないで。……それでも、早く顔が見たい）'], ['', '校庭には、訓練どおり整列した子供たち。{fam2}は先生の手を握っていた。']],
-    onEnter: { know: 'k_school' }, next: 'c2_end' }),
+    onEnter: { know: 'k_school' }, next: 'c2w_cut2' }),
   S('c2_fam_cut_st', 2, 'family_away', [
     ['', '——その頃、世田谷。'],
     ['', '古い家の居間で、箪笥が倒れていた。'],
     ['{fam2}', '（……葵ちゃんに、羊羹……）'],
-  ], { alt: [{ if: { flag: 'warned_furniture' }, goto: 'c2_fam_cut_st2' }], next: 'c2_end' }),
+  ], { alt: [{ if: { flag: 'warned_furniture' }, goto: 'c2_fam_cut_st2' }], next: 'c2s_cut2' }),
   S('c2_fam_cut_st2', 2, 'family_away', [
     ['', '——その頃、世田谷。'],
     ['', 'ふみは、昼間の電話のあと、気になって箪笥の前の座布団をどけ、寝る場所を変えていた。'],
     ['', '倒れた箪笥は、誰もいない場所に横たわっている。'],
-  ], { onEnter: { npc: { id: 'fam2', injured: false }, flag: 'grandma_safe' }, next: 'c2_end' }),
+  ], { onEnter: { npc: { id: 'fam2', injured: false }, flag: 'grandma_safe' }, next: 'c2s_cut2' }),
   S('c2_fam_cut_pa', 2, 'family_away', [
     ['', '——その頃、品川の病院。'],
     ['', '{fam1}は、運び込まれる負傷者の色分け（トリアージ）に入っていた。スマホを見る余裕はない。'],
     ['{fam1}', '（健司なら、律を守ってくれる。……そう信じるしかない）'],
-  ], { next: 'c2_end' }),
+  ], { next: 'c2p_cut2' }),
   S('c2_end', 2, 'crowd', [
     ['', '発災からおよそ二時間。'],
     ['', '鉄道は止まっている。道路には車があふれ、サイレンが途切れない。'],
