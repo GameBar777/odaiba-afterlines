@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-30T22:09:44.239Z",
-  "base": "https://gamebar777.github.io/odaiba-afterlines/",
+  "at": "2026-10-31T00:05:26.504Z",
+  "base": "http://localhost:4190/",
   "results": [
     {
       "name": "mobile: disclaimer on title",
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 43 steps",
+      "name": "mobile: reached ending in 52 steps",
       "pass": true,
       "info": ""
     },
@@ -38,7 +38,7 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 40 steps",
+      "name": "mobile-student: reached ending in 41 steps",
       "pass": true,
       "info": ""
     },
@@ -68,14 +68,14 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 32 steps",
+      "name": "mobile-parent: reached ending in 39 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-parent: report has disclaimer",
       "pass": true,
-      "info": "帰れなかった日"
+      "info": "隣にいない夏"
     },
     {
       "name": "mobile-parent: settings has disclaimer",
@@ -98,7 +98,7 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 36 steps",
+      "name": "desktop: reached ending in 38 steps",
       "pass": true,
       "info": ""
     },
@@ -158,14 +158,14 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 25 steps",
+      "name": "mobile-death: reached ending in 31 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-death: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-death: settings has disclaimer",

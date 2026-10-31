@@ -40,5 +40,10 @@ export const after: AfterPiece[] = [
   { id: 'a_promise', if: { flag: 'promise' }, who: '{fam1}', text: 'あの日の約束の時間になると、毎年、二人ぶんの夕飯を作る。' },
   { id: 'a_meet', if: { flag: 'meetpoint' }, who: '{fam1}', text: '決めておいた{meet}。家族は、そこで待った。あなたが決めてくれた場所だったから、迷わずにすんだ。' },
   { id: 'a_nomeet', if: { notFlag: 'meetpoint' }, who: '{fam1}', text: 'どこに行けばいいのか、分からなかった。今は、集合場所を家族で決めて、冷蔵庫に貼ってある。' },
+  { id: 'a_wk_card', if: { flag: 'hina_card' }, who: '{fam2}', text: 'パパのたんじょうびカード、ひなんじょにももっていった。ママが「だいじなものはひとつにしなさい」っていったから、これにした。' },
+  { id: 'a_bando', if: { flag: 'bando_car_left' }, who: '坂東', text: 'あの晩、車を置いて歩いた。女房の病院に着いたのは翌朝だった。あとで聞いたら、あの交差点を救急車が通ったそうだ。俺の車がなかった分だけ、少し早く。' },
+  { id: 'a_st_gma_hand', if: { flag: 'gma_with_me' }, who: '{fam1}', text: '葵は、あの日おばあちゃんの手を最後まで握っていた。俺を待たせたことを何度も謝るけど、あれでよかったんだと思う。俺は、ちゃんと待てる場所にいたから。' },
+  { id: 'a_pa_letter', if: { flag: 'misaki_has_letter' }, who: '{fam1}', text: '青いクレヨンの三つの丸は、いまもロッカーの扉の裏に貼ってある。夜勤で心が折れそうな夜は、いちばん大きい丸を見る。' },
+  { id: 'a_miyauchi', if: { flag: 'helped_miyauchi' }, who: '宮内', text: 'あの夜の名簿で、十七件の家族の問い合わせに答えられました。父のところには、ヘルパーさんが来てくれていました。' },
   { id: 'a_report', if: {}, who: '', text: 'あなたの選択の記録は「防災判断レポート」に残っている。次は、あなた自身の「もしも」を考えてみてください。' },
 ];

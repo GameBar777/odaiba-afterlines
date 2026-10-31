@@ -30,4 +30,9 @@
 | a_promise | {fam1} | `{"flag":"promise"}` |
 | a_meet | {fam1} | `{"flag":"meetpoint"}` |
 | a_nomeet | {fam1} | `{"notFlag":"meetpoint"}` |
+| a_wk_card | {fam2} | `{"flag":"hina_card"}` |
+| a_bando | 坂東 | `{"flag":"bando_car_left"}` |
+| a_st_gma_hand | {fam1} | `{"flag":"gma_with_me"}` |
+| a_pa_letter | {fam1} | `{"flag":"misaki_has_letter"}` |
+| a_miyauchi | 宮内 | `{"flag":"helped_miyauchi"}` |
 | a_report | — | `{}` |

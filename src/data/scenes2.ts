@@ -50,10 +50,10 @@ export const ch3: Scene[] = [
     ['小野寺', '（赤ちゃんを抱いて）すみません……ミルクのお湯って、どこかに……'],
     ['石川', '（青い顔で）……薬、モールに置いてきてしまって。'],
   ], { choices: [
-      C('emily', 'エミリーとリンをつなぎ、多言語の公式情報を一緒に探す', 'c3_night', { icon: '🌏', effects: { helped: 'emily', time: 30, npc: [{ id: 'emily', trust: 30 }, { id: 'lin', trust: 20 }], know: 'k_foreign', report: { cat: 'care', score: 2, note: '外国人旅行者に情報支援をつないだ' } } }),
-      C('mana', '小野寺さんのために授乳・休憩スペースを職員に頼む', 'c3_night', { icon: '🍼', effects: { helped: 'onodera', time: 30, npc: { id: 'onodera', trust: 30 }, know: ['k_vulnerable', 'k_privacy'], report: { cat: 'care', score: 2, note: '乳児連れの母親のスペース確保を運営に頼んだ' } } }),
-      C('ishikawa', '石川さんの持病を職員と救護所に伝える', 'c3_night', { icon: '💉', effects: { helped: 'ishikawa', time: 30, npc: { id: 'ishikawa', trust: 30 }, know: ['k_meds', 'k_vulnerable'], report: { cat: 'care', score: 3, note: '持病の薬を失った人を医療につないだ' } } }),
-      C('rest', '自分も限界だ。横になる', 'c3_night', { icon: '😴', effects: { stamina: 20, time: 30 } }),
+      C('emily', 'エミリーとリンをつなぎ、多言語の公式情報を一緒に探す', 'c3_eve', { icon: '🌏', effects: { helped: 'emily', time: 30, npc: [{ id: 'emily', trust: 30 }, { id: 'lin', trust: 20 }], know: 'k_foreign', report: { cat: 'care', score: 2, note: '外国人旅行者に情報支援をつないだ' } } }),
+      C('mana', '小野寺さんのために授乳・休憩スペースを職員に頼む', 'c3_eve', { icon: '🍼', effects: { helped: 'onodera', time: 30, npc: { id: 'onodera', trust: 30 }, know: ['k_vulnerable', 'k_privacy'], report: { cat: 'care', score: 2, note: '乳児連れの母親のスペース確保を運営に頼んだ' } } }),
+      C('ishikawa', '石川さんの持病を職員と救護所に伝える', 'c3_eve', { icon: '💉', effects: { helped: 'ishikawa', time: 30, npc: { id: 'ishikawa', trust: 30 }, know: ['k_meds', 'k_vulnerable'], report: { cat: 'care', score: 3, note: '持病の薬を失った人を医療につないだ' } } }),
+      C('rest', '自分も限界だ。横になる', 'c3_eve', { icon: '😴', effects: { stamina: 20, time: 30 } }),
     ] }),
   S('c3_night', 3, 'night_shelter', [
     ['', '深夜。また揺れる。余震だ。誰かが小さく悲鳴を上げ、すぐに静かになった。'],
@@ -76,11 +76,11 @@ export const ch3: Scene[] = [
     ['', '有明方面。歩道のあちこちから砂が噴き出し、マンホールが突き出している。'],
     ['', '人の列が、黙々と東へ歩いていく。'],
     ['武藤', '（ずぶ濡れの若者を背負って）……そこの人、手ぇ貸してくれ。足が折れてる。'],
-  ], { onEnter: { loc: 'ariake', time: 60, risk: { kind: 'liquefaction', level: 10, label: '噴砂の段差でつまずいた' }, know: 'k_liquefaction' }, alt: [], choices: [
-      C('help_muto', '若者（森本）を一緒に救護所まで運ぶ', 'c3_walk2', { icon: '🤝', if: { flag: 'morimoto_went_shore' }, effects: { time: 40, stamina: -15, helped: 'morimoto', npc: { id: 'muto', trust: 30 }, report: { cat: 'aid', score: 2, note: '負傷者の搬送を手伝った' } } }),
-      C('help_generic', '武藤と一緒に、倒れていた人を救護所へ運ぶ', 'c3_walk2', { icon: '🤝', if: { notFlag: 'morimoto_went_shore' }, effects: { time: 40, stamina: -15, helped: 'muto', npc: { id: 'muto', trust: 30 }, report: { cat: 'aid', score: 2, note: '負傷者の搬送を手伝った' } } }),
-      C('go', '「すみません」と頭を下げ、先を急ぐ', 'c3_walk2', { icon: '🚶', effects: { mental: -6 } }),
-      C('turn', 'これは無理だ。一時滞在施設へ引き返す', 'c3_hall', { icon: '↩', effects: { unflag: 'walking', loc: 'aomi_hall', time: 50, flag: 'stay_decided', report: { cat: 'stay', score: 2, note: '徒歩帰宅の途中で状況を見て引き返した' } } }),
+  ], { onEnter: { loc: 'ariake', time: 60, risk: { kind: 'liquefaction', level: 10, label: '噴砂の段差でつまずいた' }, know: 'k_liquefaction' }, alt: [{ if: { preset: 'student' }, goto: 'c3s_walk' }, { if: { preset: 'parent' }, goto: 'c3p_walk' }], choices: [
+      C('help_muto', '若者（森本）を一緒に救護所まで運ぶ', 'c3_walk2b', { icon: '🤝', if: { flag: 'morimoto_went_shore' }, effects: { time: 40, stamina: -15, helped: 'morimoto', npc: { id: 'muto', trust: 30 }, report: { cat: 'aid', score: 2, note: '負傷者の搬送を手伝った' } } }),
+      C('help_generic', '武藤と一緒に、倒れていた人を救護所へ運ぶ', 'c3_walk2b', { icon: '🤝', if: { notFlag: 'morimoto_went_shore' }, effects: { time: 40, stamina: -15, helped: 'muto', npc: { id: 'muto', trust: 30 }, report: { cat: 'aid', score: 2, note: '負傷者の搬送を手伝った' } } }),
+      C('go', '「すみません」と頭を下げ、先を急ぐ', 'c3_walk2b', { icon: '🚶', effects: { mental: -6 } }),
+      C('turn', 'これは無理だ。一時滞在施設へ引き返す', 'c3_hall', { icon: '↩', effects: { unflag: 'walking', loc: 'aomi_hall', time: 50, flag: ['stay_decided', 'turned_back'], report: { cat: 'stay', score: 2, note: '徒歩帰宅の途中で状況を見て引き返した' } } }),
     ] }),
   S('c3_walk2', 3, 'walk_night', [
     ['', '日が落ちた。停電で信号も街灯も消えている。'],
@@ -103,7 +103,7 @@ export const ch3: Scene[] = [
     ['早瀬', 'ここでは、重い人から順に診ます。あなたは記録と水をお願い。'],
     ['', '運ばれてきた男性は、数時間、瓦礫に脚を挟まれていたという。'],
     ['大川', '（消防隊員・架空）挟まれていた時間が長い人は、救出後に急変することがある。医療につなぐまで目を離さないで。'],
-  ], { onEnter: { know: ['k_crush', 'k_119', 'k_aed'], flag: 'supplied', water: 20, time: 120 }, choices: [
+  ], { alt: [{ if: { preset: 'parent' }, goto: 'c3p_aid' }], onEnter: { know: ['k_crush', 'k_119', 'k_aed'], flag: 'supplied', water: 20, time: 120 }, choices: [
       C('record', '負傷者の名前と状態を記録し、家族の問い合わせに備える', 'c3_aid2', { icon: '📝', effects: { report: { cat: 'aid', score: 2, note: '救護所で記録係を務めた' }, npc: { id: 'hayase', trust: 15 } } }),
       C('aed', 'AEDを取りに走る', 'c3_aid2', { icon: '⚡', effects: { stamina: -8, report: { cat: 'aid', score: 2, note: 'AEDを運んだ' }, flag: 'aed_run' } }),
     ] }),
@@ -127,15 +127,15 @@ export const ch4: Scene[] = [
   S('c4_dawn_walk', 4, 'dawn', [
     ['', '夜が明けた。足の裏が焼けるように痛い。'],
     ['', 'それでも、見覚えのある街並みが近づいてくる。'],
-  ], { setT: 960, onEnter: { flag: ['net_restored', 'supplied'], unflag: 'walking', water: 20, loc: 'home', time: 60 }, next: 'c4_home' }),
+  ], { alt: [{ if: { preset: 'worker' }, goto: 'c4w_arrive' }], setT: 960, onEnter: { flag: ['net_restored', 'supplied'], unflag: 'walking', water: 20, loc: 'home', time: 60 }, next: 'c4_home' }),
   S('c4_home', 4, 'reunion', [['', '…']], { alt: [
-      { if: { preset: 'student' }, goto: 'c4_st' }, { if: { preset: 'parent' }, goto: 'c4_pa' }, { if: { flag: 'meetpoint' }, goto: 'c4_wk_meet' }, { if: {}, goto: 'c4_wk_search' }] }),
+      { if: { preset: 'student' }, goto: 'c4s_dawn' }, { if: { preset: 'parent' }, goto: 'c4p_road' }, { if: {}, goto: 'c4w_town' }] }),
   S('c4_wk_meet', 4, 'reunion', [
     ['', '{meet}。'],
     ['', '時計の下に、二つの影。'],
     ['{fam2}', 'パパぁ！！'],
     ['{fam1}', '……決めておいて、よかったね。'],
-  ], { photoShow: 'family_call', onEnter: { mental: 30, flag: 'reunited_family' }, next: 'c4_shelter' }),
+  ], { photoShow: 'family_call', onEnter: { mental: 30, flag: 'reunited_family' }, next: 'c4w_house' }),
   S('c4_wk_search', 4, 'reunion', [
     ['', '自宅のマンションは入口に貼り紙がされていた。「立入注意（ゲーム内の架空表示）」。'],
     ['', '家族はいない。学校、公園、避難所——どこを探せばいい？'],
@@ -146,7 +146,7 @@ export const ch4: Scene[] = [
     ['', '避難所の掲示板。手書きの紙の中に、見慣れた字。「{fam1}・{fam2} 無事 体育館にいます」'],
     ['{fam1}', '……どこ探していいか、分からなかった。あなたも、私も。'],
     ['', '{fam2}は、あなたの服をつかんだまま眠ってしまった。'],
-  ], { photoShow: 'family_call', onEnter: { mental: 20, flag: 'reunited_family', know: 'k_meetpoint' }, next: 'c4_shelter' }),
+  ], { photoShow: 'family_call', onEnter: { mental: 20, flag: 'reunited_family', know: 'k_meetpoint' }, next: 'c4w_house' }),
   S('c4_st', 4, 'reunion', [
     ['', '品川。'],
   ], { alt: [{ if: { flag: 'fam1_moved_safe' }, goto: 'c4_st_safe' }], lines: [['', '品川駅の港南口。'], ['', '{fam1}は、一晩中ここにいた。冷えきった手で、あなたの手を握った。'], ['{fam1}', '約束、したから。……来なかったら、どうしようって。'], ['', '約束は人を守り、人を危険な場所に縛りつけもする。']],
@@ -157,7 +157,7 @@ export const ch4: Scene[] = [
   ], { onEnter: { mental: 25, flag: 'reunited_partner' }, next: 'c4_st_gma' }),
   S('c4_st_gma', 4, 'family_away', [
     ['', '世田谷の祖母のことが、ずっと胸に引っかかっている。'],
-  ], { alt: [{ if: { flag: 'grandma_safe' }, goto: 'c4_st_gma_ok' }, { if: { notFlag: 'fam2_trapped' }, goto: 'c4_st_gma_ok' }], lines: [['', '病院の掲示板。負傷者名簿の中に「ふみ」の名前。'], ['', '箪笥の下から助け出されたが、長く挟まれていた脚の影響で、容体が安定しないという。']],
+  ], { alt: [{ if: { flag: 'st_gma_first' }, goto: 'c4_shelter' }, { if: { flag: 'grandma_safe' }, goto: 'c4_st_gma_ok' }, { if: { notFlag: 'fam2_trapped' }, goto: 'c4_st_gma_ok' }], lines: [['', '病院の掲示板。負傷者名簿の中に「ふみ」の名前。'], ['', '箪笥の下から助け出されたが、長く挟まれていた脚の影響で、容体が安定しないという。']],
     onEnter: { know: ['k_crush', 'k_furniture'], time: 600 }, next: 'c4_st_gma2' }),
   S('c4_st_gma2', 4, 'aid', [
     ['{fam2}', '……葵ちゃん。羊羹、あるからね。'],
@@ -173,7 +173,7 @@ export const ch4: Scene[] = [
     ['{fam1}', '律！　……健司！'],
     ['{fam2}', 'ママ、かいがら！　いちばん大きいの！'],
     ['', 'ポケットの中で、貝がらは一つも割れていなかった。'],
-  ], { photoShow: 'family_call', onEnter: { mental: 30, flag: 'reunited_family', time: 600 }, next: 'c4_shelter' }),
+  ], { photoShow: 'family_call', onEnter: { mental: 30, flag: 'reunited_family', time: 600 }, next: 'c4p_misaki' }),
   S('c4_shelter', 4, 'shelter_life', [
     ['', '数日後。地域の避難所（架空の小学校）。'],
     ['田辺', 'トイレ掃除の当番、足りないのよ。それと、夜、女性用の更衣スペースに男の人が入ってきたって苦情が。'],
@@ -209,12 +209,12 @@ export const ch5: Scene[] = [
   S('c5_friend_ok', 5, 'rebuild', [
     ['拓海', '大阪、行くことにした。……あの日の写真、送ってくれよ。'],
     ['拓海', '向こうで防災士の講座、受けてみる。あの日、何もできない自分がいやだったから。'],
-  ], { photoShow: 'promenade_two', next: 'c5_final' }),
+  ], { photoShow: 'promenade_two', next: 'c5_preset' }),
   S('c5_friend_lost', 5, 'memorial', [
     ['', '拓海の葬儀。仙台から来た両親が、あなたに頭を下げた。'],
     ['', '拓海が助けた人が、焼香の列に並んでいた。'],
     ['', 'あの時「一人で行くな」と言えていたら。答えの出ない問いを、あなたはこれからも抱えていく。'],
-  ], { photoShow: 'promenade_two', onEnter: { mental: -20 }, next: 'c5_final' }),
+  ], { photoShow: 'promenade_two', onEnter: { mental: -20 }, next: 'c5_preset' }),
   S('c5_final', 5, 'rebuild', [
     ['', '街は、少しずつ戻っていく。戻らないものもある。'],
     ['', '今夜は——'],
