@@ -258,7 +258,7 @@ export const ch2: Scene[] = [
     ['', '岸辺の手すりは外れていた。海面が、いつもより高い。'],
   ], { onEnter: { loc: 'promenade', time: 20, risk: { kind: 'liquefaction', level: 25, label: '液状化した遊歩道で転倒' }, know: ['k_liquefaction', 'k_tsunami'] }, choices: [
       C('back', '引き返す', 'c2_contact', { icon: '↩', effects: { time: 20, risk: { kind: 'water', level: 12, label: '濡れた体が冷えてきた' } } }),
-      C('push', 'そのまま有明まで進む', 'c2_contact', { icon: '➡', effects: { time: 40, risk: { kind: 'water', level: 35, label: '崩れた護岸で海水に転落しかけた' }, report: { cat: 'evac', score: -3, note: '危険を認識しながら水際を進んだ' } } }),
+      C('push', 'そのまま有明まで進む', 'c2_contact', { icon: '➡', effects: { time: 40, risk: { kind: 'water', level: 22, label: '崩れた護岸で海水に転落しかけた' }, report: { cat: 'evac', score: -3, note: '危険を認識しながら水際を進んだ' } } }),
     ] }),
   S('c2_contact', 2, 'phone_171', [
     ['', '{fam1}に電話をかける。'],

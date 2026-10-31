@@ -28,7 +28,7 @@ export const ch3z: Scene[] = [
   ], { onEnter: { time: 40, know: 'k_infection' }, choices: [
       C('write', '「やさしい日本語なら書けます」と一緒に張り紙を作る', 'c3_eve', { icon: '✍', effects: { flag: 'helped_lin', npc: { id: 'lin', trust: 25 }, know: 'k_foreign', report: { cat: 'care', score: 2, note: '多言語・やさしい日本語の掲示づくりを手伝った' } }, result: '「流さないでください」を「ながさない　で　ください」に。「凝固剤」を「かためる　くすり」に。言葉を短くするほど、伝えたいことがはっきりしていく。リンは書き上がった紙を見て、「これ、わたしのおかあさんでも読めます」と言った。' }),
       C('wash', '列に並び、ウェットティッシュで手を拭いてから食事にする', 'c3_eve', { icon: '🧻', effects: { report: { cat: 'stay', score: 1, note: '避難所で手指の衛生に気を配った' } } }),
-      C('skip', '水を飲むのを控えて、トイレに行かずに済ませる', 'c3_eve', { icon: '🚱', effects: { water: -10, risk: { kind: 'exhaustion', level: 8, label: 'トイレを我慢して水分を控え、体調を崩しかけた' }, know: 'k_dvt', report: { cat: 'stay', score: -1, note: 'トイレを避けるために水分を控えた' } }, result: '喉が渇く。けれど、あの列にもう一度並ぶのかと思うと、ペットボトルに手が伸びなかった。——それが一番危ないのだと、あとで早瀬に叱られることになる。' }),
+      C('skip', '水を飲むのを控えて、トイレに行かずに済ませる', 'c3_eve', { icon: '🚱', effects: { water: -10, risk: { kind: 'exhaustion', level: 4, label: 'トイレを我慢して水分を控え、体調を崩しかけた' }, know: 'k_dvt', report: { cat: 'stay', score: -1, note: 'トイレを避けるために水分を控えた' } }, result: '喉が渇く。けれど、あの列にもう一度並ぶのかと思うと、ペットボトルに手が伸びなかった。——それが一番危ないのだと、あとで早瀬に叱られることになる。' }),
     ] }),
 
   // ---- 深夜の群像（c3_eve_end / c3_takumi → c3_mid → c3_night）----

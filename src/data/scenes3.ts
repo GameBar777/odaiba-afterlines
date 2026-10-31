@@ -124,7 +124,7 @@ export const ch3x: Scene[] = [
     ['', '大人一人なら「行ける」と思えた距離が、五歳を背負うと、まったく違う距離になる。'],
   ], { onEnter: { loc: 'ariake', time: 30, stamina: -12, know: ['k_walk_home', 'k_vulnerable'] }, choices: [
       C('back', '律の手を握り直し、一時滞在施設へ引き返す', 'c3_hall', { icon: '↩', effects: { unflag: 'walking', loc: 'aomi_hall', time: 40, flag: ['stay_decided', 'turned_back'], report: { cat: 'stay', score: 3, note: '子連れの夜間徒歩をやめ、一時滞在施設に戻った' } }, result: '戻る道のほうが短く感じた。律はホールの入口で、もう半分眠っていた。' }),
-      C('push', '「もう少しだけ頑張ろう」と歩き続ける', 'c3_walk2', { icon: '🏃', effects: { time: 40, risk: { kind: 'exhaustion', level: 16, label: '子どもを背負ったまま段差で膝をついた' }, npc: { id: 'fam2', trust: -10 }, mental: -8, report: { cat: 'evac', score: -3, note: '幼児を連れて夜間の長距離徒歩を続けた' } } }),
+      C('push', '「もう少しだけ頑張ろう」と歩き続ける', 'c3_walk2', { icon: '🏃', effects: { time: 40, risk: { kind: 'exhaustion', level: 12, label: '子どもを背負ったまま段差で膝をついた' }, npc: { id: 'fam2', trust: -10 }, mental: -8, report: { cat: 'evac', score: -3, note: '幼児を連れて夜間の長距離徒歩を続けた' } } }),
     ] }),
   R('c3_walk2b', 3, [
     { if: { preset: 'worker', notFlag: 'calmed_bando' }, goto: 'c3w_bando' },
@@ -194,7 +194,7 @@ export const ch3y: Scene[] = [
     ['', '隣で、若い女性が同じように画面を握りしめていた。'],
     ['春野', '……母と、朝、喧嘩したんです。「もう帰ってこない」って言っちゃって。'],
   ], { fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
-      C('171play', '171の使い方を教え、一緒に伝言を確認する', 'c3_171', { icon: '☎', effects: { helped: 'haruno', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } }, result: '「お母さんも、あなたの声を探してると思う」。言いながら、それは自分に向けた言葉でもあった。' }),
+      C('171play', '171の使い方を教え、一緒に伝言を確認する', 'c3_171', { icon: '☎', effects: { helped: 'haruno', flag: 'helped_haruno_any', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } }, result: '「お母さんも、あなたの声を探してると思う」。言いながら、それは自分に向けた言葉でもあった。' }),
       C('listen', '黙って話を聞く', 'c3_171', { icon: '🤲', effects: { npc: { id: 'haruno', trust: 15 }, mental: 3 } }),
     ] }),
   S('c3s_night', 3, 'night_shelter', [
@@ -203,7 +203,7 @@ export const ch3y: Scene[] = [
     ['春野', '……母と、朝、喧嘩したんです。「もう帰ってこない」って言っちゃって。……子どもみたいでしょ。'],
     ['', '子どもみたいなのは自分も同じだ、と思った。祖母に、週末の約束を「たぶん」と返したままだった。'],
   ], { fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
-      C('171play', '「わたしもさっき覚えたんです」171の使い方を一緒に確かめる', 'c3_171', { icon: '☎', effects: { helped: 'haruno', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
+      C('171play', '「わたしもさっき覚えたんです」171の使い方を一緒に確かめる', 'c3_171', { icon: '☎', effects: { helped: 'haruno', flag: 'helped_haruno_any', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
       C('listen', '黙って隣にいる', 'c3_171', { icon: '🤲', effects: { npc: { id: 'haruno', trust: 15 }, mental: 3 } }),
     ] }),
   S('c3p_night', 3, 'night_shelter', [
@@ -212,7 +212,7 @@ export const ch3y: Scene[] = [
     ['', '隣で、若い女性がスマホを握りしめている。'],
     ['春野', '……ごめんなさい、うるさくて。母と、朝、喧嘩したんです。「もう帰ってこない」って。'],
   ], { fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
-      C('171play', '律を抱いたまま、171の使い方を教える', 'c3_171', { icon: '☎', effects: { helped: 'haruno', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } }, result: '眠りかけた律が「ママにも、でんわする？」と聞いた。春野は、泣きながら笑った。' }),
+      C('171play', '律を抱いたまま、171の使い方を教える', 'c3_171', { icon: '☎', effects: { helped: 'haruno', flag: 'helped_haruno_any', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } }, result: '眠りかけた律が「ママにも、でんわする？」と聞いた。春野は、泣きながら笑った。' }),
       C('listen', '黙って話を聞く', 'c3_171', { icon: '🤲', effects: { npc: { id: 'haruno', trust: 15 }, mental: 3 } }),
     ] }),
 ];
@@ -253,7 +253,7 @@ export const ch4x: Scene[] = [
     ['', 'また揺れた。小さい。でも、外壁のひびから、ぱらぱらと何かが落ちた。'],
   ], { fx: 'aftershock', onEnter: { know: ['k_okyu', 'k_aftershock'] }, choices: [
       C('quick', '家族は外に残し、自分だけ短時間入る。必要な物だけ取り、出るときにブレーカーを落とす', 'c4w_talk', { icon: '⚡', effects: { time: 30, risk: { kind: 'fall', level: 6, label: '廊下に落ちていた照明カバーで手を切りかけた' }, item: 'radio', flag: ['breaker_off', 'got_usagi'], know: 'k_breaker', report: { cat: 'safety', score: 3, note: '「要注意」の建物に短時間だけ入り、ブレーカーを落として出た' } }, result: 'うさぎのぬいぐるみは、倒れた本棚の隙間にいた。玄関でブレーカーのレバーを下ろす。カチン、という音が、妙に大きく響いた。' }),
-      C('long', '今のうちに片付けながら、運べる物を全部運び出す', 'c4w_talk', { icon: '📦', effects: { time: 150, stamina: -20, risk: { kind: 'collapse', level: 16, label: '余震で棚が倒れ、頭をかばった腕を打った' }, flag: 'got_usagi', report: { cat: 'safety', score: -3, note: '余震が続く中、傷んだ建物に長時間とどまった' } } }),
+      C('long', '今のうちに片付けながら、運べる物を全部運び出す', 'c4w_talk', { icon: '📦', effects: { time: 150, stamina: -20, risk: { kind: 'collapse', level: 12, label: '余震で棚が倒れ、頭をかばった腕を打った' }, flag: 'got_usagi', report: { cat: 'safety', score: -3, note: '余震が続く中、傷んだ建物に長時間とどまった' } } }),
       C('stay_out', '入らない。うさぎは、あとで迎えに来ると陽菜に約束する', 'c4w_talk', { icon: '🚫', effects: { mental: -4, npc: { id: 'fam2', trust: 5 }, report: { cat: 'safety', score: 2, note: '判定表示を見て、傷んだ建物に入らなかった' } }, result: '陽菜は唇をかんで、それから小さくうなずいた。「うさちゃん、ひとりで平気だよね。おうちの係だもんね」。' }),
     ] }),
   S('c4w_talk', 4, 'night_shelter', [
@@ -269,7 +269,7 @@ export const ch4x: Scene[] = [
     ['{fam1}', '陽菜がね、ランドセルに入れてたの。避難のときも、これだけは絶対持つって。……来週、あなたの誕生日でしょ。'],
     ['', '封筒には、鉛筆で「パパへ　まだあけないで」。'],
     ['', 'あけなかった。来週、ちゃんと、家族そろって開ける日まで。'],
-  ], { onEnter: { flag: 'hina_card', mental: 10 }, next: 'c4_shelter' }),
+  ], { onEnter: { flag: 'hina_card', mental: 10 }, next: 'c4w_hina_night' }),
 
   // ---- 大学生：二つの約束 ----
   S('c4s_dawn', 4, 'dawn', [
@@ -302,7 +302,7 @@ export const ch4x: Scene[] = [
     ['', '蓮は、柱の前に座っていた。丸一日、ほとんど動かずに。'],
     ['{fam1}', '171、聞いた。……聞いたけど、動けなかった。ここを離れたら、もう会えない気がして。'],
     ['', '唇が紫色だった。約束は人を守り、人をその場所に縛りつけもする。'],
-  ], { onEnter: { npc: { id: 'fam1', hp: -30, injured: true }, flag: 'reunited_partner', mental: 5, know: ['k_hypothermia', 'k_dvt'] }, next: 'c4_shelter' }),
+  ], { onEnter: { npc: { id: 'fam1', hp: -30, injured: true }, flag: 'reunited_partner', mental: 5, know: ['k_hypothermia', 'k_dvt'] }, next: 'c4s_ren_talk' }),
 
   // ---- 父親：品川へ ----
   S('c4p_road', 4, 'dawn', [
@@ -310,8 +310,8 @@ export const ch4x: Scene[] = [
     ['', '一部の路線が運転を再開する見込み（ゲーム内の架空情報）。駅には、もう長い列ができている。'],
     ['', '律の靴ひもを結び直す。昨日の砂が、まだ靴底から落ちてくる。'],
   ], { onEnter: { know: 'k_official' }, choices: [
-      C('line', '情報を確かめ、運転再開を待って列に並ぶ', 'c4_pa', { icon: '🚃', effects: { time: 240, report: { cat: 'evac', score: 2, note: '子連れで、公式情報を確認して公共交通の再開を待った' } } }),
-      C('walk_day', '明るいうちに、休憩を挟みながら律と歩く', 'c4_pa', { icon: '🚶', effects: { time: 300, stamina: -20, water: -15, npc: { id: 'fam2', trust: -5 }, report: { cat: 'evac', score: 0, note: '日中に休憩を挟みながら子連れで歩いた' } } }),
+      C('line', '情報を確かめ、運転再開を待って列に並ぶ', 'c4p_train', { icon: '🚃', effects: { time: 240, report: { cat: 'evac', score: 2, note: '子連れで、公式情報を確認して公共交通の再開を待った' } } }),
+      C('walk_day', '明るいうちに、休憩を挟みながら律と歩く', 'c4p_daywalk', { icon: '🚶', effects: { time: 300, stamina: -20, water: -15, npc: { id: 'fam2', trust: -5 }, report: { cat: 'evac', score: 0, note: '日中に休憩を挟みながら子連れで歩いた' } } }),
     ] }),
   S('c4p_misaki', 4, 'aid', [
     ['', '病院の通用口。美咲の白衣の袖は、乾いた誰かの血で茶色くなっていた。'],
@@ -321,12 +321,12 @@ export const ch4x: Scene[] = [
       C('go_back', '「行ってこい。律は俺が見る。避難所で待ってる」', 'c4p_letter', { icon: '🫡', effects: { flag: 'pa_misaki_work', npc: { id: 'fam1', trust: 25 }, report: { cat: 'care', score: 2, note: '医療の現場に戻る家族を支え、子どもの世話を引き受けた' } } }),
       C('ask_stay', '「一晩だけでいい、律のそばにいてやってくれないか」', 'c4p_letter', { icon: '🙏', effects: { flag: 'pa_misaki_stay', npc: { id: 'fam1', trust: -5 }, mental: 5 }, result: '美咲は長い間黙って、それから「上に聞いてくる」と言った。戻ってきた彼女は、三時間だけ、と指を三本立てた。' }),
     ] }),
-  S('c4p_letter', 4, 'reunion', [['', '…']], { alt: [{ if: { flag: 'ritsu_letter' }, goto: 'c4p_letter_yes' }, { if: {}, goto: 'c4_shelter' }] }),
+  S('c4p_letter', 4, 'reunion', [['', '…']], { alt: [{ if: { flag: 'ritsu_letter' }, goto: 'c4p_letter_yes' }, { if: {}, goto: 'c4p_ritsu_night' }] }),
   S('c4p_letter_yes', 4, 'reunion', [
     ['', '律がポケットから、四つにたたんだ紙を出す。青いクレヨンの、三つの丸。'],
     ['律', 'いちばん大きいのが、ママ。'],
     ['', '美咲はそれを白衣の胸ポケットにしまった。その日、彼女はそのポケットに何度も手を当てながら、夜まで働いたという。'],
-  ], { onEnter: { mental: 15, flag: 'misaki_has_letter' }, next: 'c4_shelter' }),
+  ], { onEnter: { mental: 15, flag: 'misaki_has_letter' }, next: 'c4p_ritsu_night' }),
 ];
 
 // ============================================================

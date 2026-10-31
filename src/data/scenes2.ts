@@ -18,7 +18,7 @@ export const ch3: Scene[] = [
     ['', '倒れた棚の向こうに、若い女性が足を挟まれていた。'],
     ['拓海', 'せーので持ち上げる！'],
   ], { choices: [
-      C('lift', '二人で棚を持ち上げ、引き出す', 'c3_rescue2', { icon: '💪', effects: { time: 15, stamina: -15, risk: { kind: 'fire', level: 22, label: '煙を吸い、熱で腕を焼いた' }, helped: 'haruno', flag: 'rescued_haruno' } }),
+      C('lift', '二人で棚を持ち上げ、引き出す', 'c3_rescue2', { icon: '💪', effects: { time: 15, stamina: -15, risk: { kind: 'fire', level: 14, label: '煙を吸い、熱で腕を焼いた' }, helped: 'haruno', flag: 'rescued_haruno' } }),
       C('shout_ff', '位置を確かめ、すぐ戻って消防に伝える', 'c3_announce', { icon: '🚒', effects: { time: 10, risk: { kind: 'fire', level: 8, label: '煙を少し吸った' }, flag: 'warned_friend', know: ['k_119', 'k_crush'], report: { cat: 'aid', score: 3, note: '要救助者の位置を確認して消防に伝えた' } }, result: '駆けつけた消防隊が女性を救出した。「長く挟まれていた人を無理に引き出さないで正解でした」と隊員は言った。' }),
     ] }),
   S('c3_rescue2', 3, 'smoke', [
@@ -60,7 +60,7 @@ export const ch3: Scene[] = [
     ['', '隣で、若い女性がスマホを握りしめている。'],
     ['春野', '……母と、朝、喧嘩したんです。「もう帰ってこない」って言っちゃって。'],
   ], { alt: [{ if: { preset: 'worker' }, goto: 'c3w_night' }, { if: { preset: 'student' }, goto: 'c3s_night' }, { if: { preset: 'parent' }, goto: 'c3p_night' }], fx: 'aftershock', onEnter: { time: 300, know: ['k_aftershock', 'k_dvt', 'k_water'] }, choices: [
-      C('171play', '171の使い方を教え、一緒に伝言を確認する', 'c3_171', { icon: '☎', effects: { helped: 'haruno', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
+      C('171play', '171の使い方を教え、一緒に伝言を確認する', 'c3_171', { icon: '☎', effects: { helped: 'haruno', flag: 'helped_haruno_any', npc: { id: 'haruno', trust: 30 }, report: { cat: 'contact', score: 2, note: '他の人に171の使い方を教えた' } } }),
       C('listen', '黙って話を聞く', 'c3_171', { icon: '🤲', effects: { npc: { id: 'haruno', trust: 15 }, mental: 3 } }),
     ] }),
   S('c3_171', 3, 'phone_171', [
@@ -87,7 +87,7 @@ export const ch3: Scene[] = [
     ['', 'コンビニの前に「災害時帰宅支援ステーション」のステッカー（ゲーム内の架空店舗）。水道水とトイレを貸している。'],
   ], { fx: 'dark', onEnter: { time: 120, know: 'k_walk_home' }, choices: [
       C('rest', '水をもらい、トイレを借りて休む', 'c3_walk2c', { icon: '🚰', effects: { water: 30, stamina: 15, time: 40, report: { cat: 'evac', score: 1, note: '徒歩中に支援拠点で休息と水分補給をした' } } }),
-      C('push', '休まず歩き続ける', 'c3_walk2c', { icon: '🏃', effects: { time: 10, risk: { kind: 'exhaustion', level: 14, label: '暗い歩道の段差で足をひねった' }, report: { cat: 'evac', score: -1, note: '夜間に休まず歩き続けた' } } }),
+      C('push', '休まず歩き続ける', 'c3_walk2c', { icon: '🏃', effects: { time: 10, risk: { kind: 'exhaustion', level: 10, label: '暗い歩道の段差で足をひねった' }, report: { cat: 'evac', score: -1, note: '夜間に休まず歩き続けた' } } }),
     ] }),
   S('c3_walk3', 3, 'walk_night', [
     ['', '運河を渡る橋の手前。向こう岸の空が赤い。火災の煙が、風に乗ってこちらへ流れてくる。'],
@@ -96,8 +96,8 @@ export const ch3: Scene[] = [
     ['', 'スマホの電池は、もう心もとない。明るい情報も暗い情報も、同じ小さな画面の中で、同じ大きさの文字で流れていく。いま、この橋の上で、正しいことを知っている人は、たぶん一人もいない。'],
   ], { fx: 'dark', onEnter: { time: 60, know: 'k_smoke' }, choices: [
       C('detour', '風上へ大きく迂回する（2時間余計にかかる）', 'c4_dawn_walk', { icon: '↪', effects: { time: 120, stamina: -12, water: -10, report: { cat: 'evac', score: 2, note: '火災の煙を避けて迂回した' } } }),
-      C('through', '煙の中を突っ切る', 'c4_dawn_walk', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 30, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
-      C('wait', '橋のたもとの公園で夜明けを待つ', 'c4_dawn_walk', { icon: '🌙', effects: { time: 360, risk: { kind: 'water', level: 10, label: '夜の冷え込みで体が冷えた' }, report: { cat: 'stay', score: 2, note: '夜間の移動をやめ、明るくなるまで待った' } } }),
+      C('through', '煙の中を突っ切る', 'c4_dawn_walk', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 26, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
+      C('wait', '橋のたもとの公園で夜明けを待つ', 'c4_dawn_walk', { icon: '🌙', effects: { time: 240, risk: { kind: 'water', level: 10, label: '夜の冷え込みで体が冷えた' }, report: { cat: 'stay', score: 2, note: '夜間の移動をやめ、明るくなるまで待った' } } }),
     ] }),
   // --- aid route ---
   S('c3_aid', 3, 'aid', [
@@ -125,7 +125,7 @@ export const ch4: Scene[] = [
     ['', '朝。海の向こうから日が昇る。昨日と同じ太陽なのが、不思議だった。'],
     ['宮内', '（ゲーム内の架空情報）一部の路線で、点検後の運転再開の見込みが発表されました。徒歩で帰宅される方は、帰宅支援のルート情報を確認してください。'],
   ], { setT: 960, onEnter: { flag: ['net_restored', 'supplied'], know: 'k_shelter_vs_place' }, info: ['i_off_restart', 'i_sns_looting'], choices: [
-      C('home', '情報を確認し、明るいうちに{home}へ向かう', 'c4_home', { icon: '🚶', effects: { time: 240, stamina: -20, water: -15, loc: 'home', report: { cat: 'evac', score: 2, note: '翌朝、情報を確認して明るいうちに移動した' } } }),
+      C('next', '出発の支度をする', 'c4_dawn2', { icon: '🎒' }),
     ] }),
   S('c4_dawn_walk', 4, 'dawn', [
     ['', '夜が明けた。足の裏が焼けるように痛い。'],
@@ -153,11 +153,11 @@ export const ch4: Scene[] = [
   S('c4_st', 4, 'reunion', [
     ['', '品川。'],
   ], { alt: [{ if: { flag: 'fam1_moved_safe' }, goto: 'c4_st_safe' }], lines: [['', '品川駅の港南口。'], ['', '{fam1}は、一晩中ここにいた。冷えきった手で、あなたの手を握った。'], ['{fam1}', '約束、したから。……来なかったら、どうしようって。'], ['', '約束は人を守り、人を危険な場所に縛りつけもする。']],
-    onEnter: { mental: 15, npc: { id: 'fam1', hp: -20, injured: true }, flag: 'reunited_partner' }, next: 'c4_st_gma' }),
+    onEnter: { mental: 15, npc: { id: 'fam1', hp: -20, injured: true }, flag: 'reunited_partner' }, next: 'c4s_ren_talk' }),
   S('c4_st_safe', 4, 'reunion', [
     ['', '品川の一時滞在施設。'],
     ['{fam1}', '171、聞いたよ。「動かない」って言ってたから、俺も動かなかった。'],
-  ], { onEnter: { mental: 25, flag: 'reunited_partner' }, next: 'c4_st_gma' }),
+  ], { onEnter: { mental: 25, flag: 'reunited_partner' }, next: 'c4s_ren_talk' }),
   S('c4_st_gma', 4, 'family_away', [
     ['', '世田谷の祖母のことが、ずっと胸に引っかかっている。'],
   ], { alt: [{ if: { flag: 'st_gma_first' }, goto: 'c4_shelter' }, { if: { flag: 'grandma_safe' }, goto: 'c4_st_gma_ok' }, { if: { notFlag: 'fam2_trapped' }, goto: 'c4_st_gma_ok' }], lines: [['', '病院の掲示板。負傷者名簿の中に「ふみ」の名前。'], ['', '箪笥の下から助け出されたが、長く挟まれていた脚の影響で、容体が安定しないという。']],
@@ -178,13 +178,13 @@ export const ch4: Scene[] = [
     ['', 'ポケットの中で、貝がらは一つも割れていなかった。'],
   ], { photoShow: 'family_call', onEnter: { mental: 30, flag: 'reunited_family', time: 600 }, next: 'c4p_misaki' }),
   S('c4_shelter', 4, 'shelter_life', [
-    ['', '数日後。地域の避難所（架空の小学校）。'],
+    ['', '数日後。地域の避難所（架空の小学校）。巡回の医療チームが、ようやく傷を診てくれた。'],
     ['田辺', 'トイレ掃除の当番、足りないのよ。それと、夜、女性用の更衣スペースに男の人が入ってきたって苦情が。'],
     ['', '体育館の隅で、高齢の男性が三日間ほとんど動かずに座っている。'],
-  ], { onEnter: { time: 4320, know: ['k_infection', 'k_privacy', 'k_dvt'] }, choices: [
-      C('duty', 'トイレ掃除の当番に入り、更衣スペースの見回りを提案する', 'c4_shelter2', { icon: '🧹', effects: { report: { cat: 'care', score: 2, note: '避難所の衛生と防犯の運営に参加した' }, npc: { id: 'tanabe', trust: 20 } } }),
-      C('old', '高齢の男性に声をかけ、一緒に足を動かす体操をする', 'c4_shelter2', { icon: '🦵', effects: { report: { cat: 'care', score: 2, note: '動かない高齢者にエコノミークラス症候群の予防を促した' } } }),
-      C('car', '体育館は落ち着かない。車中泊に切り替える', 'c4_shelter2', { icon: '🚗', effects: { risk: { kind: 'exhaustion', level: 10, label: '狭い車内で長時間動かず、脚がむくんだ' }, report: { cat: 'care', score: -1, note: '車中泊でエコノミークラス症候群の対策をしなかった' } } }),
+  ], { alt: [{ if: { preset: 'worker', notFlag: 'w_office_done' }, goto: 'c4w_office' }, { if: { preset: 'student', notFlag: 's_after_done' }, goto: 'c4s_after' }], onEnter: { time: 4320, hp: 15, know: ['k_infection', 'k_privacy', 'k_dvt'] }, choices: [
+      C('duty', 'トイレ掃除の当番に入り、更衣スペースの見回りを提案する', 'c4_d_rumor', { icon: '🧹', effects: { report: { cat: 'care', score: 2, note: '避難所の衛生と防犯の運営に参加した' }, npc: { id: 'tanabe', trust: 20 } } }),
+      C('old', '高齢の男性に声をかけ、一緒に足を動かす体操をする', 'c4_d_rumor', { icon: '🦵', effects: { report: { cat: 'care', score: 2, note: '動かない高齢者にエコノミークラス症候群の予防を促した' } } }),
+      C('car', '体育館は落ち着かない。車中泊に切り替える', 'c4_d_rumor', { icon: '🚗', effects: { risk: { kind: 'exhaustion', level: 5, label: '狭い車内で長時間動かず、脚がむくんだ' }, report: { cat: 'care', score: -1, note: '車中泊でエコノミークラス症候群の対策をしなかった' } } }),
     ] }),
   S('c4_shelter2', 4, 'shelter_life', [
     ['', '夜。体育館の天井を見上げる。'],
@@ -199,8 +199,8 @@ export const ch5: Scene[] = [
     ['', '自宅は「一部損壊」。壁のひび、傾いた扉、割れた食器。区役所の窓口には長い列。'],
     ['職員', '罹災証明書の申請ですね。被害の写真はありますか？'],
   ], { setT: 30240, onEnter: { know: ['k_support', 'k_mental'], flag: 'home_damaged' }, choices: [
-      C('photo', '片付ける前に撮っておいた被害の写真を出す', 'c5_visit', { icon: '📷', if: { minBattery: 1 }, effects: { report: { cat: 'items', score: 1, note: '罹災証明のため被害の写真を残した' } } }),
-      C('nophoto', 'もう片付けてしまった……', 'c5_visit', { icon: '🧹', effects: { mental: -5 } }),
+      C('photo', '片付ける前に撮っておいた被害の写真を出す', 'c5_visit', { icon: '📷', if: { flag: 'damage_photo' }, effects: { report: { cat: 'items', score: 1, note: '罹災証明のため被害の写真を残した' } } }),
+      C('nophoto', 'もう片付けてしまった……', 'c5_visit', { icon: '🧹', if: { notFlag: 'damage_photo' }, effects: { mental: -5 } }),
     ] }),
   S('c5_hiroto', 5, 'letter', [
     ['', 'ある日、玄関に父子が立っていた。'],

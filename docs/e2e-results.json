@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:24:49.075Z",
+  "at": "2026-10-31T00:30:44.779Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 36 steps",
+      "name": "mobile-parent: reached ending in 33 steps",
       "pass": true,
       "info": ""
     },
@@ -98,14 +98,14 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 47 steps",
+      "name": "desktop: reached ending in 51 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "desktop: report has disclaimer",
       "pass": true,
-      "info": "声は、届いた"
+      "info": "隣にいない夏"
     },
     {
       "name": "desktop: settings has disclaimer",
@@ -119,6 +119,66 @@
     },
     {
       "name": "desktop: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: reached ending in 44 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: report has disclaimer",
+      "pass": true,
+      "info": "声は、届いた"
+    },
+    {
+      "name": "mobile-d1: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-d1: no console errors",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: disclaimer on title",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: reached ending in 45 steps",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: report has disclaimer",
+      "pass": true,
+      "info": "声は、届いた"
+    },
+    {
+      "name": "mobile-death: settings has disclaimer",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: no horizontal overflow",
+      "pass": true,
+      "info": ""
+    },
+    {
+      "name": "mobile-death: no console errors",
       "pass": true,
       "info": ""
     },
