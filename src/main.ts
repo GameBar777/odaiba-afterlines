@@ -3,6 +3,7 @@ import { DB } from './data';
 import { newGame, start, choose, proceed, scene, visibleChoices, fill, clockLabel, quakeClock, isNight, resolveEnding, afterPieces, reportSummary, type Feedback } from './engine/engine';
 import type { State, PresetId } from './engine/types';
 import { save, load, clearSave, exportText, importText, prefs, setPrefs, addPlay, plays, type Prefs } from './platform/save';
+import { speak, stopSpeak, speakText, ttsSupported } from './platform/tts';
 import { cue, setSound, playBgm, moodFor, setBgm, MOODS, currentMood } from './platform/sound';
 import { sceneArt, artCaption } from './ui/art';
 import { bgSrc, todOf } from './ui/bg';
@@ -91,7 +92,7 @@ function play() {
     <header class="hud"><div class="row"><b>第${sc.chapter > 5 ? '—' : sc.chapter}章</b><span class="clock">🕒 ${esc(clockLabel(s))}</span><span class="loc">📍 ${esc(DB.locs.find(l => l.id === s.loc)?.name ?? s.loc)}</span><button id="menu" aria-label="メニュー">☰</button></div>
       <div class="bars">${bar('体力', s.hp, 'hp')}${bar('スタミナ', s.stamina)}${bar('水分', s.water)}${bar('こころ', s.mental)}${bar('電池', s.battery, 'bat')}</div>
       ${s.injuries.length ? `<div class="inj">🩹 ${s.injuries.map(i => esc(DB.injuries[i]?.name ?? i)).join('・')}</div>` : ''}</header>
-    <div class="art scene">${sceneArt(sc.bg)}${bgImg(sc.bg, todOf(quakeClock(s) + s.t))}<span class="cap">${esc(artCaption(sc.bg))}（イメージ）</span><span class="credit">背景：AI生成イラスト（架空の場所のイメージ）／自作SVG</span></div>
+    <div class="art scene">${sceneArt(sc.bg)}${bgImg(sc.bg, todOf(quakeClock(s) + s.t))}<span class="cap">${esc(artCaption(sc.bg))}（イメージ）</span>${P.tts && ttsSupported() ? '<button id="tts" class="tts" aria-label="この場面を読み上げる">🔊 読み上げ</button>' : ''}<span class="credit">背景：AI生成イラスト（架空の場所のイメージ）／自作SVG</span></div>
     ${fbHtml}${deathHtml}
     <section class="lines">${sc.lines.map(([who, t]) => who ? say(who, t, sc.chapter) : `<p class="nar">${F(t)}</p>`).join('')}${P.portraits && sc.lines.some(([w]) => w && portraitSrc(S ? fill(w, S) : w, 0)) ? '<p class="ai-note">立ち絵：AI生成イラスト（架空の人物）</p>' : ''}</section>
     ${photo}${afterHtml}
@@ -101,6 +102,8 @@ function play() {
     ${tab ? `<section class="panel" id="panel">${panel(tab)}</section>` : ''}
   </main>`);
   if (sc.fx === 'quake' || sc.fx === 'aftershock') cue('rumble');
+  stopSpeak();
+  on('#tts', () => speak(speakText(sc.lines.map(([w, t]) => [w ? fill(w, s) : '', fill(t, s)] as [string, string]))));
   playBgm(moodFor(sc.chapter, isNight(s), s.t >= 0));
   if (sc.bg === 'reunion' && lastChime !== sc.id) { lastChime = sc.id; cue('chime'); }
   on('.choice[data-c]', el => act(() => choose(s, el.dataset.c!)));
@@ -177,6 +180,7 @@ function settings(back: () => void) {
   h(`<main class="page"><h2>設定</h2>
     <label><input type="checkbox" id="mute" ${P.muted ? 'checked' : ''}/> 音をミュート</label>
     <label><input type="checkbox" id="bgm" ${P.bgm ? 'checked' : ''}/> BGM（自作の合成音・4曲：${Object.values(MOODS).map(m => m.name).join('／')}）${currentMood() ? `<small>再生中：${MOODS[currentMood()!].name}</small>` : ''}</label>
+    <label><input type="checkbox" id="ttsOn" ${P.tts ? 'checked' : ''}/> 読み上げボタンを表示（ブラウザ標準の音声合成・無料${ttsSupported() ? '' : '／この端末は非対応'}）</label>
     <label>音量 <input type="range" id="vol" min="0" max="1" step="0.1" value="${P.volume}"/></label>
     <label><input type="checkbox" id="calm" ${document.body.classList.contains('calm') ? 'checked' : ''}/> 揺れ・暗転の演出を弱める</label>
     <label><input type="checkbox" id="pt" ${P.portraits ? 'checked' : ''}/> 登場人物の立ち絵を表示（AI生成イラスト）</label>
@@ -187,7 +191,7 @@ function settings(back: () => void) {
     <p class="note">背景イラストはAI生成イラスト（架空の場所のイメージ・実在施設の写真ではありません）で、読み込めない場合は自作SVGを表示します。登場人物の立ち絵はAI生成イラスト（架空の人物・実在人物とは無関係）です。実在の災害映像・写真は使用していません。</p>
     <div class="btns"><button class="primary" id="b">戻る</button></div></main>`);
   const g = (id: string) => app.querySelector('#' + id) as HTMLInputElement;
-  const upd = () => { P = { ...P, muted: g('mute').checked, volume: Number(g('vol').value), ads: g('ads').checked, portraits: g('pt').checked, bgm: g('bgm').checked }; setBgm(P.bgm); setPrefs(P); setSound(P.volume, P.muted); document.body.classList.toggle('calm', g('calm').checked); localStorage.setItem('odaiba-afterlines.calm', g('calm').checked ? '1' : ''); };
+  const upd = () => { P = { ...P, muted: g('mute').checked, volume: Number(g('vol').value), ads: g('ads').checked, portraits: g('pt').checked, bgm: g('bgm').checked, tts: g('ttsOn').checked }; setBgm(P.bgm); setPrefs(P); setSound(P.volume, P.muted); document.body.classList.toggle('calm', g('calm').checked); localStorage.setItem('odaiba-afterlines.calm', g('calm').checked ? '1' : ''); };
   ['mute', 'vol', 'ads', 'calm', 'pt'].forEach(id => g(id).addEventListener('change', upd));
   on('#exp', () => { const t = exportText(); (app.querySelector('#txt') as HTMLTextAreaElement).value = t; navigator.clipboard?.writeText(t).catch(() => {}); app.querySelector('#msg')!.textContent = t ? '書き出しました（クリップボードにもコピー）' : 'セーブがありません'; });
   on('#imp', () => { const f = importText((app.querySelector('#txt') as HTMLTextAreaElement).value); app.querySelector('#msg')!.textContent = f ? '読み込みました' : '読み込めませんでした（形式が違います）'; if (f) S = f.state; });

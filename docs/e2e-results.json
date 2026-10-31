@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T02:37:12.702Z",
+  "at": "2026-10-31T02:38:45.612Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 53 steps",
+      "name": "mobile-parent: reached ending in 61 steps",
       "pass": true,
       "info": ""
     },
@@ -128,7 +128,7 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 72 steps",
+      "name": "mobile-d1: reached ending in 66 steps",
       "pass": true,
       "info": ""
     },
@@ -158,7 +158,7 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 72 steps",
+      "name": "mobile-death: reached ending in 66 steps",
       "pass": true,
       "info": ""
     },

@@ -50,3 +50,4 @@ body.calm .scene{animation:none!important}body.calm .scene::after{display:none}
 
 .art{position:relative}.art .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.art .credit{z-index:2}
 .art .cap{position:absolute;left:8px;top:8px;z-index:2;background:#000a;color:#fff;font-size:12px;padding:2px 8px;border-radius:8px}
+.art .tts{position:absolute;right:8px;top:8px;z-index:2;font-size:12px;padding:4px 10px;border-radius:12px;background:#fffd;border:1px solid #8888}
