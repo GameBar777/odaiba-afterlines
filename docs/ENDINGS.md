@@ -9,7 +9,7 @@
 | e_death_helper | death | あの日の人 | `{"dead":true,"anyFlag":["helped_hiroto","helped_saeki","helped_haruno","helped_morimoto"],"notFlag":"msg_fam1"}` |
 | e_death | death | 帰れなかった日 | `{"dead":true}` |
 | e_volunteer | rebuild | あの日から始まった仕事 | `{"flag":"volunteer","npcAlive":"friend"}` |
-| e_lost_friend | loss | 隣にいない夏 | `{"npcDead":"friend"}` |
+| e_lost_friend | loss | 隣にいない季節 | `{"npcDead":"friend"}` |
 | e_lost_grandma | loss | 羊羹の約束 | `{"npcDead":"fam2"}` |
 | e_meet | survive | 決めておいた場所 | `{"flag":["meetpoint","reunited_family"]}` |
 | e_partner | survive | 港南口で | `{"flag":"reunited_partner"}` |
@@ -30,4 +30,9 @@
 | a_promise | {fam1} | `{"flag":"promise"}` |
 | a_meet | {fam1} | `{"flag":"meetpoint"}` |
 | a_nomeet | {fam1} | `{"notFlag":"meetpoint"}` |
+| a_wk_card | {fam2} | `{"flag":"hina_card"}` |
+| a_bando | 坂東 | `{"flag":"bando_car_left"}` |
+| a_st_gma_hand | {fam1} | `{"flag":"gma_with_me"}` |
+| a_pa_letter | {fam1} | `{"flag":"misaki_has_letter"}` |
+| a_miyauchi | 宮内 | `{"flag":"helped_miyauchi"}` |
 | a_report | — | `{}` |

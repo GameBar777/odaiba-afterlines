@@ -23,7 +23,7 @@ export const items: Record<string, { name: string; desc: string }> = {
   snack: { name: '非常用お菓子', desc: '' }, kids_snack: { name: '子供のおやつ', desc: '' }, inhaler: { name: '吸入薬', desc: '持病の薬。失くすと危険。' },
   extinguisher: { name: '消火器', desc: '初期消火用。炎が天井に届いたら消火をあきらめて避難。' }, map_paper: { name: '紙の地図', desc: '電池が切れても使える。' },
   blanket: { name: 'アルミブランケット', desc: '体温低下を防ぐ。' }, towel: { name: 'タオル', desc: '' }, gloves: { name: '軍手', desc: 'ガラス片や瓦礫から手を守る。' },
-  radio: { name: '携帯ラジオ', desc: '通信障害時でも情報を得られる。' }, letter: { name: '手紙', desc: '' },
+  radio: { name: '携帯ラジオ', desc: '通信障害時でも情報を得られる。' }, letter: { name: '手紙', desc: '' }, board_note: { name: '伝言板の二枚', desc: '避難所の伝言板から、最後に剥がした自分の紙と、隣の一枚。' },
 };
 
 export const injuries: Record<string, { name: string; drainPerHour: number; desc: string }> = {

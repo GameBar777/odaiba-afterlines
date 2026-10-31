@@ -3,7 +3,7 @@ type P = { sky: [string, string]; sea?: string; motif: string; city?: boolean; c
 const A: Record<string, P> = {
   morning_home: { sky: ['#fde9c9', '#f7c59f'], motif: '🏠', caption: '朝の家', city: true },
   odaiba_morning: { sky: ['#bfe3ff', '#e9f6ff'], sea: '#5aa9d6', motif: '🎡', caption: 'お台場の朝', city: true },
-  promenade: { sky: ['#a9dcff', '#e9f6ff'], sea: '#4e9cc9', motif: '🌊', caption: '海沿いの遊歩道' },
+  promenade: { sky: ['#a9dcff', '#e9f6ff'], sea: '#4e9cc9', motif: '🐚', caption: '海沿いの遊歩道' },
   mall_food: { sky: ['#ffe7c2', '#fff4e3'], motif: '🍜', caption: 'フードコート' },
   family_call: { sky: ['#ffe0e9', '#fff3f6'], motif: '📱', caption: 'ビデオ通話' },
   shop: { sky: ['#e6f0ff', '#f6f9ff'], motif: '🛍', caption: 'モール' },
@@ -44,3 +44,4 @@ export function sceneArt(bg: string): string {
   return `<svg viewBox="0 0 400 220" role="img" aria-label="${p.caption}（イラスト）" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g_${bg}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.sky[0]}"/><stop offset="1" stop-color="${p.sky[1]}"/></linearGradient></defs><rect width="400" height="220" fill="url(#g_${bg})"/>${stars}${smoke}${city}${sea}${crack}<text x="200" y="128" font-size="64" text-anchor="middle">${p.motif}</text></svg>`;
 }
 export const artKeys = Object.keys(A);
+export function artCaption(bg: string): string { return A[bg]?.caption ?? bg; }

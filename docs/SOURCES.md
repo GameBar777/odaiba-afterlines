@@ -30,3 +30,8 @@ URLは 2026-10-31 に HTTP 200 を確認したもの。内容の専門家監修�
 | minato | 港区 | 港区ホームページ（防災ページは個別URL要確認） | 閲覧 2026-10-31 | https://www.city.minato.tokyo.jp/ | トップ200。防災個別ページは未特定＝要確認 | お台場（台場）は港区。区の防災情報の確認先 |
 | koto | 江東区 | 江東区ホームページ（防災ページは個別URL要確認） | 閲覧 2026-10-31 | https://www.city.koto.lg.jp/ | トップ200。防災個別ページは未特定＝要確認 | 青海・有明は江東区。区の防災情報の確認先 |
 | osm | OpenStreetMap Foundation | Copyright and License | 閲覧 2026-10-31 | https://www.openstreetmap.org/copyright | 2026-10-31 HTTP200・タイトル確認 | 地図の位置関係はOSMを参照し手描き模式化（© OpenStreetMap contributors, ODbL） |
+| npa_driver | 警察庁 | 大地震が発生したときに運転者がとるべき措置（交通の方法に関する教則 抜粋） | 閲覧 2026-10-31 | https://www.npa.go.jp/bureau/traffic/seibi2/saigaiji/daizisinnunntennsya.html | 2026-10-31 HTTP200・タイトル確認・本文「エンジンキーは付けたままとするか運転席などの車内の分かりやすい場所に置いておく」「ドアはロックしない」確認 | やむを得ず車を置いて避難する際の置き方（左に寄せる・キー・ロックしない）、避難に車を使わないこと |
+| tfd_point10 | 東京消防庁 | 地震 その時10のポイント | 閲覧 2026-10-31 | https://www.tfd.metro.tokyo.lg.jp/lfe/bou_topic/jisin/point10.html | 2026-10-31 HTTP200・タイトル確認・本文「ブレーカーを切り、ガスの元栓を締めてから避難する」確認 | 避難前にブレーカーを切る・ガスの元栓を締める（通電火災・ガス漏れ防止） |
+| fdma_tsuden | 総務省消防庁 | 通電火災にご注意ください（PDF） | 2022-03-17（資料名の日付表記） | https://www.fdma.go.jp/pressrelease/info/items/220317_yobou_1.pdf | 2026-10-31 HTTP200・本文確認・本文「停電中に自宅等を離れる際は、ブレーカーを落としてください」確認 | 停電中に家を離れるときブレーカーを落とす、復電時の安全確認 |
+| tokyo_okyu | 東京都都市整備局 | 被災建築物応急危険度判定制度について | 閲覧 2026-10-31 | https://www.toshiseibi.metro.tokyo.lg.jp/bosai/fukkyu/seibi/kn_t08/1 | 2026-10-31 HTTP200・タイトル確認・本文「区市町村が実施主体」「余震などによる倒壊の危険性」確認 | 応急危険度判定の目的と実施主体、判定員の身元確認 |
+| shibuya_okyu | 渋谷区 | 被災建築物応急危険度判定とは | 2023-03-17（ページ表記） | https://www.city.shibuya.tokyo.jp/bosai/bosai/jishin-taio/hisai_okyu_hantei.html | 2026-10-31 HTTP200・タイトル確認・本文「調査済（緑色）」「要注意（黄色）」「危険（赤色）」「り災証明のための被害認定調査…ではありません」確認 | 判定ステッカー3種の意味、罹災証明の調査とは別であること |

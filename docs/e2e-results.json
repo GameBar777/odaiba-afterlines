@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-30T22:09:44.239Z",
-  "base": "https://gamebar777.github.io/odaiba-afterlines/",
+  "at": "2026-10-31T02:38:45.612Z",
+  "base": "http://localhost:4190/",
   "results": [
     {
       "name": "mobile: disclaimer on title",
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 43 steps",
+      "name": "mobile: reached ending in 197 steps",
       "pass": true,
       "info": ""
     },
@@ -38,14 +38,14 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 40 steps",
+      "name": "mobile-student: reached ending in 65 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-student: report has disclaimer",
       "pass": true,
-      "info": "あの日から始まった仕事"
+      "info": "あの日の人"
     },
     {
       "name": "mobile-student: settings has disclaimer",
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 32 steps",
+      "name": "mobile-parent: reached ending in 61 steps",
       "pass": true,
       "info": ""
     },
@@ -98,14 +98,14 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 36 steps",
+      "name": "desktop: reached ending in 149 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "desktop: report has disclaimer",
       "pass": true,
-      "info": "隣にいない夏"
+      "info": "隣にいない季節"
     },
     {
       "name": "desktop: settings has disclaimer",
@@ -128,14 +128,14 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 25 steps",
+      "name": "mobile-d1: reached ending in 66 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-d1: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-d1: settings has disclaimer",
@@ -158,14 +158,14 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 25 steps",
+      "name": "mobile-death: reached ending in 66 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-death: report has disclaimer",
       "pass": true,
-      "info": "あの日の人"
+      "info": "声は、届いた"
     },
     {
       "name": "mobile-death: settings has disclaimer",
@@ -190,7 +190,7 @@
     {
       "name": "save: continue after reload restores clock",
       "pass": true,
-      "info": "🕒 13:32"
+      "info": "🕒 13:07"
     }
   ]
 }

@@ -1,20 +1,20 @@
 {
-  "scenes": 81,
-  "choices": 104,
+  "scenes": 499,
+  "choices": 452,
   "npcs": 18,
   "npcRules": 22,
-  "knowledge": 48,
-  "knowledgeReferencedByScenes": 44,
+  "knowledge": 51,
+  "knowledgeReferencedByScenes": 50,
   "knowledgeNeedsReview": 33,
-  "sources": 26,
+  "sources": 31,
   "info": 10,
   "infoReferenced": 10,
   "endings": 10,
-  "afterPieces": 12,
+  "afterPieces": 17,
   "locs": 15,
   "locsFictional": 6,
-  "items": 22,
+  "items": 23,
   "injuries": 8,
   "photos": 2,
-  "dialogueLines": 192
+  "dialogueLines": 2557
 }
