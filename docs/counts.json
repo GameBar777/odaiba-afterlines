@@ -1,6 +1,6 @@
 {
-  "scenes": 448,
-  "choices": 398,
+  "scenes": 458,
+  "choices": 410,
   "npcs": 18,
   "npcRules": 22,
   "knowledge": 51,
@@ -16,5 +16,5 @@
   "items": 23,
   "injuries": 8,
   "photos": 2,
-  "dialogueLines": 2171
+  "dialogueLines": 2251
 }
