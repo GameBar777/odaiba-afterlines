@@ -3,7 +3,7 @@ type P = { sky: [string, string]; sea?: string; motif: string; city?: boolean; c
 const A: Record<string, P> = {
   morning_home: { sky: ['#fde9c9', '#f7c59f'], motif: '🏠', caption: '朝の家', city: true },
   odaiba_morning: { sky: ['#bfe3ff', '#e9f6ff'], sea: '#5aa9d6', motif: '🎡', caption: 'お台場の朝', city: true },
-  promenade: { sky: ['#a9dcff', '#e9f6ff'], sea: '#4e9cc9', motif: '🌊', caption: '海沿いの遊歩道' },
+  promenade: { sky: ['#a9dcff', '#e9f6ff'], sea: '#4e9cc9', motif: '🐚', caption: '海沿いの遊歩道' },
   mall_food: { sky: ['#ffe7c2', '#fff4e3'], motif: '🍜', caption: 'フードコート' },
   family_call: { sky: ['#ffe0e9', '#fff3f6'], motif: '📱', caption: 'ビデオ通話' },
   shop: { sky: ['#e6f0ff', '#f6f9ff'], motif: '🛍', caption: 'モール' },

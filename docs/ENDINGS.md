@@ -9,7 +9,7 @@
 | e_death_helper | death | あの日の人 | `{"dead":true,"anyFlag":["helped_hiroto","helped_saeki","helped_haruno","helped_morimoto"],"notFlag":"msg_fam1"}` |
 | e_death | death | 帰れなかった日 | `{"dead":true}` |
 | e_volunteer | rebuild | あの日から始まった仕事 | `{"flag":"volunteer","npcAlive":"friend"}` |
-| e_lost_friend | loss | 隣にいない夏 | `{"npcDead":"friend"}` |
+| e_lost_friend | loss | 隣にいない季節 | `{"npcDead":"friend"}` |
 | e_lost_grandma | loss | 羊羹の約束 | `{"npcDead":"fam2"}` |
 | e_meet | survive | 決めておいた場所 | `{"flag":["meetpoint","reunited_family"]}` |
 | e_partner | survive | 港南口で | `{"flag":"reunited_partner"}` |

@@ -14,7 +14,7 @@ fieldset{border:1px solid #ddd;border-radius:12px;margin:10px 0}fieldset label{d
 .presets{display:grid;gap:8px}.preset{display:block;background:#fff;border:1px solid #ddd;border-radius:12px;padding:10px}.preset span{display:block;font-size:.85rem;color:var(--mut)}
 .hud{position:sticky;top:0;z-index:5;background:#f6f3eeee;backdrop-filter:blur(4px);padding:6px 0;margin:-12px -2px 8px}
 .hud .row{display:flex;gap:8px;align-items:center;font-size:.85rem;flex-wrap:wrap}.hud .row button{margin-left:auto;min-height:36px;padding:4px 12px}
-.loc{color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:48vw}
+.loc{color:var(--mut);order:9;flex-basis:100%;font-size:.85rem;white-space:normal;line-height:1.3}
 .bars{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:4px}
 .bar{position:relative;height:22px;background:#e6e1d9;border-radius:6px;overflow:hidden;font-size:.62rem}
 .bar i{position:absolute;inset:0 auto 0 0;background:#7fb17f}.bar.hp i{background:#d97a6c}.bar.bat i{background:#7aa0d9}.bar.low i{background:#c0392b}
