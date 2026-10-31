@@ -8,9 +8,9 @@ const CPM = 450, CHOICE_SEC = 10, ADV_SEC = 1.5, N = Number(process.env.N || 150
 const vars = (p: string, t: string) => t.replace(/\{(\w+)\}/g, (_, k) => (DB.presets as any)[p].vars[k] ?? k);
 const out: Record<string, any> = {};
 for (const p of ['worker', 'student', 'parent'] as const) {
-  let all = 0, surv = 0, nsurv = 0, maxM = 0; const perCh: Record<number, number> = {};
+  let all = 0, surv = 0, nsurv = 0, maxM = 0; const perCh: Record<number, number> = {}; const reach: Record<number, number> = {};
   for (let i = 1; i <= N; i++) {
-    const s = newGame(p, {}, i * 104729); start(s); let r = i * 104729; let chars = 0, sec = 0; let guard = 0;
+    const s = newGame(p, {}, i * 104729); start(s); let r = i * 104729; let chars = 0, sec = 0; let guard = 0; const seen = new Set<number>();
     while (s.scene !== 'END') {
       if (++guard > 500) break;
       const sc = scene(s); let c = 0;
@@ -24,11 +24,13 @@ for (const p of ['worker', 'student', 'parent'] as const) {
         if (ch.result) c += vars(p, ch.result).length;
         sec += CHOICE_SEC; choose(s, ch.id);
       } else { sec += ADV_SEC; proceed(s); }
-      chars += c; perCh[sc.chapter] = (perCh[sc.chapter] || 0) + c;
+      seen.add(sc.chapter); chars += c; perCh[sc.chapter] = (perCh[sc.chapter] || 0) + c;
     }
+    for (const k of seen) reach[k] = (reach[k] || 0) + 1;
     const min = chars / CPM + sec / 60; all += min; if (!(s as any).dead) { surv += min; nsurv++; } maxM = Math.max(maxM, min);
   }
   out[p] = { avgMin: +(all / N).toFixed(1), survivorAvgMin: +(surv / Math.max(1, nsurv)).toFixed(1), maxMin: +maxM.toFixed(1),
-    charsPerChapterAvg: Object.fromEntries(Object.entries(perCh).map(([k, v]) => [k, Math.round(v / N)])) };
+    charsPerChapterAvg: Object.fromEntries(Object.entries(perCh).map(([k, v]) => [k, Math.round(v / N)])),
+    charsPerChapterReached: Object.fromEntries(Object.entries(perCh).map(([k, v]) => [k, Math.round(v / (reach[+k] || 1))])) };
 }
 console.log(JSON.stringify(out, null, 1));
