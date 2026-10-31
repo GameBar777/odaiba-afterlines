@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T00:43:10.795Z",
+  "at": "2026-10-31T00:45:36.224Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 129 steps",
+      "name": "mobile: reached ending in 137 steps",
       "pass": true,
       "info": ""
     },
@@ -38,7 +38,7 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 97 steps",
+      "name": "mobile-student: reached ending in 105 steps",
       "pass": true,
       "info": ""
     },
@@ -98,7 +98,7 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 85 steps",
+      "name": "desktop: reached ending in 93 steps",
       "pass": true,
       "info": ""
     },
@@ -128,7 +128,7 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 47 steps",
+      "name": "mobile-d1: reached ending in 41 steps",
       "pass": true,
       "info": ""
     },
@@ -158,7 +158,7 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 45 steps",
+      "name": "mobile-death: reached ending in 41 steps",
       "pass": true,
       "info": ""
     },
