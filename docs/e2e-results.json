@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T01:15:29.208Z",
+  "at": "2026-10-31T01:19:13.097Z",
   "base": "http://localhost:4190/",
   "results": [
     {
@@ -8,7 +8,7 @@
       "info": ""
     },
     {
-      "name": "mobile: reached ending in 165 steps",
+      "name": "mobile: reached ending in 171 steps",
       "pass": true,
       "info": ""
     },
@@ -38,7 +38,7 @@
       "info": ""
     },
     {
-      "name": "mobile-student: reached ending in 145 steps",
+      "name": "mobile-student: reached ending in 139 steps",
       "pass": true,
       "info": ""
     },
@@ -68,7 +68,7 @@
       "info": ""
     },
     {
-      "name": "mobile-parent: reached ending in 46 steps",
+      "name": "mobile-parent: reached ending in 52 steps",
       "pass": true,
       "info": ""
     },
@@ -98,7 +98,7 @@
       "info": ""
     },
     {
-      "name": "desktop: reached ending in 117 steps",
+      "name": "desktop: reached ending in 123 steps",
       "pass": true,
       "info": ""
     },
@@ -128,14 +128,14 @@
       "info": ""
     },
     {
-      "name": "mobile-d1: reached ending in 55 steps",
+      "name": "mobile-d1: reached ending in 63 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-d1: report has disclaimer",
       "pass": true,
-      "info": "声は、届いた"
+      "info": "あの日の人"
     },
     {
       "name": "mobile-d1: settings has disclaimer",
@@ -158,14 +158,14 @@
       "info": ""
     },
     {
-      "name": "mobile-death: reached ending in 54 steps",
+      "name": "mobile-death: reached ending in 63 steps",
       "pass": true,
       "info": ""
     },
     {
       "name": "mobile-death: report has disclaimer",
       "pass": true,
-      "info": "声は、届いた"
+      "info": "あの日の人"
     },
     {
       "name": "mobile-death: settings has disclaimer",
