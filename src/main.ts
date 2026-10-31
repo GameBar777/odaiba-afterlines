@@ -1,9 +1,9 @@
 import './style.css';
 import { DB } from './data';
-import { newGame, start, choose, proceed, scene, visibleChoices, fill, clockLabel, quakeClock, resolveEnding, afterPieces, reportSummary, type Feedback } from './engine/engine';
+import { newGame, start, choose, proceed, scene, visibleChoices, fill, clockLabel, quakeClock, isNight, resolveEnding, afterPieces, reportSummary, type Feedback } from './engine/engine';
 import type { State, PresetId } from './engine/types';
 import { save, load, clearSave, exportText, importText, prefs, setPrefs, addPlay, plays, type Prefs } from './platform/save';
-import { cue, setSound } from './platform/sound';
+import { cue, setSound, playBgm, moodFor, setBgm, MOODS, currentMood } from './platform/sound';
 import { sceneArt, artCaption } from './ui/art';
 import { bgSrc, todOf } from './ui/bg';
 import { portraitSrc } from './ui/portraits';
@@ -14,9 +14,10 @@ const app = document.getElementById('app')!;
 let S: State | null = null;
 let P: Prefs = prefs();
 let lastFb: Feedback[] = [];
+let lastChime = '';
 let tab: string | null = null;
 let lessonFor: number | null = null;
-setSound(P.volume, P.muted);
+setSound(P.volume, P.muted); setBgm(P.bgm);
 
 const esc = (t: string) => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 const h = (html: string) => { app.innerHTML = html; window.scrollTo(0, 0); };
@@ -100,6 +101,8 @@ function play() {
     ${tab ? `<section class="panel" id="panel">${panel(tab)}</section>` : ''}
   </main>`);
   if (sc.fx === 'quake' || sc.fx === 'aftershock') cue('rumble');
+  playBgm(moodFor(sc.chapter, isNight(s), s.t >= 0));
+  if (sc.bg === 'reunion' && lastChime !== sc.id) { lastChime = sc.id; cue('chime'); }
   on('.choice[data-c]', el => act(() => choose(s, el.dataset.c!)));
   on('#next', () => act(() => proceed(s)));
   on('[data-tab]', el => { tab = tab === el.dataset.tab ? null : el.dataset.tab!; play(); document.getElementById('panel')?.scrollIntoView({ block: 'nearest' }); });
@@ -173,6 +176,7 @@ function menu() {
 function settings(back: () => void) {
   h(`<main class="page"><h2>設定</h2>
     <label><input type="checkbox" id="mute" ${P.muted ? 'checked' : ''}/> 音をミュート</label>
+    <label><input type="checkbox" id="bgm" ${P.bgm ? 'checked' : ''}/> BGM（自作の合成音・4曲：${Object.values(MOODS).map(m => m.name).join('／')}）${currentMood() ? `<small>再生中：${MOODS[currentMood()!].name}</small>` : ''}</label>
     <label>音量 <input type="range" id="vol" min="0" max="1" step="0.1" value="${P.volume}"/></label>
     <label><input type="checkbox" id="calm" ${document.body.classList.contains('calm') ? 'checked' : ''}/> 揺れ・暗転の演出を弱める</label>
     <label><input type="checkbox" id="pt" ${P.portraits ? 'checked' : ''}/> 登場人物の立ち絵を表示（AI生成イラスト）</label>
@@ -183,7 +187,7 @@ function settings(back: () => void) {
     <p class="note">背景イラストはAI生成イラスト（架空の場所のイメージ・実在施設の写真ではありません）で、読み込めない場合は自作SVGを表示します。登場人物の立ち絵はAI生成イラスト（架空の人物・実在人物とは無関係）です。実在の災害映像・写真は使用していません。</p>
     <div class="btns"><button class="primary" id="b">戻る</button></div></main>`);
   const g = (id: string) => app.querySelector('#' + id) as HTMLInputElement;
-  const upd = () => { P = { ...P, muted: g('mute').checked, volume: Number(g('vol').value), ads: g('ads').checked, portraits: g('pt').checked }; setPrefs(P); setSound(P.volume, P.muted); document.body.classList.toggle('calm', g('calm').checked); localStorage.setItem('odaiba-afterlines.calm', g('calm').checked ? '1' : ''); };
+  const upd = () => { P = { ...P, muted: g('mute').checked, volume: Number(g('vol').value), ads: g('ads').checked, portraits: g('pt').checked, bgm: g('bgm').checked }; setBgm(P.bgm); setPrefs(P); setSound(P.volume, P.muted); document.body.classList.toggle('calm', g('calm').checked); localStorage.setItem('odaiba-afterlines.calm', g('calm').checked ? '1' : ''); };
   ['mute', 'vol', 'ads', 'calm', 'pt'].forEach(id => g(id).addEventListener('change', upd));
   on('#exp', () => { const t = exportText(); (app.querySelector('#txt') as HTMLTextAreaElement).value = t; navigator.clipboard?.writeText(t).catch(() => {}); app.querySelector('#msg')!.textContent = t ? '書き出しました（クリップボードにもコピー）' : 'セーブがありません'; });
   on('#imp', () => { const f = importText((app.querySelector('#txt') as HTMLTextAreaElement).value); app.querySelector('#msg')!.textContent = f ? '読み込みました' : '読み込めませんでした（形式が違います）'; if (f) S = f.state; });

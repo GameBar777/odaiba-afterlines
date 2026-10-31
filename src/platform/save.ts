@@ -4,8 +4,8 @@ const KEY = 'odaiba-afterlines.save';
 const PREF = 'odaiba-afterlines.prefs';
 const PLAYS = 'odaiba-afterlines.plays';
 export interface SaveFile { app: 'odaiba-afterlines'; v: number; savedAt: string; state: State }
-export interface Prefs { volume: number; muted: boolean; ads: boolean; textSpeed: 'normal' | 'instant'; seenDisclaimer: boolean; portraits: boolean }
-export const defaultPrefs: Prefs = { volume: 0.5, muted: true, ads: false, textSpeed: 'normal', seenDisclaimer: false, portraits: true };
+export interface Prefs { volume: number; muted: boolean; ads: boolean; textSpeed: 'normal' | 'instant'; seenDisclaimer: boolean; portraits: boolean; bgm: boolean }
+export const defaultPrefs: Prefs = { volume: 0.5, muted: true, ads: false, textSpeed: 'normal', seenDisclaimer: false, portraits: true, bgm: true };
 
 export function migrate(raw: unknown): SaveFile | null {
   if (!raw || typeof raw !== 'object') return null;
