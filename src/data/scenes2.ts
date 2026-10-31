@@ -252,9 +252,9 @@ export const ch4: Scene[] = [
     ['田辺', 'トイレ掃除の当番、足りないのよ。それと、夜、女性用の更衣スペースに男の人が入ってきたって苦情が。'],
     ['', '体育館の隅で、高齢の男性が三日間ほとんど動かずに座っている。'],
   ], { alt: [{ if: { preset: 'worker', notFlag: 'w_office_done' }, goto: 'c4w_office' }, { if: { preset: 'student', notFlag: 's_after_done' }, goto: 'c4s_after' }], onEnter: { time: 4320, hp: 15, know: ['k_infection', 'k_privacy', 'k_dvt'] }, choices: [
-      C('duty', 'トイレ掃除の当番に入り、更衣スペースの見回りを提案する', 'c4_d_rumor', { icon: '🧹', effects: { report: { cat: 'care', score: 2, note: '避難所の衛生と防犯の運営に参加した' }, npc: { id: 'tanabe', trust: 20 } } }),
-      C('old', '高齢の男性に声をかけ、一緒に足を動かす体操をする', 'c4_d_rumor', { icon: '🦵', effects: { report: { cat: 'care', score: 2, note: '動かない高齢者にエコノミークラス症候群の予防を促した' } } }),
-      C('car', '体育館は落ち着かない。車中泊に切り替える', 'c4_d_rumor', { icon: '🚗', effects: { risk: { kind: 'exhaustion', level: 5, label: '狭い車内で長時間動かず、脚がむくんだ' }, report: { cat: 'care', score: -1, note: '車中泊でエコノミークラス症候群の対策をしなかった' } } }),
+      C('duty', 'トイレ掃除の当番に入り、更衣スペースの見回りを提案する', 'c4_dr_r', { icon: '🧹', effects: { report: { cat: 'care', score: 2, note: '避難所の衛生と防犯の運営に参加した' }, npc: { id: 'tanabe', trust: 20 } } }),
+      C('old', '高齢の男性に声をかけ、一緒に足を動かす体操をする', 'c4_dr_r', { icon: '🦵', effects: { report: { cat: 'care', score: 2, note: '動かない高齢者にエコノミークラス症候群の予防を促した' } } }),
+      C('car', '体育館は落ち着かない。車中泊に切り替える', 'c4_dr_r', { icon: '🚗', effects: { risk: { kind: 'exhaustion', level: 5, label: '狭い車内で長時間動かず、脚がむくんだ' }, report: { cat: 'care', score: -1, note: '車中泊でエコノミークラス症候群の対策をしなかった' } } }),
     ] }),
   S('c4_shelter2', 4, 'shelter_life', [
     ['', '夜。体育館の天井を見上げる。'],
