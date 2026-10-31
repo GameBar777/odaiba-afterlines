@@ -165,18 +165,18 @@ export const ch3y: Scene[] = [
   S('c3w_aid2', 3, 'aid', [
     ['', '夜明け前。早瀬が、はじめて床に座り込んだ。手袋を外した指が、小さく震えている。'],
     ['早瀬', '……息子と、まだ連絡が取れないの。十歳。看護師なのに、自分の子のところにだけは行けない。'],
-    ['', '陽菜は八歳だ。二つしか違わない。その顔が浮かんで、あなたは言葉を探すのをやめた。'],
+    ['', '陽菜は七歳だ。三つしか違わない。その顔が浮かんで、あなたは言葉を探すのをやめた。'],
   ], { choices: [
-      C('web171', '早瀬の代わりにweb171で息子の学校名を検索する', 'c4_dawn', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込みがあった（ゲーム内架空情報）。早瀬は顔を覆い、それから、何事もなかったように手袋をはめ直した。' }),
-      C('sit', '隣に座り、水を渡す', 'c4_dawn', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 } }, result: '早瀬は一口だけ飲んで、「東北に行ったときも、こうやって誰かが水をくれた」とだけ言った。' }),
+      C('web171', '早瀬の代わりにweb171で息子の学校名を検索する', 'c3_ad_r', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込みがあった（ゲーム内架空情報）。早瀬は顔を覆い、それから、何事もなかったように手袋をはめ直した。' }),
+      C('sit', '隣に座り、水を渡す', 'c3_ad_r', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 } }, result: '早瀬は一口だけ飲んで、「東北に行ったときも、こうやって誰かが水をくれた」とだけ言った。' }),
     ] }),
   S('c3s_aid2', 3, 'aid', [
     ['', '夜明け前。早瀬が、はじめて床に座り込んだ。'],
     ['早瀬', 'あなた、学生さん？……よく動いてくれた。私の息子もね、あと十年したら、あなたくらいになる。まだ、連絡が取れないけど。'],
     ['', '大人も、こんなふうに怖がるのだ。そう知ったことが、なぜか少しだけ、あなたを強くした。'],
   ], { choices: [
-      C('web171', '「わたし、探してみます」web171で息子さんの学校名を検索する', 'c4_dawn', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 25, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込み（ゲーム内架空情報）。早瀬はあなたの肩に手を置き、「ありがとう。あなたのおばあさんも、きっと誰かが見てる」と言った。' }),
-      C('sit', '隣に座り、黙って水を渡す', 'c4_dawn', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 }, mental: 2 } }),
+      C('web171', '「わたし、探してみます」web171で息子さんの学校名を検索する', 'c3_ad_r', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 25, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '他者の安否確認を手伝った' } }, result: '学校の伝言板に「児童は全員校内で保護」の書き込み（ゲーム内架空情報）。早瀬はあなたの肩に手を置き、「ありがとう。あなたのおばあさんも、きっと誰かが見てる」と言った。' }),
+      C('sit', '隣に座り、黙って水を渡す', 'c3_ad_r', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 }, mental: 2 } }),
     ] }),
   S('c3p_aid2', 3, 'aid', [
     ['', '夜明け前。律は毛布の中で、あなたの上着の裾を握ったまま眠っている。'],
@@ -184,8 +184,8 @@ export const ch3y: Scene[] = [
     ['早瀬', '……うちの子は十歳。まだ、連絡が取れない。あなたは、そばにいられてよかったね。'],
     ['', 'その「よかったね」には、責める響きはひとつもなかった。だから余計に、胸に刺さった。'],
   ], { choices: [
-      C('web171', '律を起こさないよう片手で、web171で息子さんの学校名を検索する', 'c4_dawn', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '子どもを見ながら他者の安否確認を手伝った' } }, result: '「児童は全員校内で保護」（ゲーム内架空情報）。早瀬は声を出さずに泣き、律が寝返りを打つと、反射のように毛布を掛け直してくれた。' }),
-      C('sit', '律を抱いたまま、早瀬に水を差し出す', 'c4_dawn', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 } } }),
+      C('web171', '律を起こさないよう片手で、web171で息子さんの学校名を検索する', 'c3_ad_r', { icon: '🌐', if: { minBattery: 10 }, effects: { battery: -4, npc: { id: 'hayase', trust: 20, flag: 'son_found' }, report: { cat: 'contact', score: 2, note: '子どもを見ながら他者の安否確認を手伝った' } }, result: '「児童は全員校内で保護」（ゲーム内架空情報）。早瀬は声を出さずに泣き、律が寝返りを打つと、反射のように毛布を掛け直してくれた。' }),
+      C('sit', '律を抱いたまま、早瀬に水を差し出す', 'c3_ad_r', { icon: '💧', effects: { npc: { id: 'hayase', trust: 10 } } }),
     ] }),
   // ---- 一時滞在施設の深夜（c3_night のプリセット別導入）----
   S('c3w_night', 3, 'night_shelter', [

@@ -28,8 +28,8 @@ export const ch3: Scene[] = [
     ['拓海', 'じゃあ、夜までに、帰らないとな。'],
     ['', '拓海は、そう言ってから、自分の言葉の重さに気づいたように、黙った。今夜、帰れるかどうか、二人とも、分からなかった。'],
   ], { choices: [
-      C('save', 'スマホを省電力モードにして、画面を消す', 'c3w_nA', { icon: '🔋', effects: { battery: 3, know: 'k_comm' }, result: '画面の明るさを、一番下まで落とした。陽菜の笑顔が、暗い画面の向こうに沈んでいった。また、明るいところで見よう。' }),
-      C('note', '手帳に、陽菜の学校と千夏の会社の住所を書き写す', 'c3w_nA', { icon: '📝', effects: { flag: 'wrote_addresses' }, result: 'スマホが消えても、この紙は消えない。ボールペンの字は、震えて、ひどく読みにくかった。それでも、読めた。' }),
+      C('save', 'スマホを省電力モードにして、画面を消す', 'c3_hub', { icon: '🔋', effects: { battery: 3, know: 'k_comm' }, result: '画面の明るさを、一番下まで落とした。陽菜の笑顔が、暗い画面の向こうに沈んでいった。また、明るいところで見よう。' }),
+      C('note', '手帳に、陽菜の学校と千夏の会社の住所を書き写す', 'c3_hub', { icon: '📝', effects: { flag: 'wrote_addresses' }, result: 'スマホが消えても、この紙は消えない。ボールペンの字は、震えて、ひどく読みにくかった。それでも、読めた。' }),
     ] }),
   S('c3s_dusk', 3, 'crowd', [
     ['', '葵は、広場の植え込みの縁に腰かけて、靴を脱いだ。かかとに、靴ずれができていた。今日は、歩くつもりのない靴で来ていた。'],
@@ -41,8 +41,8 @@ export const ch3: Scene[] = [
     ['女の子', 'ありがとう。……なんか、おばあちゃんみたいな絆創膏ですね。'],
     ['', '葵は、声を出して笑った。地震のあと、初めて笑った。'],
   ], { choices: [
-      C('exchange', '連絡先を交換して、お互いの無事を知らせ合う約束をする', 'c3s_nA', { icon: '🤝', effects: { mental: 4, flag: 'met_traveler' }, result: '「無事に飛べたら、連絡します」。「飛べなくても、連絡して」。二人は、そう言い合って、少しだけ、また笑った。' }),
-      C('rest', 'かかとの手当てをして、少し休む', 'c3s_nA', { icon: '🩹', effects: { stamina: 4 }, result: 'もう一枚の絆創膏を、自分のかかとに貼った。祖母の匂いがする気がした。気のせいだと分かっていても。' }),
+      C('exchange', '連絡先を交換して、お互いの無事を知らせ合う約束をする', 'c3_hub', { icon: '🤝', effects: { mental: 4, flag: 'met_traveler' }, result: '「無事に飛べたら、連絡します」。「飛べなくても、連絡して」。二人は、そう言い合って、少しだけ、また笑った。' }),
+      C('rest', 'かかとの手当てをして、少し休む', 'c3_hub', { icon: '🩹', effects: { stamina: 4 }, result: 'もう一枚の絆創膏を、自分のかかとに貼った。祖母の匂いがする気がした。気のせいだと分かっていても。' }),
     ] }),
   S('c3p_dusk', 3, 'crowd', [
     ['', '律が、健司の膝の上で、眠りかけていた。昼寝の時間を、とっくに過ぎている。まぶたが、落ちては、はっと開き、また落ちる。'],
@@ -56,8 +56,8 @@ export const ch3: Scene[] = [
     ['', '小さな袋に、ビスケットは、七枚しか入っていなかった。律は、それを、真剣な顔で数えて、四枚を健司の手のひらに置いた。'],
     ['律', 'パパ、おおきいから、おおい。'],
   ], { choices: [
-      C('eat', '一枚だけ食べて、残りは律のために取っておく', 'c3p_nA', { icon: '🐟', effects: { mental: 4, flag: 'saved_biscuit' }, result: '一枚を口に入れた。甘くて、少し塩辛い。残りの三枚を、そっと袋に戻した。夜中に、律がお腹をすかせて起きたときのために。' }),
-      C('all', '「ありがとう」と、四枚全部を一緒に食べる', 'c3p_nA', { icon: '😋', effects: { stamina: 2, mental: 3 }, result: '二人で、一枚ずつ、ゆっくり食べた。律は、最後の一枚を食べ終えると、満足そうに、健司の胸で眠った。' }),
+      C('eat', '一枚だけ食べて、残りは律のために取っておく', 'c3_hub', { icon: '🐟', effects: { mental: 4, flag: 'saved_biscuit' }, result: '一枚を口に入れた。甘くて、少し塩辛い。残りの三枚を、そっと袋に戻した。夜中に、律がお腹をすかせて起きたときのために。' }),
+      C('all', '「ありがとう」と、四枚全部を一緒に食べる', 'c3_hub', { icon: '😋', effects: { stamina: 2, mental: 3 }, result: '二人で、一枚ずつ、ゆっくり食べた。律は、最後の一枚を食べ終えると、満足そうに、健司の胸で眠った。' }),
     ] }),
   S('c3_hub', 3, 'crowd', [
     ['拓海', 'なあ。モールの奥に、まだ人が残ってるって。煙の向こうから声がした。'],
@@ -132,11 +132,11 @@ export const ch3: Scene[] = [
   S('c3_171', 3, 'phone_171', [
     ['', '171で、自分の家族からの伝言を再生してみる。'],
   ], { alt: [{ if: { flag: 'fam1_recorded171' }, goto: 'c3_171_yes' }], lines: [['', '「お預かりしている伝言はありません」'], ['', '決めていなかった。どこに、何を残すか。']],
-    onEnter: { mental: -8 }, next: 'c4_dawn' }),
+    onEnter: { mental: -8 }, next: 'c3_nt_r' }),
   S('c3_171_yes', 3, 'phone_171', [
     ['{fam1}', '（録音）……{fam1}です。{fam2}も無事。約束どおり、ここに残すね。私たちは動かない。あなたも、無理しないで。'],
     ['', '声を聞いた瞬間、体の力が抜けた。'],
-  ], { onEnter: { mental: 25, flag: 'heard_fam1' }, next: 'c4_dawn' }),
+  ], { onEnter: { mental: 25, flag: 'heard_fam1' }, next: 'c3_nt_r' }),
   // --- walk route ---
   S('c3_walk1', 3, 'liquefaction', [
     ['', '有明方面。歩道のあちこちから砂が噴き出し、マンホールが突き出している。'],
@@ -163,9 +163,9 @@ export const ch3: Scene[] = [
     ['', '「この先、通れるらしい」と誰かが言う。根拠は分からない。別の誰かが「向こうは燃えてるって」と言う。それにも、根拠はない。'],
     ['', 'スマホの電池は、もう心もとない。明るい情報も暗い情報も、同じ小さな画面の中で、同じ大きさの文字で流れていく。いま、この橋の上で、正しいことを知っている人は、たぶん一人もいない。'],
   ], { fx: 'dark', onEnter: { time: 60, know: 'k_smoke' }, choices: [
-      C('detour', '風上へ大きく迂回する（2時間余計にかかる）', 'c4_dawn_walk', { icon: '↪', effects: { time: 120, stamina: -12, water: -10, report: { cat: 'evac', score: 2, note: '火災の煙を避けて迂回した' } } }),
-      C('through', '煙の中を突っ切る', 'c4_dawn_walk', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 26, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
-      C('wait', '橋のたもとの公園で夜明けを待つ', 'c4_dawn_walk', { icon: '🌙', effects: { time: 240, risk: { kind: 'water', level: 10, label: '夜の冷え込みで体が冷えた' }, report: { cat: 'stay', score: 2, note: '夜間の移動をやめ、明るくなるまで待った' } } }),
+      C('detour', '風上へ大きく迂回する（2時間余計にかかる）', 'c3_wk_r', { icon: '↪', effects: { time: 120, stamina: -12, water: -10, report: { cat: 'evac', score: 2, note: '火災の煙を避けて迂回した' } } }),
+      C('through', '煙の中を突っ切る', 'c3_wk_r', { icon: '🔥', effects: { time: 30, risk: { kind: 'fire', level: 26, label: '煙と熱気の中を通過した' }, report: { cat: 'evac', score: -3, note: '火災の煙の中を突っ切った' } } }),
+      C('wait', '橋のたもとの公園で夜明けを待つ', 'c3_wk_r', { icon: '🌙', effects: { time: 240, risk: { kind: 'water', level: 10, label: '夜の冷え込みで体が冷えた' }, report: { cat: 'stay', score: 2, note: '夜間の移動をやめ、明るくなるまで待った' } } }),
     ] }),
   // --- aid route ---
   S('c3_aid', 3, 'aid', [
