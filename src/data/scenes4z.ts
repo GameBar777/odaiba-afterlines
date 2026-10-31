@@ -22,7 +22,7 @@ export const ch4z: Scene[] = [
       C('hayase', '救護所のブルーシートを畳んでいる早瀬のところへ', 'c4_bye_hayase', { icon: '⛑', if: { notFlag: 'bye_hayase', npcAlive: 'hayase' }, effects: { flag: 'bye_hayase', time: 10 } }),
       C('haruno', '駅へ向かう列の中に、春野の背中を見つける', 'c4_bye_haruno', { icon: '📱', if: { flag: 'helped_haruno_any', notFlag: 'bye_haruno', npcAlive: 'haruno' }, effects: { flag: 'bye_haruno', time: 10 } }),
       C('kuroda', '迷子案内の看板の下に、黒田親子の姿を探す', 'c4_bye_kuroda', { icon: '👦', if: { notFlag: 'bye_kuroda', npcAlive: 'kuroda' }, effects: { flag: 'bye_kuroda', time: 10 } }),
-      C('go', 'もう誰にも挨拶はしない。{home}へ向かう', 'c4_home', { icon: '🚶', effects: { time: 240, stamina: -20, water: -15, loc: 'home', report: { cat: 'evac', score: 2, note: '翌朝、情報を確認して明るいうちに移動した' } } }),
+      C('go', 'もう誰にも挨拶はしない。{home}へ向かう', 'c4_home', { icon: '🚶', effects: { time: 240, stamina: -20, water: -15, loc: 'home', report: { cat: 'evac', score: 2, note: '翌朝、情報を確認して明るいうちに移動した' } }, result: '出がけに見た区の掲示には、通行できる道と、まだ危ない道が色分けしてあった。明るいうちに、と自分に言い聞かせた。' }),
     ] }),
   S('c4_bye_miyauchi', 4, 'facility', [
     ['', '宮内は、入口の長机で名簿の束をクリップで留めていた。一晩で、紙の束は辞書ほどの厚さになっている。'],
@@ -91,7 +91,7 @@ export const ch4z: Scene[] = [
     ['', '三号棟の階段は、薄暗く、ひびの入った壁から粉が落ちていた。七階。ドアを一枚ずつ叩いていく。返事のある家、ない家。ドアに「無事です　〇〇」と貼り紙をしてある家。'],
     ['', '七〇四号室。何度叩いても返事がない。新聞受けには、昨日と今日の新聞。でも、ドアの向こうで、かすかにラジオの音がする。'],
   ], { onEnter: { time: 120, stamina: -8, know: 'k_vulnerable', npc: { id: 'tanabe', trust: 10 } }, choices: [
-      C('call', '田辺さんの部屋のドアを叩く。「隣の様子が変なんです」', 'c4w_neighbor2', { icon: '📞', effects: { flag: 'neighbor_saved', report: { cat: 'aid', score: 3, note: '応答のない一人暮らしの住民を、管理者と消防につないだ' } } }),
+      C('call', '田辺さんの部屋のドアを叩く。「隣の様子が変なんです」', 'c4w_neighbor2', { icon: '📞', effects: { mental: -3, time: 20, flag: 'neighbor_saved', report: { cat: 'aid', score: 3, note: '応答のない一人暮らしの住民を、管理者と消防につないだ' } }, result: '田辺さんが管理人を呼び、管理人が消防に電話した。待つ二十分が、ひどく長かった。合鍵で開いた扉の向こうで、隣人はかすかに返事をした。' }),
       C('force', '待っていられない。ベランダから隣をのぞきに行く', 'c4w_neighbor2', { icon: '🧗', effects: { flag: 'neighbor_saved', risk: { kind: 'fall', level: 8, label: '七階のベランダの仕切り板を越えようとして足を滑らせかけた' }, report: { cat: 'aid', score: -1, note: '高所のベランダを越える危険な方法を選んだ' } }, result: '仕切り板に手をかけた瞬間、余震が来た。七階の風が、背中を押した。——田辺の「やめなさい！」という声で、我に返った。' }),
     ] }),
   // ===== 段階10：ルート別の寄り道 =====
@@ -129,7 +129,7 @@ export const ch4z: Scene[] = [
     ['', 'シャッターの前で、中学生くらいの女の子が、セロハンテープを手に、新しい紙を貼ろうとしていた。テープが風にあおられて、うまくいかない。'],
     ['', '紙には、写真が印刷されていた。白黒のぶち猫。首に、赤い鈴。'],
   ], { choices: [
-      C('help', '背伸びしている女の子の代わりに、紙の端を押さえる', 'c4s_side_a', { icon: '📌', effects: { flag: 'helped_poster', time: 20, report: { cat: 'care', score: 1, note: 'ペットを探す人の貼り紙を手伝った' } } }),
+      C('help', '背伸びしている女の子の代わりに、紙の端を押さえる', 'c4s_side_a', { icon: '📌', effects: { flag: 'helped_poster', time: 20, report: { cat: 'care', score: 1, note: 'ペットを探す人の貼り紙を手伝った' } }, result: '貼り紙には、家族の名前と「〇〇小学校にいます」の文字。女の子は「これで、ママ分かるかな」と言った。' }),
       C('write', '自分たちも、祖母あての貼り紙を一枚書く', 'c4s_side_b', { icon: '✍', effects: { flag: 'wrote_poster', time: 15, know: 'k_comm' } }),
     ] }),
   S('c4s_side_a', 4, 'reunion', [
@@ -253,8 +253,8 @@ export const ch4z: Scene[] = [
     ['', '人だかりの何人かが、ちらりと、そちらを見た。'],
   ], { onEnter: { know: ['k_rumor', 'k_official'] }, choices: [
       C('check', '「……それ、誰から聞いたんですか」', 'c4_d_rumor2', { icon: '🔍', effects: { flag: 'stopped_rumor', report: { cat: 'info', score: 3, note: '出所の分からない差別的なうわさに、発信元と公式情報の確認を促した' } }, result: '男は口ごもった。「いや……みんな言ってるから」。区の発表には、そんな話はひとつもなかった。' }),
-      C('quiet', '関わらず、自分の家族のそばに戻る', 'c4_d_rumor2', { icon: '…', effects: { mental: -3 } }),
-      C('share', '家族が心配だ。グループに「気をつけて」と送る', 'c4_d_rumor2', { icon: '📤', effects: { flag: 'shared_rumor', mental: -5, report: { cat: 'info', score: -3, note: '確認できない差別的なうわさを拡散した' } } }),
+      C('quiet', '関わらず、自分の家族のそばに戻る', 'c4_d_rumor2', { icon: '…', effects: { mental: -3 }, result: '背中で、うわさ話が続いていた。聞こえないふりをするのは、思ったより疲れた。' }),
+      C('share', '家族が心配だ。グループに「気をつけて」と送る', 'c4_d_rumor2', { icon: '📤', effects: { flag: 'shared_rumor', mental: -5, report: { cat: 'info', score: -3, note: '確認できない差別的なうわさを拡散した' } }, result: '送ったあとで、区のアカウントを見た。そんな事実は、どこにもなかった。取り消しても、もう誰かの画面には残っている。' }),
     ] }),
   S('c4_d_rumor2', 4, 'shelter_life', [['', '…']], { alt: [
       { if: { flag: 'stopped_rumor' }, goto: 'c4_d_rumor_ok' },
