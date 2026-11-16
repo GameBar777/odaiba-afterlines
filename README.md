@@ -5,6 +5,7 @@
 > 本作は防災教育を目的としたシミュレーションゲームです。ゲーム内の地震、被害、施設状況、避難経路、人物の行動は架空のシナリオを含みます。現実の災害時は、気象庁、自治体、消防、警察などの最新の公式情報と現地の状況に従ってください。本作のプレイ結果だけで実際の安全を保証するものではありません。
 
 - 公開URL: https://gamebar777.github.io/odaiba-afterlines/
+- アクセス解析: GoatCounter（Cookieなし）。説明は[プライバシーポリシー](https://gamebar777.github.io/privacy.html)。ゲーム内のタイトル画面と設定画面からも同ページへリンクしている。
 - 技術: Vite + TypeScript。エンジン（`src/engine`）は決定論的で、コンテンツ（`src/data`）と分離。
 - タイトル: 当初案「その日、東京が止まった。― AFTER THE SHOCK」は、英題が1990年の米TV映画 "After the Shock" と重なるため変更（docs/SPEC.md 参照）。
 

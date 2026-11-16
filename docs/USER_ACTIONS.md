@@ -5,7 +5,7 @@
 ## Google AdSense
 1. https://adsense.google.com で本人のGoogleアカウントで申し込み（18歳以上、本人の住所・支払い情報が必要）。
 2. GitHub Pages のサブパス（github.io/odaiba-afterlines）は AdSense のサイト追加で受け付けられないことが多い。独自ドメインの取得（有料）を検討。
-3. 承認後に発行されるコードを `src/main.ts` の `ad()` に組み込む（タイトル・章の区切りのみ）。プライバシーポリシーのページを追加。
+3. 承認後に発行されるコードを `src/main.ts` の `ad()` に組み込む（タイトル・章の区切りのみ）。ゲームのタイトル画面と設定画面から、ポータルのプライバシーポリシー（https://gamebar777.github.io/privacy.html）へリンク済み。AdSense 承認後は、同ページの広告に関する記載を必要に応じて確認する。
 4. 防災教育コンテンツとして、子ども向け扱い（COPPA等）や広告カテゴリの制限を確認。
 
 ## H5ゲームポータル（例：CrazyGames）
