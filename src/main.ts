@@ -11,6 +11,8 @@ import { portraitSrc } from './ui/portraits';
 
 export const DISCLAIMER = '本作は防災教育を目的としたシミュレーションゲームです。ゲーム内の地震、被害、施設状況、避難経路、人物の行動は架空のシナリオを含みます。現実の災害時は、気象庁、自治体、消防、警察などの最新の公式情報と現地の状況に従ってください。本作のプレイ結果だけで実際の安全を保証するものではありません。';
 const TITLE = 'ゆれのあと、きみへ。';
+const PRIVACY_URL = 'https://gamebar777.github.io/privacy.html';
+const privacyLink = () => `<p class="note privacy"><a href="${PRIVACY_URL}" target="_blank" rel="noopener">プライバシーポリシー（アクセス解析について）</a></p>`;
 const app = document.getElementById('app')!;
 let S: State | null = null;
 let P: Prefs = prefs();
@@ -41,6 +43,7 @@ function title() {
     </div>
     ${ad('タイトル')}
     <p class="note">揺れの演出があります（画面の振動・暗転）。設定で弱められます。音は初期状態でミュートです。</p>
+    ${privacyLink()}
   </main>`);
   on('#new', () => setup()); on('#cont', () => { S = load()!.state; lastFb = []; play(); });
   on('#enc', () => encyclopedia(title)); on('#hist', () => history(title)); on('#set', () => settings(title));
@@ -189,6 +192,7 @@ function settings(back: () => void) {
     <textarea id="txt" rows="4" placeholder="ここにセーブデータを貼り付けて「読み込み」"></textarea><p id="msg" class="note"></p>
     <h3>免責事項</h3><p class="disc">${DISCLAIMER}</p>
     <p class="note">背景イラストはAI生成イラスト（架空の場所のイメージ・実在施設の写真ではありません）で、読み込めない場合は自作SVGを表示します。登場人物の立ち絵はAI生成イラスト（架空の人物・実在人物とは無関係）です。実在の災害映像・写真は使用していません。</p>
+    ${privacyLink()}
     <div class="btns"><button class="primary" id="b">戻る</button></div></main>`);
   const g = (id: string) => app.querySelector('#' + id) as HTMLInputElement;
   const upd = () => { P = { ...P, muted: g('mute').checked, volume: Number(g('vol').value), ads: g('ads').checked, portraits: g('pt').checked, bgm: g('bgm').checked, tts: g('ttsOn').checked }; setBgm(P.bgm); setPrefs(P); setSound(P.volume, P.muted); document.body.classList.toggle('calm', g('calm').checked); localStorage.setItem('odaiba-afterlines.calm', g('calm').checked ? '1' : ''); };
