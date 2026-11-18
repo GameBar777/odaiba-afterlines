@@ -3,7 +3,7 @@ const F = '【ゲーム内架空情報】';
 export const info: InfoPost[] = [
   { id: 'i_sns_bridge', source: 'sns', from: '@odaiba_now（架空アカウント）', at: '発災15分後', text: 'レインボーブリッジ崩落したらしい！！橋が落ちてる写真回ってきた', reliability: 1, truth: false, note: '出所不明の転載。写真の撮影日時・場所が確認できない。シナリオ上は「点検のため通行止め」が正しい。' },
   { id: 'i_sns_fire', source: 'witness', from: 'モールから出てきた人（架空）', at: '発災20分後', text: 'フードコートの奥から煙が出てる。まだ中に人がいた', reliability: 4, truth: true, note: '直接見た人の証言。場所が具体的。' },
-  { id: 'i_off_tsunami', source: 'official-fiction', from: F + '気象庁（ゲーム内想定）', at: '発災5分後', text: '東京湾内湾：津波注意報（ゲーム内の架空の発表）。海岸や河口から離れてください。', reliability: 5, truth: true, note: '実際の発表ではありません。現実では気象庁・自治体の最新情報を確認してください。' },
+  { id: 'i_off_tsunami', source: 'official-fiction', from: F + '気象庁（ゲーム内想定）', at: '発災5分後', text: '東京湾内湾：津波注意報（ゲーム内の架空の発表）。海岸や河口から離れてください。', reliability: 5, truth: true, note: '実際の発表ではありません。現実では、強い揺れや長い揺れを感じたら、こうした発表を待たずに高いところへ避難してください。気象庁・自治体の最新情報も確認してください。' },
   { id: 'i_fac_stay', source: 'facility', from: F + 'シーサイドモール台場 館内放送', at: '発災30分後', text: '建物の安全を確認中です。外に出た方は、落下物に注意し、係員の指示に従ってください。', reliability: 4, truth: true },
   { id: 'i_sns_water', source: 'sns', from: '拡散ポスト（架空）', at: '発災40分後', text: '【拡散希望】断水で水道水に毒が混入するおそれ！絶対飲むな', reliability: 1, truth: false, note: '根拠・発信元の記載がない典型的なデマの形。自治体・水道局の発表を確認する。' },
   { id: 'i_fac_open', source: 'facility', from: F + '青海ホール（架空施設）職員', at: '発災2時間後', text: '一時滞在施設として受け入れを開始しました。水・毛布・トイレがあります。', reliability: 5, truth: true },
